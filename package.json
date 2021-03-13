@@ -4,11 +4,8 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "serve": "node dist/app.js",
-    "start": "npm run serve",
-    "dev": "nodemon src/app.ts",
-    "build-ts": "tsc -p .",
-    "build": "npm run build-ts"
+    "start": "tsc-watch --onSuccess 'node ./dist/app.js'",
+    "build": "tsc"
   },
   "repository": {
     "type": "git",
@@ -31,6 +28,7 @@
     "@types/node": "^14.14.34",
     "nodemon": "^2.0.7",
     "ts-node": "^9.1.1",
+    "tsc-watch": "^4.2.9",
     "typescript": "^4.2.3"
   }
 }
