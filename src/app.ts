@@ -1,9 +1,25 @@
 import express, { Application, Request, Response, NextFunction } from 'express';
 
-const app: Application = express();
+class Server {
+  private app: Application = express();
+  private readonly MAX_PAYLOAD_LIMIT: string = '5mb';
+  private readonly PORT: number = parseInt(process.env.PORT, 10) || 5000;
 
-app.get('/', (req: Request, res: Response, next: NextFunction) => {
-  res.send('Hello Open Source Champs from Opportunity Calendar Backend !!');
-});
+  constructor() {
+    this.configure();
+  }
 
-app.listen(5000, () => console.log('Server Running at port 5000'));
+  private configure(): void {
+    this.app.use(express.json({ limit: this.MAX_PAYLOAD_LIMIT }));
+  }
+
+  public listen(): Promise<number> {
+    return new Promise((resolve, reject) => {
+      this.app.listen(this.PORT, () => resolve(this.PORT));
+    });
+  }
+}
+
+// start the server
+const server = new Server();
+server.listen().then((port) => console.log(`listening on ${port}`));
