@@ -1,4 +1,5 @@
 import express, { Application, Request, Response, NextFunction } from 'express';
+import routes from './routes';
 
 class Server {
   private app: Application = express();
@@ -11,6 +12,7 @@ class Server {
 
   private configure(): void {
     this.app.use(express.json({ limit: this.MAX_PAYLOAD_LIMIT }));
+    this.app.use(routes);
   }
 
   public listen(): Promise<number> {
@@ -21,5 +23,5 @@ class Server {
 }
 
 // start the server
-const server = new Server();
+const server: Server = new Server();
 server.listen().then((port) => console.log(`listening on ${port}`));

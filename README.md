@@ -18,13 +18,16 @@ Opportunity Calendar is the one-stop place to refer important opportunites avail
 # clone the repository to your local machine
 $ git clone https://github.com/<YOUR-GITHUB-USERNAME>/Opportunity-Calendar-Backend.git
 
-# navigate to the project's directory and install all the relevant dev-dependencies
-$ cd Opportunity-Calendar-Backen && npm intsall
+# navigate to the project's directory 
+$ cd Opportunity-Calendar-Backen
 
-# Make a .env file and include the details as per config.js
+# install all the relevant (dev) dependencies using Yarn
+$ yarn
+
+# Copy .env.example to .env and fill the details
 
 # Start application
-$ node app.js
+$ yarn start
 
 # Visit http://localhost:5000/ in your browser
 ```
