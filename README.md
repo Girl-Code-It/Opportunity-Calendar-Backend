@@ -14,20 +14,20 @@ Opportunity Calendar is the one-stop place to refer important opportunites avail
 
 <h2 align="center">Install</h2>
 
- ```
- # clone the repository to your local machine
+```
+# clone the repository to your local machine
 $ git clone https://github.com/<YOUR-GITHUB-USERNAME>/Opportunity-Calendar-Backend.git
 
 # navigate to the project's directory and install all the relevant dev-dependencies
 $ cd Opportunity-Calendar-Backen && npm intsall
 
-# Make a .env file and include the details as per config.js 
+# Make a .env file and include the details as per config.js
 
 # Start application
 $ node app.js
 
 # Visit http://localhost:5000/ in your browser
- ```
+```
 
 <h2 align="center">Introduction</h2>
 Opportunity Calendar provides instant information on newly posted opportunuties for techies. There are times when applicants miss deadlines or get to know about available opportunties only after the deadline of their application passes. 
@@ -52,7 +52,6 @@ Updates about following opportunities are available:
 -   [**Models**](https://girlcodeit.atlassian.net/wiki/spaces/OC/pages/31916033/Models)
 -   [**List of APIS**]()
 -   [**Swagger Documentation**]()
-
 
 <h2 align="center">Bugs and Feature Requests</h2>
 
