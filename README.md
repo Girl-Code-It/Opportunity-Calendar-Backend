@@ -1,6 +1,6 @@
 ## Opportunity Calendar
 
-Opportunity Calendar is the one-stop place to refer important opportunites available in tech-space like newly posted jobs, internships, hackathons, tech-conferences, scholarhsips etc.
+Opportunity Calendar is the one-stop place to refer important opportunities available in tech-space like newly posted jobs, internships, hackathons, tech-conferences, scholarships etc.
 
 ## Table of Contents
 
@@ -48,7 +48,7 @@ Updates about following opportunities are available:
 - **Cloud database service** - MongoDB Atlas
 
 <h2 align="center">Documentation</h2>
- 
+
 -   [**Models**](https://girlcodeit.atlassian.net/wiki/spaces/OC/pages/31916033/Models)
 -   [**List of APIS**]()
 -   [**Swagger Documentation**]()
@@ -61,6 +61,12 @@ Have a bug or a feature request? Please first read the [issue guidelines](https:
 
 We want contributing to Opportunity Calendar to be enjoyable and educational for everyone. We would love to have your contributions.
 To get started have a look at our [documentation on contributing](https://github.com/Girl-Code-It/Opportunity-Calendar-Backend/blob/develop/contributing.md).
+
+<h2 align="center">✨ Our Contributors ✨</h2>
+
+<a href="https://github.com/Girl-Code-It/Opportunity-Calendar-Backend">
+  <img src="https://contrib.rocks/image?repo=Girl-Code-It/Opportunity-Calendar-Backend" />
+</a>
 
 <h2 align="center">Copyright and license</h2>
 
