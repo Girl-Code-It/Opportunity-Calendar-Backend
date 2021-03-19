@@ -1,17 +1,17 @@
-require("dotenv").config();
+require('dotenv').config();
 
-const express = require("express"),
+const express = require('express'),
   app = express(),
-  bodyParser = require("body-parser"),
-  mongoose = require("mongoose"),
-  methodOverride = require("method-override"),
-  cors = require("cors");
+  bodyParser = require('body-parser'),
+  mongoose = require('mongoose'),
+  methodOverride = require('method-override'),
+  cors = require('cors');
 
-const { db_user, db_pwd, db_host, db_name } = require("./config");
+const { db_user, db_pwd, db_host, db_name } = require('./config');
 
 //requiring routes
-const jobRoutes = require("./routes/job"),
-  userRoutes = require("./routes/user");
+const indexRoutes = require('./routes/index'),
+  opportunityRoutes = require('./routes/opportunity');
 
 const mongoSrvString = `mongodb+srv://${db_user}:${db_pwd}@${db_host}/${db_name}?retryWrites=true&w=majority`;
 
@@ -25,7 +25,7 @@ const db = mongoose
     useFindAndModify: true,
   })
   .then(() => {
-    console.log("Connected to mongo db");
+    console.log('Connected to mongo db');
   })
   .catch((err) => {
     console.log("Couldn't connect to mongo db, err: ", err);
@@ -35,12 +35,12 @@ app.use(cors());
 // in order to read HTTP POST data , we have to use "body-parser" node module. body-parser is a piece of express middleware that reads a form's input and stores it as a javascript object accessible through req.body
 // app.use(bodyParser.urlencoded({ extended: true })); //middleware for parsing bodies from URL.
 app.use(bodyParser.json());
-app.set("view engine", "ejs");
-app.use(express.static(__dirname + "/public"));
-app.use(methodOverride("_method")); //to support HTTP Verbs other than GET,POST
+app.set('view engine', 'ejs');
+app.use(express.static(__dirname + '/public'));
+app.use(methodOverride('_method')); //to support HTTP Verbs other than GET,POST
 
-app.use("/jobs", jobRoutes);
-app.use("/user", userRoutes);
+app.use('/', indexRoutes);
+app.use('/opportunity', opportunityRoutes);
 
 const port = process.env.PORT || 3030;
 app.listen(port, function () {

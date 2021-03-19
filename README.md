@@ -2,6 +2,8 @@
 
 Opportunity Calendar is the one-stop place to refer important opportunities available in tech-space like newly posted jobs, internships, hackathons, tech-conferences, scholarships etc.
 
+The frontend of the same project can be found [here](https://github.com/Girl-Code-It/Opportunity-Calendar-Frontend)
+
 ## Table of Contents
 
 1. [Install](#install)
@@ -19,17 +21,18 @@ Opportunity Calendar is the one-stop place to refer important opportunities avai
 $ git clone https://github.com/<YOUR-GITHUB-USERNAME>/Opportunity-Calendar-Backend.git
 
 # navigate to the project's directory 
-$ cd Opportunity-Calendar-Backen
+$ cd Opportunity-Calendar-Backend
 
-# install all the relevant (dev) dependencies using Yarn
-$ yarn
+# install all the relevant (dev) dependencies using npm
+$ npm install
 
-# Copy .env.example to .env and fill the details
+# Copy .env.example to .env
+$ It is recommended to install [MongoDB Compass](https://www.mongodb.com/try/download/compass) to visualize data in mongodb
 
 # Start application
-$ yarn start
+$ npm start
 
-# Visit http://localhost:5000/ in your browser
+# Visit http://localhost:3030/ in your browser
 ```
 
 <h2 align="center">Introduction</h2>
@@ -52,9 +55,18 @@ Updates about following opportunities are available:
 
 <h2 align="center">Documentation</h2>
 
--   [**Models**](https://girlcodeit.atlassian.net/wiki/spaces/OC/pages/31916033/Models)
--   [**List of APIS**]()
+-   [**Models**](https://github.com/Girl-Code-It/Opportunity-Calendar-Backend/tree/develop/documentation/models.md)
+-   [**List of APIS**](https://github.com/Girl-Code-It/Opportunity-Calendar-Backend/tree/develop/documentation/APIS.md)
+- [**New Ideas**](https://github.com/Girl-Code-It/Opportunity-Calendar-Backend/tree/develop/documentation/ideas.md)
 -   [**Swagger Documentation**]()
+
+<h2 align="center">Project Structure</h2>
+
+We will structure our application using the controller, service, and, manager pattern so our app will be broken into the managers, services, and controllers. The `Manager-Service-Controller` pattern breaks up the business layer of the app into three distinct layers:
+
+1. The `manager class` handles getting data into and out of our data store. A manager is used between the service layer and the model layer. For example, in the opportunityManager you would create methods that write/read a opportunity to and from the database.
+2. The `service class` calls the manager class and can combine their data to form new, more complex business objects. It is an abstraction between the controller and the manager.
+3. A `controller` contains very little logic and is used to make calls to services.
 
 <h2 align="center">Bugs and Feature Requests</h2>
 
