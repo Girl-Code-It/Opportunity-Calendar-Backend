@@ -1,22 +1,24 @@
 require('dotenv').config();
 
-const express = require('express'),
-  app = express(),
-  bodyParser = require('body-parser'),
-  mongoose = require('mongoose'),
-  methodOverride = require('method-override'),
-  cors = require('cors');
+const express = require('express');
+const app = express();
+const bodyParser = require('body-parser');
+const mongoose = require('mongoose');
+const methodOverride = require('method-override');
+const cors = require('cors');
+const swaggerUI = require('swagger-ui-express');
+const swaggerJSDoc = require('swagger-jsdoc');
 
 const { db_user, db_pwd, db_host, db_name } = require('./config');
 
 //requiring routes
-const indexRoutes = require('./routes/index'),
-  opportunityRoutes = require('./routes/opportunity');
+const indexRoutes = require('./routes/index');
+const opportunityRoutes = require('./routes/opportunity');
 
 const mongoSrvString = `mongodb+srv://${db_user}:${db_pwd}@${db_host}/${db_name}?retryWrites=true&w=majority`;
 
 // connect the database
-const db = mongoose
+mongoose
   .connect(mongoSrvString, {
     useNewUrlParser: true,
     useUnifiedTopology: true, //significant refactor of how it handles monitoring all the servers in a replica set or sharded cluster.
@@ -41,6 +43,20 @@ app.use(methodOverride('_method')); //to support HTTP Verbs other than GET,POST
 
 app.use('/', indexRoutes);
 app.use('/opportunity', opportunityRoutes);
+
+// swagger
+app.use('/playground', swaggerUI.serve);
+app.get(
+  '/playground',
+  swaggerUI.setup(
+    swaggerJSDoc({
+      definition: {
+        openapi: '3.0.0',
+      },
+      apis: ['./routes/*.js'], // files containing annotations as above
+    })
+  )
+);
 
 const port = process.env.PORT || 3030;
 app.listen(port, function () {

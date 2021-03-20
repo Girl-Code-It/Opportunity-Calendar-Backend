@@ -68,6 +68,8 @@ We will structure our application using the controller, service, and, manager pa
 2. The `service class` calls the manager class and can combine their data to form new, more complex business objects. It is an abstraction between the controller and the manager.
 3. A `controller` contains very little logic and is used to make calls to services.
 
+[Documenting API using JSDoc and Swagger](https://dev.to/kabartolo/how-to-document-an-express-api-with-swagger-ui-and-jsdoc-50do)
+
 <h2 align="center">Bugs and Feature Requests</h2>
 
 Have a bug or a feature request? Please first read the [issue guidelines](https://github.com/Girl-Code-It/Opportunity-Calendar-Backend/blob/develop/contributing.md) and search for existing and closed issues. If your problem or idea is not addressed yet, [please open a new issue](https://github.com/Girl-Code-It/Opportunity-Calendar-Backend/issues/new).
