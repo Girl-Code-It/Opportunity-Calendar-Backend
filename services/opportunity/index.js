@@ -35,6 +35,20 @@ class opportunityService {
       throw err;
     }
   }
+
+  async getOpportunities(queryObject) {
+    console.log('Inside Service');
+
+    try {
+      let fetchedOpportunities = await this.opportunityManager.getOpportunities(
+        queryObject
+      );
+      return fetchedOpportunities;
+    } catch (err) {
+      console.log('ERROR IN  getOpportunities OpportunityServices');
+      throw err;
+    }
+  }
 }
 
 module.exports = opportunityService;

@@ -12,7 +12,7 @@ const opportunityManager = new OpportunityManager(),
  * @openapi
  * /opportunity:
  *  post:
- *    summary: create a new opportunity 
+ *    summary: create a new opportunity
  *    description: creates a new opportunity in database
  *    parameters:
  *      - in: body
@@ -24,11 +24,16 @@ const opportunityManager = new OpportunityManager(),
  *    responses:
  *      200:
  *        description: document the API response on success here
- *            
+ *
  */
-router.post('/', (req, res) => {
-  console.log('Inside Route');
-  opportunityController.createOpportunity(req, res);
-});
+router
+  .get('/', (req, res) => {
+    console.log('Inside GET Route');
+    opportunityController.getOpportunities(req, res);
+  })
+  .post('/', (req, res) => {
+    console.log('Inside Route');
+    opportunityController.createOpportunity(req, res);
+  });
 
 module.exports = router;

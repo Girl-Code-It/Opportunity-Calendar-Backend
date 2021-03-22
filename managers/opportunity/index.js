@@ -39,6 +39,22 @@ class opportunityManager {
       throw err;
     }
   }
+
+  async getOpportunities(queryObject) {
+    try {
+      if (queryObject.type) {
+        queryObject['opportunityType'] = queryObject.type;
+        delete queryObject.type;
+      }
+      console.log('Values in QueryString', queryObject);
+
+      let fetchedOpportunitiesQuery = this.opportunity.find(queryObject);
+      return fetchedOpportunitiesQuery;
+    } catch (err) {
+      console.log('ERROR IN getOpportunities OpportunityMANAGER');
+      throw err;
+    }
+  }
 }
 
 module.exports = opportunityManager;
