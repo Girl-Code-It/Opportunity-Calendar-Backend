@@ -42,6 +42,7 @@ class opportunityManager {
 
   async getOpportunities(queryObject) {
     try {
+      // Filter based on opportunityType
       if (queryObject.type) {
         queryObject['opportunityType'] = queryObject.type;
         delete queryObject.type;
@@ -49,6 +50,9 @@ class opportunityManager {
       console.log('Values in QueryString', queryObject);
 
       let fetchedOpportunitiesQuery = this.opportunity.find(queryObject);
+      fetchedOpportunitiesQuery.select('-__v');
+      fetchedOpportunitiesQuery.select('-_id');
+
       return fetchedOpportunitiesQuery;
     } catch (err) {
       console.log('ERROR IN getOpportunities OpportunityMANAGER');

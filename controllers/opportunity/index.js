@@ -53,11 +53,15 @@ class opportunityController {
       );
 
       return res.status(200).json({
+        status: 'success',
         data: fetchedOpportunities,
       });
     } catch (err) {
       console.log('ERROR IN getOpportunities OpportunityController', err);
-      return res.status(400).send(err);
+      return res.status(400).json({
+        status: 'fail',
+        error: err.message,
+      });
     }
   }
 }
