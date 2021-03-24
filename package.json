@@ -4,7 +4,8 @@
   "description": "Opportunity Calendar is the one-stop place to refer important opportunities available in tech-space like newly posted jobs, internships, hackathons, tech-conferences, scholarships etc.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start:dev": "nodemon index.js"
   },
   "repository": {
     "type": "git",
@@ -23,6 +24,8 @@
     "express": "^4.17.1",
     "method-override": "^3.0.0",
     "mongoose": "^5.12.1",
-    "nodemon": "^2.0.7"
+    "nodemon": "^2.0.7",
+    "swagger-jsdoc": "^6.0.0",
+    "swagger-ui-express": "^4.1.6"
   }
 }
