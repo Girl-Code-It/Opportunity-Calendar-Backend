@@ -30,7 +30,7 @@ $ npm install
 $ It is recommended to install [MongoDB Compass](https://www.mongodb.com/try/download/compass) to visualize data in mongodb
 
 # Start application
-$ npm start
+$ npm run start:dev
 
 # Visit http://localhost:3030/ in your browser
 ```
