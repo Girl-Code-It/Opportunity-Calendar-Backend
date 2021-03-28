@@ -53,6 +53,40 @@ Updates about following opportunities are available:
 - **Database** - MongoDB
 - **Cloud database service** - MongoDB Atlas
 
+<h2 align="center">Guidelines for GSSOC Participants</h2></p>
+
+We are glad to have your contributions to the project, Please make sure to read the following guidelines for the contributors.
+
+### Community
+
+- Join #opportunity-calendar-backend channel on Discord Server and feel free to ask any doubts regarding the project.
+- Mentors are happy to help if you get stuck while making a PR, all of them are available on Discord channel.
+
+| GitHub Usernames                               | Domain               |
+| ---------------------------------------------- | -------------------- |
+| [@abdus](https://github.com/abdus)             | FullStack            |
+| [@Surajbokde](https://github.com/Surajbokde)   | Frontend Development |
+| [@DeepanshiD](https://github.com/DeepanshiD)   | Design               |
+| [@vaishali614](https://github.com/vaishali614) | Frontend Development |
+| [@Manvityagi](https://github.com/Manvityagi)   | FullStack            |
+
+### Rules
+
+- Only 1 issue will be assigned to a participant at a time on FCFS(first come first serve) basis.
+- Comment on a particular issue to get it assigned to you and start working on it after it is assigned to you.
+- If you are creating a new issue, then please also comment on it mentioning that You want to work on it.
+- If any issue is assigned to you, make sure you complete it before deadline.
+- Deadline for issues:
+
+| Issue Level | Max. no. of days to submit a PR | Points |
+| ----------- | ------------------------------- | ------ |
+| Level 0     | 2                               | 5      |
+| Level 1     | 2                               | 10     |
+| Level 2     | 3                               | 15     |
+| Level 3     | 5                               | 25     |
+
+- If you fail to make a PR within the deadline, then the issue will be assigned to another person in the queue.
+
 <h2 align="center">Documentation</h2>
 
 -   [**Models**](https://github.com/Girl-Code-It/Opportunity-Calendar-Backend/tree/develop/documentation/models.md)
