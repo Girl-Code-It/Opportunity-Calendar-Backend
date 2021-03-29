@@ -3,9 +3,10 @@
   "version": "1.0.0",
   "description": "Opportunity Calendar is the one-stop place to refer important opportunities available in tech-space like newly posted jobs, internships, hackathons, tech-conferences, scholarships etc.",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start:dev": "nodemon index.js"
+    "start:dev": "nodemon –experimental-modules index.js"
   },
   "repository": {
     "type": "git",

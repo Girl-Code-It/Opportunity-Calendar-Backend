@@ -1,5 +1,6 @@
-let express = require('express'),
-  router = express.Router();
+import express from 'express';
+const router = express();
+
 
 /**
  * @openapi
@@ -14,4 +15,4 @@ router.get('/', (req, res) => {
   return res.send('Hello World');
 });
 
-module.exports = router;
+export default router;

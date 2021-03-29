@@ -1,4 +1,4 @@
-let Opportunity = require('../../models/opportunity');
+import  Opportunity from '../../models/opportunity.js';
 
 class opportunityController {
   constructor(opportunityService) {
@@ -66,4 +66,4 @@ class opportunityController {
   }
 }
 
-module.exports = opportunityController;
+export default opportunityController;
