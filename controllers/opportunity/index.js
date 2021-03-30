@@ -30,7 +30,7 @@ class opportunityController {
         opportunityEligibility,
         opportunityRegistrationDeadline,
         opportunityDate,
-        opportunityURL,
+        opportunityURL
       );
 
       return res.status(201).json({
@@ -39,6 +39,29 @@ class opportunityController {
     } catch (err) {
       console.log('ERROR IN postNewOpportunity OpportunityController', err);
       return res.status(400).send(err);
+    }
+  }
+
+  //getOpportunities
+  async getOpportunities(req, res) {
+    console.log('Inside controller');
+    const queryObject = { ...req.query };
+
+    try {
+      let fetchedOpportunities = await this.opportunityService.getOpportunities(
+        queryObject
+      );
+
+      return res.status(200).json({
+        status: 'success',
+        data: fetchedOpportunities,
+      });
+    } catch (err) {
+      console.log('ERROR IN getOpportunities OpportunityController', err);
+      return res.status(400).json({
+        status: 'fail',
+        error: err.message,
+      });
     }
   }
 }
