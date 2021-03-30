@@ -51,4 +51,4 @@ class opportunityService {
   }
 }
 
-module.exports = opportunityService;
+export default opportunityService;

@@ -1,24 +1,27 @@
-require('dotenv').config();
-
-const express = require('express');
+import { config } from 'dotenv';
+import path from 'path';
+import { fileURLToPath } from 'url';
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+import express, { json } from 'express';
 const app = express();
-const mongoose = require('mongoose');
-const methodOverride = require('method-override');
-const cors = require('cors');
-const swaggerUI = require('swagger-ui-express');
-const swaggerJSDoc = require('swagger-jsdoc');
+import pkg from 'mongoose';
+const {connect} = pkg;
+import methodOverride from 'method-override';
+import cors from 'cors';
+import { serve, setup } from 'swagger-ui-express';
+import swaggerJSDoc from 'swagger-jsdoc';
 
-const { db_user, db_pwd, db_host, db_name } = require('./config');
+import { db_user, db_pwd, db_host, db_name } from './config.js';
 
 //requiring routes
-const indexRoutes = require('./routes/index');
-const opportunityRoutes = require('./routes/opportunity');
+import indexRoutes from './routes/index.js';
+import opportunityRoutes from './routes/opportunity.js';
 
 const mongoSrvString = `mongodb+srv://${db_user}:${db_pwd}@${db_host}/${db_name}?retryWrites=true&w=majority`;
 
 // connect the database
-mongoose
-  .connect(mongoSrvString, {
+connect(mongoSrvString, {
     useNewUrlParser: true,
     useUnifiedTopology: true, //significant refactor of how it handles monitoring all the servers in a replica set or sharded cluster.
     //In MongoDB parlance, this is known as server discovery and monitoring.
@@ -37,7 +40,7 @@ app.use(cors());
 // app.use(bodyParser.urlencoded({ extended: true })); //middleware for parsing bodies from URL.
 //app.use(bodyParser.json());
 // express has got its own middleware for bodyparsing, use this as an alternative to bodyparser.json()
-app.use(express.json());
+app.use(json());
 
 app.set('view engine', 'ejs');
 app.use(express.static(__dirname + '/public'));
@@ -47,10 +50,10 @@ app.use('/', indexRoutes);
 app.use('/opportunity', opportunityRoutes);
 
 // swagger
-app.use('/playground', swaggerUI.serve);
+app.use('/playground', serve);
 app.get(
   '/playground',
-  swaggerUI.setup(
+  setup(
     swaggerJSDoc({
       definition: {
         openapi: '3.0.0',
