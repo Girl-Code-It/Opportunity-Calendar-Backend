@@ -1,182 +1,163 @@
-import mongoose from 'mongoose' ;
+import mongoose from 'mongoose';
 
-
-// Schema For the User looking / Posting Opprtunities 
-let userSchema=  new mongoose.Schema(
-
-{
-    username:{
-    type : String ,
-    required: true ,
-    default : 'NA' ,
+// Schema For the User looking / Posting Opprtunities
+let userSchema = new mongoose.Schema({
+  fullName: {
+    type: String,
+    required: true,
+    default: 'NA',
     minLength: 5,
     maxLength: 100,
-    } ,
+  },
 
-    password :{
+  password: {
+    type: String,
+    required: true,
+    default: 'NA',
+    minLength: 8,
+    maxLength: 100,
+  },
 
-        type : String ,
-        required: true ,
-        default :'NA',
-        minLength: 8,
-        maxLength: 100,
-    } ,
+  emailAddress: {
+    type: String,
+    required: true,
+    default: 'NA',
+  },
 
-    gender :{
- 
-        type: String ,
-        required: true ,
-        default: 'Others' 
-    } ,
- 
-    dateofBirth : {
-   type : Date ,
-   required :true ,
-   default : new Date().getDate 
+  gender: {
+    type: String,
+    required: true,
+    default: 'Others',
+  },
 
-    } ,
-    // to confirm wether the person is in college or already working
+  dateofBirth: {
+    type: Date,
 
-    isWorking: Boolean , 
-    
+    default: new Date().getDate,
+  },
+  // to confirm wether the person is in college or already working
 
-// Personal/Description similar to linkedin Summary 
+  isStudying: Boolean,
 
-    briefDescription: {
+  // Personal/Description similar to linkedin Summary
 
-        type :String ,
-        required :true ,
-        maxLength: 100 
-    } ,
+  briefDescription: {
+    type: String,
 
-    collegeName:{
-        type: String ,
-        required: true ,
-        default: 'NA' ,
-        
-    } ,
+    maxLength: 100,
+  },
 
-     // Get both state and city of the user's College/university
-    collegeState:{          
+  collegeName: {
+    type: String,
+    required: true,
+    default: 'NA',
+  },
 
-        type: String ,
-        required: true ,
-        default :' NA'
-    } ,
-    collegeCity:{          
+  // Get both state and city of the user's College/university
+  collegeState: {
+    type: String,
+    required: true,
+    default: ' NA',
+  },
+  collegeCity: {
+    type: String,
+    required: true,
+    default: ' NA',
+  },
 
-        type: String ,
-        required: true ,
-        default :' NA'
-    } ,
+  yearOfGraduation: {
+    type: Date,
+    default: new Date().getFullYear(),
+  },
 
-   yearOfGraduation: {
-       type: Date ,
-       default : new Date().getFullYear(),
-       required: true 
-   } ,
+  //  Array of strings for the user to enter his Skills
+  skills: [String],
 
-   //  Array of strings for the user to enter his Skills
-   skills :[String]  ,
- 
-   //  URLs of social media handles of the user (Github, linkedin, others)  
+  //  URLs of social media handles of the user (Github, linkedin, others)
 
-   // These links must be validated using mongoose validator as it doesn't support URL as type(needs to be implemented )
-   links : [String] ,
+  // These links must be validated using mongoose validator as it doesn't support URL as type(needs to be implemented )
+  github: {
+    type: String,
+  },
 
-  //Past internship/Job experinces of the User 
+  linkedin: {
+    type: String,
+  },
 
-   workExperience: [{
-    date: { type: Date, default: Date.now() },
-    companyName: { type: String, default: ''},
-    workDescription: { type: String, default: '' }
-}]   ,    
-           
+  //Past internship/Job experinces of the User
 
-// To search for an opportunity 
-lookingForJob: Boolean  ,
-
-
-
-// To post an opprtunity
-wantToPost : Boolean 
-    
-}
-
-) ;
-
-
-
-// This is for the Admins who will act as a mediator 
-
-let adminSchema=  new mongoose.Schema(
-
+  workExperience: [
     {
-        username:{
-        type : String ,
-        required: true ,
-        default : 'NA' ,
-        minLength: 5,
-        maxLength: 100,
-        } ,
-    
-        password :{
-    
-            type : String ,
-            required: true ,
-            default :'NA',
-            minLength: 8,
-            maxLength: 100,
-        } ,
-    
-        gender :{
-     
-            type: String ,
-            required: true ,
-            default: 'Others' 
-        } ,
-     
-        dateofBirth : {
-       type : Date ,
-       required :true ,
-       default : new Date().getDate 
-    
-        } ,
-        // to confirm wether the person is in college or already working
-    
-        isWorking: Boolean , 
-        
-    
-    // Personal/Description similar to linkedin Summary 
-    
-        briefDescription: {
-    
-            type :String ,
-            required :true ,
-            maxLength: 100 
-        } ,
-     
- 
-        // Post of the person being the Admin so that we can give powers as per reputation/JobTitle 
+      date: { type: Date, default: Date.now() },
+      companyName: { type: String, default: '' },
+      workDescription: { type: String, default: '' },
+    },
+  ],
 
-        jobTitle:{
+  // To search for an opportunity
+  lookingForJob: Boolean,
 
-            type : String ,
-            required: true 
-        }
+  // To post an opprtunity
+});
 
-    }
-    
-    ) ;
+// This is for the Admins who will act as a mediator
 
+let adminSchema = new mongoose.Schema({
+  fullName: {
+    type: String,
+    required: true,
+    default: 'NA',
+    minLength: 5,
+    maxLength: 100,
+  },
 
-    const user = mongoose.model('users', userSchema)  ;
-const admin= mongoose.model('admins', adminSchema)  ;
+  password: {
+    type: String,
+    required: true,
+    default: 'NA',
+    minLength: 8,
+    maxLength: 100,
+  },
 
+  emailAddress: {
+    type: String,
+    required: true,
+    default: 'NA',
+  },
+
+  gender: {
+    type: String,
+    required: true,
+    default: 'Others',
+  },
+
+  dateofBirth: {
+    type: Date,
+    default: new Date().getDate,
+  },
+  // to confirm wether the person is in college or already working
+
+  isStudying: Boolean,
+
+  // Personal/Description similar to linkedin Summary
+
+  briefDescription: {
+    type: String,
+    maxLength: 100,
+  },
+
+  // Post of the person being the Admin so that we can give powers as per reputation/JobTitle
+
+  jobTitle: {
+    type: String,
+    required: true,
+  },
+});
+
+const user = mongoose.model('users', userSchema);
+const admin = mongoose.model('admins', adminSchema);
 
 module.exports = {
-    User: user,
-    Admin: admin
-  }
-
-
+  User: user,
+  Admin: admin,
+};
