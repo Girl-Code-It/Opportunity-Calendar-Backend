@@ -7,15 +7,21 @@ const methodOverride = require('method-override');
 const cors = require('cors');
 const swaggerUI = require('swagger-ui-express');
 const swaggerJSDoc = require('swagger-jsdoc');
+const passport = require('passport');
+require('./authentication/strategies/google');
+
 
 const { db_user, db_pwd, db_host, db_name } = require('./config');
-
 //requiring routes
 const indexRoutes = require('./routes/index');
 const opportunityRoutes = require('./routes/opportunity');
+const authenticateRoutes = require('./routes/authenticate');
+
+//Set this string for testing purpost if you want to connect to local non-password protected mongodb
+// const mongoSrvString = `mongodb://${db_host}/${db_name}?retryWrites=true&w=majority`;
 
 const mongoSrvString = `mongodb+srv://${db_user}:${db_pwd}@${db_host}/${db_name}?retryWrites=true&w=majority`;
-
+console.log('DB connection attempt to url : ' , mongoSrvString);
 // connect the database
 mongoose
   .connect(mongoSrvString, {
@@ -39,12 +45,15 @@ app.use(cors());
 // express has got its own middleware for bodyparsing, use this as an alternative to bodyparser.json()
 app.use(express.json());
 
+app.use(passport.initialize());
+
 app.set('view engine', 'ejs');
 app.use(express.static(__dirname + '/public'));
 app.use(methodOverride('_method')); //to support HTTP Verbs other than GET,POST
 
 app.use('/', indexRoutes);
 app.use('/opportunity', opportunityRoutes);
+app.use('/auth',authenticateRoutes);
 
 // swagger
 app.use('/playground', swaggerUI.serve);
