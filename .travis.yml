@@ -1,9 +1,7 @@
 language: node_js
 node_js:
-  - "8"
+  - "15"
 script:
   - echo 'Build starts!!'
   - echo 'Installing Deps!'
   - npm install
-  - echo 'Testing!'
-  - npm run test:prod
