@@ -1,5 +1,7 @@
 ## Opportunity Calendar
 
+[![Build Status](https://www.travis-ci.com/Girl-Code-It/Opportunity-Calendar-Backend.svg?branch=develop)](https://www.travis-ci.com/Girl-Code-It/Opportunity-Calendar-Backend)
+
 Opportunity Calendar is the one-stop place to refer important opportunities available in tech-space like newly posted jobs, internships, hackathons, tech-conferences, scholarships etc.
 
 The frontend of the same project can be found [here](https://github.com/Girl-Code-It/Opportunity-Calendar-Frontend)
