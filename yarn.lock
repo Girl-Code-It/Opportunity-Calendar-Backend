@@ -58,17 +58,17 @@
     "@types/node" "*"
 
 "@types/mongodb@^3.5.27":
-  "integrity" "sha512-BkwAHFiZSSWdTIqbUVGmgvIsiXXjqAketeK7Izy7oSs6G3N8Bn993tK9eq6QEovQDx6OQ2FGP2KWDDxBzdlJ6Q=="
-  "resolved" "https://registry.npmjs.org/@types/mongodb/-/mongodb-3.6.10.tgz"
-  "version" "3.6.10"
+  "integrity" "sha512-2XSGr/+IOKeFQ5tU9ATcIiIr7bpHqWyOXNGLOOhp0kg2NnfEvoKZF1SZ25j4zvJRqM2WeSUjfWSvymFJ3HBGJQ=="
+  "resolved" "https://registry.npmjs.org/@types/mongodb/-/mongodb-3.6.9.tgz"
+  "version" "3.6.9"
   dependencies:
     "@types/bson" "*"
     "@types/node" "*"
 
 "@types/node@*":
-  "integrity" "sha512-Lt+wj8NVPx0zUmUwumiVXapmaLUcAk3yPuHCFVXras9k5VT9TdhJqKqGVUQCD60OTMCl0qxJ57OiTL0Mic3Iag=="
-  "resolved" "https://registry.npmjs.org/@types/node/-/node-14.14.35.tgz"
-  "version" "14.14.35"
+  "integrity" "sha512-dBPaxocOK6UVyvhbnpFIj2W+S+1cBTkHQbFQfeeJhoKFbzYcVUGHvddeWPSucKATb3F0+pgDq0i6ghEaZjsugA=="
+  "resolved" "https://registry.npmjs.org/@types/node/-/node-14.14.34.tgz"
+  "version" "14.14.34"
 
 "abbrev@1":
   "integrity" "sha512-nne9/IiQ/hzIhY6pdDnbBtz7DjPTKrY00P/zvPSm5pOFkl6xuGrGnXn/VtTNNfNtAfZ9/1RtehkszU9qcTii0Q=="
@@ -250,7 +250,6 @@
   dependencies:
     "anymatch" "~3.1.1"
     "braces" "~3.0.2"
-    "fsevents" "~2.3.1"
     "glob-parent" "~5.1.0"
     "is-binary-path" "~2.1.0"
     "is-glob" "~4.0.1"
@@ -927,7 +926,6 @@
     "denque" "^1.4.1"
     "require_optional" "^1.0.1"
     "safe-buffer" "^5.1.2"
-    "saslprep" "^1.0.0"
   optionalDependencies:
     "saslprep" "^1.0.0"
 
@@ -945,9 +943,9 @@
     "normalize-url" "^5.0.0"
 
 "mongoose@*", "mongoose@^5.12.1":
-  "integrity" "sha512-g/oIEvQQrK1XcICS/PfzU1Gu1s6Uw1rgJP7/SfC3Ru6pTLa1dH2Lb+iJipNWqChbrykE78j/wwBVSsbyCZRl5Q=="
-  "resolved" "https://registry.npmjs.org/mongoose/-/mongoose-5.12.1.tgz"
-  "version" "5.12.1"
+  "integrity" "sha512-frsSR9yeldaRpSUeTegXCSB0Tu5UGq8sHuHBuEV31Jk3COyxlKFQPL7UsdMhxPUCmk74FpOYSmNwxhWBEqgzQg=="
+  "resolved" "https://registry.npmjs.org/mongoose/-/mongoose-5.12.3.tgz"
+  "version" "5.12.3"
   dependencies:
     "@types/mongodb" "^3.5.27"
     "bson" "^1.1.4"
@@ -955,7 +953,7 @@
     "mongodb" "3.6.5"
     "mongoose-legacy-pluralize" "1.0.2"
     "mpath" "0.8.3"
-    "mquery" "3.2.4"
+    "mquery" "3.2.5"
     "ms" "2.1.2"
     "regexp-clone" "1.0.0"
     "safe-buffer" "5.2.1"
@@ -967,10 +965,10 @@
   "resolved" "https://registry.npmjs.org/mpath/-/mpath-0.8.3.tgz"
   "version" "0.8.3"
 
-"mquery@3.2.4":
-  "integrity" "sha512-uOLpp7iRX0BV1Uu6YpsqJ5b42LwYnmu0WeF/f8qgD/On3g0XDaQM6pfn0m6UxO6SM8DioZ9Bk6xxbWIGHm2zHg=="
-  "resolved" "https://registry.npmjs.org/mquery/-/mquery-3.2.4.tgz"
-  "version" "3.2.4"
+"mquery@3.2.5":
+  "integrity" "sha512-VjOKHHgU84wij7IUoZzFRU07IAxd5kWJaDmyUzQlbjHjyoeK5TNeeo8ZsFDtTYnSgpW6n/nMNIHvE3u8Lbrf4A=="
+  "resolved" "https://registry.npmjs.org/mquery/-/mquery-3.2.5.tgz"
+  "version" "3.2.5"
   dependencies:
     "bluebird" "3.5.1"
     "debug" "3.1.0"
@@ -1420,9 +1418,9 @@
     "@apidevtools/swagger-parser" "10.0.2"
 
 "swagger-ui-dist@^3.18.1":
-  "integrity" "sha512-SUqZbt0WQytjaI/bUr2gn8IqFE+Te6Tl4uA7n4xtylRdXKXmMm5s/mfTtvpnleHBjxcmQ6ONTA9ilN4iOxMulQ=="
-  "resolved" "https://registry.npmjs.org/swagger-ui-dist/-/swagger-ui-dist-3.45.0.tgz"
-  "version" "3.45.0"
+  "integrity" "sha512-ueaZ45OHhHvGKmocvCkxFY8VCfbP5PgcxutoQxy9j8/VZeDoLDvg8FBf4SO6NxHhieNAdYPUd0O6G9FjJO2fqw=="
+  "resolved" "https://registry.npmjs.org/swagger-ui-dist/-/swagger-ui-dist-3.46.0.tgz"
+  "version" "3.46.0"
 
 "swagger-ui-express@^4.1.6":
   "integrity" "sha512-Xs2BGGudvDBtL7RXcYtNvHsFtP1DBFPMJFRxHe5ez/VG/rzVOEjazJOOSc/kSCyxreCTKfJrII6MJlL9a6t8vw=="
@@ -1582,7 +1580,6 @@
   "resolved" "https://registry.npmjs.org/z-schema/-/z-schema-4.2.3.tgz"
   "version" "4.2.3"
   dependencies:
-    "commander" "^2.7.1"
     "lodash.get" "^4.4.2"
     "lodash.isequal" "^4.5.0"
     "validator" "^12.0.0"
