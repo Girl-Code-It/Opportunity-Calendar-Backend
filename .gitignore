@@ -39,4 +39,3 @@ Thumbs.db
 dist/*
 
 # use yarn
-package-lock.json
