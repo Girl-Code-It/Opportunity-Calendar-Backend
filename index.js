@@ -1,11 +1,16 @@
-require('dotenv').config();
-
-const express = require('express');
+import { config } from 'dotenv';
+import path from 'path';
+import { fileURLToPath } from 'url';
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+import express, { json } from 'express';
 const app = express();
-const mongoose = require('mongoose');
+
+import pkg from 'mongoose';
+const {connect} = pkg;
 const methodOverride = require('method-override');
 const cors = require('cors');
-const swaggerUI = require('swagger-ui-express');
+import { serve, setup } from 'swagger-ui-express';
 const swaggerJSDoc = require('swagger-jsdoc');
 const passport = require('passport');
 require('./authentication/strategies/google');
@@ -23,8 +28,7 @@ const authenticateRoutes = require('./routes/authenticate');
 const mongoSrvString = `mongodb+srv://${db_user}:${db_pwd}@${db_host}/${db_name}?retryWrites=true&w=majority`;
 console.log('DB connection attempt to url : ' , mongoSrvString);
 // connect the database
-mongoose
-  .connect(mongoSrvString, {
+connect(mongoSrvString, {
     useNewUrlParser: true,
     useUnifiedTopology: true, //significant refactor of how it handles monitoring all the servers in a replica set or sharded cluster.
     //In MongoDB parlance, this is known as server discovery and monitoring.
@@ -43,7 +47,7 @@ app.use(cors());
 // app.use(bodyParser.urlencoded({ extended: true })); //middleware for parsing bodies from URL.
 //app.use(bodyParser.json());
 // express has got its own middleware for bodyparsing, use this as an alternative to bodyparser.json()
-app.use(express.json());
+app.use(json());
 
 app.use(passport.initialize());
 
@@ -56,10 +60,10 @@ app.use('/opportunity', opportunityRoutes);
 app.use('/auth',authenticateRoutes);
 
 // swagger
-app.use('/playground', swaggerUI.serve);
+app.use('/playground', serve);
 app.get(
   '/playground',
-  swaggerUI.setup(
+  setup(
     swaggerJSDoc({
       definition: {
         openapi: '3.0.0',

@@ -1,5 +1,4 @@
-let Opportunity = require('../../models/opportunity');
-
+import  Opportunity from '../../models/opportunity.js';
 class opportunityManager {
   constructor() {
     this.opportunity = Opportunity;
@@ -61,4 +60,4 @@ class opportunityManager {
   }
 }
 
-module.exports = opportunityManager;
+export default opportunityManager;

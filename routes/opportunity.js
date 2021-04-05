@@ -1,8 +1,12 @@
-let express = require('express'),
-  router = express.Router(),
-  OpportunityManager = require('../managers/opportunity'),
-  OpportunityService = require('../services/opportunity'),
-  OpportunityController = require('../controllers/opportunity');
+import express from 'express';
+const router = express();
+import  OpportunityManager from '../managers/opportunity/index.js';
+import OpportunityService from '../services/opportunity/index.js';
+import OpportunityController from '../controllers/opportunity/index.js';
+  
+  // OpportunityManager = require('../managers/opportunity'),
+  // OpportunityService = require('../services/opportunity'),
+  // OpportunityController = require('../controllers/opportunity');
 
 const opportunityManager = new OpportunityManager(),
   opportunityService = new OpportunityService(opportunityManager),
@@ -150,4 +154,4 @@ router.post('/', (req, res) => {
   opportunityController.createOpportunity(req, res);
 });
 
-module.exports = router;
+export default router;

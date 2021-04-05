@@ -1,4 +1,4 @@
-let mongoose = require('mongoose');
+import mongoose from 'mongoose';
 //SCHEMA SETUP
 let opportunitySchema = new mongoose.Schema({
   opportunityId: {
@@ -62,4 +62,4 @@ let opportunitySchema = new mongoose.Schema({
   },
 });
 
-module.exports = mongoose.model('opportunity', opportunitySchema);
+export default mongoose.model('opportunity', opportunitySchema);

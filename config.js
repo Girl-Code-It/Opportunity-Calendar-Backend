@@ -1,6 +1,6 @@
-const dotenv = require("dotenv");
+import { config } from "dotenv";
 
-dotenv.config();
+config();
 
 module.exports = {
   db_host: process.env.db_host,

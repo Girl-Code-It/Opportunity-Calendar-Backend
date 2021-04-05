@@ -1,7 +1,6 @@
-const loggedIn = require('../middleware/loggedIn');
+import express from 'express';
+const router = express();
 
-let express = require('express'),
-  router = express.Router();
 
 /**
  * @openapi
