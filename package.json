@@ -5,6 +5,7 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
+    "start": "node index.js",
     "test": "mocha './test/*'",
     "start:dev": "nodemon –experimental-modules index.js"
   },

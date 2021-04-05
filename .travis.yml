@@ -1,0 +1,7 @@
+language: node_js
+node_js:
+  - "15"
+script:
+  - echo 'Build starts!!'
+  - echo 'Installing Deps!'
+  - npm install
