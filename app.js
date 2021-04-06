@@ -6,7 +6,7 @@ const __dirname = path.dirname(__filename);
 import express from 'express';
 const app = express();
 import pkg from 'mongoose';
-const {connect} = pkg;
+const { connect } = pkg;
 import methodOverride from 'method-override';
 import cors from 'cors';
 import swaggerUiExpress from 'swagger-ui-express';
@@ -24,12 +24,12 @@ const mongoSrvString = `mongodb+srv://${db_user}:${db_pwd}@${db_host}/${db_name}
 
 // connect the database
 connect(mongoSrvString, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true, //significant refactor of how it handles monitoring all the servers in a replica set or sharded cluster.
-    //In MongoDB parlance, this is known as server discovery and monitoring.
-    useCreateIndex: true,
-    useFindAndModify: true,
-  })
+  useNewUrlParser: true,
+  useUnifiedTopology: true, //significant refactor of how it handles monitoring all the servers in a replica set or sharded cluster.
+  //In MongoDB parlance, this is known as server discovery and monitoring.
+  useCreateIndex: true,
+  useFindAndModify: true,
+})
   .then(() => {
     console.log('Connected to mongo db');
   })
@@ -64,10 +64,10 @@ app.get(
     })
   )
 );
-const start = ()=>{
+const start = () => {
   const port = process.env.PORT || 3030;
   app.listen(port, function () {
-  console.log(`[OK] server started on port ${port}`);
+    console.log(`[OK] server started on port ${port}`);
   });
-}
+};
 export default start;

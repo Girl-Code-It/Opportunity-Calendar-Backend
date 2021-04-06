@@ -1,4 +1,4 @@
-import  Opportunity from '../../models/opportunity.js';
+import Opportunity from '../../models/opportunity.js';
 class opportunityManager {
   constructor() {
     this.opportunity = Opportunity;

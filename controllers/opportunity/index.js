@@ -1,4 +1,4 @@
-import  Opportunity from '../../models/opportunity.js';
+import Opportunity from '../../models/opportunity.js';
 
 class opportunityController {
   constructor(opportunityService) {
