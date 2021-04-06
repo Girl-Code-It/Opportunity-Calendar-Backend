@@ -2,7 +2,8 @@
 
 Please include a summary of the change and which issue is fixed. Please also include relevant motivation and context. List any dependencies that are required for this change.
 
-Fixes # (issue) 
+Fixes # (issue)
+
 <!--include issue no. for which you are creating PR in place of issue---->
 
 ## Type of change
@@ -22,13 +23,16 @@ Please describe the tests that you ran to verify your changes. Provide instructi
 - [ ] Test B
 
 **Test Configuration**:
-* Firmware version:
-* Hardware:
-* Toolchain:
-* SDK:
+
+- Firmware version:
+- Hardware:
+- Toolchain:
+- SDK:
 
 # Checklist:
+
 <!---In order to check the boxes simply put x in the square bracket like this [x]--->
+
 - [ ] My code follows the style guidelines of this project
 - [ ] I have performed a self-review of my own code
 - [ ] I have commented my code, particularly in hard-to-understand areas
