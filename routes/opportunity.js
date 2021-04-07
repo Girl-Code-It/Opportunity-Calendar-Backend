@@ -1,12 +1,12 @@
 import express from 'express';
 const router = express();
-import  OpportunityManager from '../managers/opportunity/index.js';
+import OpportunityManager from '../managers/opportunity/index.js';
 import OpportunityService from '../services/opportunity/index.js';
 import OpportunityController from '../controllers/opportunity/index.js';
-  
-  // OpportunityManager = require('../managers/opportunity'),
-  // OpportunityService = require('../services/opportunity'),
-  // OpportunityController = require('../controllers/opportunity');
+
+// OpportunityManager = require('../managers/opportunity'),
+// OpportunityService = require('../services/opportunity'),
+// OpportunityController = require('../controllers/opportunity');
 
 const opportunityManager = new OpportunityManager(),
   opportunityService = new OpportunityService(opportunityManager),
@@ -95,7 +95,7 @@ router.get('/', (req, res) => {
  * @openapi
  * /opportunity:
  *  post:
- *    summary: Creates a new opportunity 
+ *    summary: Creates a new opportunity
  *    description: Creates a new opportunity in database
  *    requestBody:
  *      required: true
@@ -142,7 +142,7 @@ router.get('/', (req, res) => {
  *              opportunityURL:
  *                type: string
  *                description: URL of the opportunity
- * 
+ *
  *    responses:
  *      201:
  *        description: Opportunity is successfully created!
