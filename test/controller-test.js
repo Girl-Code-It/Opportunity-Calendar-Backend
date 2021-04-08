@@ -1,10 +1,8 @@
 import {expect} from 'chai'
 import sinon from 'sinon'
 import stubValue from './fakedata.js'
-import OpportunityManager from "../managers/opportunity/index.js"
 import OpportunityService from "../services/opportunity/index.js"
 import OpportunityController from "../controllers/opportunity/index.js"
-import opportunityController from '../controllers/opportunity/index.js'
 
 
 describe("OpportunityController", function() {
