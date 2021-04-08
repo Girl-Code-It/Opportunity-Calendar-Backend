@@ -1,40 +1,73 @@
-// Under process 
+import {expect} from 'chai'
+import sinon from 'sinon'
+import stubValue from './fakedata.js'
+import OpportunityManager from "../managers/opportunity/index.js"
+import OpportunityService from "../services/opportunity/index.js"
+import OpportunityController from "../controllers/opportunity/index.js"
+import opportunityController from '../controllers/opportunity/index.js'
 
 
-// import chai from 'chai'
-// import sinon from 'sinon'
-// const OpportunityManager = require("../managers/opportunity/index");
-// const expect = chai.expect;
-// var stubValue=require("./fakedata")
-// const OpportunityService = require("../services/opportunity/index");
-// const OpportunityController=require("../controllers/opportunity/index")
-
-// describe("OpportunityController", function() {
-//     describe("Create Opportunity", function() {
-//       let status ,json, res, opportunityController, opportunityService;
-//       beforeEach(() => {
-//         status = sinon.stub();
-//         json = sinon.spy();
-//         res = { json, status };
-//         status.returns(res);
-//         const opportunityManager = sinon.spy();
-//         opportunityService = new OpportunityService(opportunityManager);
-//       });
+describe("OpportunityController", function() {
+    describe("Create Opportunity", function() {
+      let status ,json, res, opportunityController, opportunityService;
+      beforeEach(() => {
+        status = sinon.stub();
+        json = sinon.spy();
+        res = { json, status };
+        status.returns(res);
+        const opportunityManager = sinon.spy();
+        opportunityService = new OpportunityService(opportunityManager);
+      });
     
-//       it("should add a new Opportunity to the Opportunity database", async function() {
-//         const req = {
-//           body: {  stubValue   }
-//         };
+      it("should add a new Opportunity to the Opportunity database", async function() {
+        const req = {
+          body: { opportunityId:stubValue.opportunityId, opportunityTitle:stubValue.opportunityTitle,
+        opportunityType:stubValue.opportunityType,opportunityOrganisation:stubValue.opportunityOrganisation,
+    opportunityLocation:stubValue.opportunityLocation,opportunityDescription:stubValue.opportunityDescription,
+opportunityEligibility:stubValue.opportunityEligibility,opportunityRegistrationDeadline:stubValue.opportunityRegistrationDeadline,
+opportunityDate:stubValue.opportunityDate,opportunityURL:stubValue.opportunityURL}
+        };
 
-//         const stub = sinon.stub(opportunityService, "createOpportunity").returns(stubValue);
-//         opportunityController = new OpportunityController(opportunityService);
-//         await opportunityController.createOpportunity(req, res);
-//         expect(stub.calledOnce).to.be.true;
-//         expect(status.calledOnce).to.be.true;
-//         console.log(status)
-//         expect(json.calledOnce).to.be.true;
-//         console.log(json)
-//         // expect(json.data).to.equal(stubValue);
-//       });
-//     });
-//   });
+        const stub = sinon.stub(opportunityService, "createOpportunity").returns(stubValue);
+        opportunityController = new OpportunityController(opportunityService);
+        await opportunityController.createOpportunity(req, res);
+        expect(stub.calledOnce).to.be.true;
+        expect(status.calledOnce).to.be.true;
+        expect(status.firstCall.args[0]).to.equal(201)
+        expect(json.calledOnce).to.be.true;
+        expect(json.firstCall.args[0].data).to.equal(stubValue)
+
+      });
+    });
+
+
+    describe("getOpportunity",function(){
+        let status ,json,req, res, opportunityController, opportunityService;
+
+        beforeEach(()=>{
+            req={query:{type:stubValue.opportunityType}}
+            status = sinon.stub();
+            json = sinon.spy();
+            res = { json, status };
+            status.returns(res);
+            const opportunityManager=sinon.spy();
+            opportunityService=new OpportunityService(opportunityManager);
+        })
+
+        it("should retrieve Opportunities with specific opportunityType",async function(){
+
+
+            const stub=sinon.stub(opportunityService,"getOpportunities").returns(stubValue);
+            opportunityController=new OpportunityController(opportunityService);
+            await opportunityController.getOpportunities(req,res)
+            expect(stub.calledOnce).to.be.true;
+            expect(status.calledOnce).to.be.true;
+            expect(status.firstCall.args[0]).to.equal(200)
+            expect(json.calledOnce).to.be.true;
+            expect(json.firstCall.args[0].data).to.equal(stubValue)
+
+        })
+    })
+
+
+  });
