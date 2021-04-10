@@ -5,23 +5,46 @@ let userSchema = new mongoose.Schema({
   fullName: {
     type: String,
     required: true,
-    default: 'NA',
     minLength: 5,
     maxLength: 100,
   },
 
   password: {
     type: String,
-    required: true,
-    default: 'NA',
+    required: function(){
+      return this.authProvider == "LOCAL";
+    },
     minLength: 8,
-    maxLength: 100,
+    maxLength: 20,
   },
 
-  emailAddress: {
+  authProviderId : {
+    type: String,
+    required: function(){
+      return this.authProvider !== "LOCAL";
+    },
+  },
+
+  authProvider: {
+    type : String,
+    required : true
+  },
+
+  email: {
     type: String,
     required: true,
     default: 'NA',
+  },
+
+  emailVerified : {
+    type : Boolean,
+    required : true,
+    default : false
+  },
+
+  image : {
+    type : String
+    //To add default placeholder
   },
 
   gender: {
@@ -30,10 +53,8 @@ let userSchema = new mongoose.Schema({
     default: 'Others',
   },
 
-  dateofBirth: {
-    type: Date,
-
-    default: new Date().getDate,
+  dob: {
+    type: Date
   },
   // to confirm wether the person is in college or already working
 
@@ -66,8 +87,7 @@ let userSchema = new mongoose.Schema({
   },
 
   yearOfGraduation: {
-    type: Date,
-    default: new Date().getFullYear(),
+    type: Date
   },
 
   //  Array of strings for the user to enter his Skills
@@ -106,23 +126,46 @@ let adminSchema = new mongoose.Schema({
   fullName: {
     type: String,
     required: true,
-    default: 'NA',
     minLength: 5,
     maxLength: 100,
   },
 
   password: {
     type: String,
-    required: true,
-    default: 'NA',
+    required: function(){
+      return this.authProvider == "LOCAL";
+    },
     minLength: 8,
-    maxLength: 100,
+    maxLength: 20,
   },
 
-  emailAddress: {
+  authProviderId : {
+    type: String,
+    required: function(){
+      return this.authProvider !== "LOCAL";
+    },
+  },
+
+  authProvider: {
+    type : String,
+    required : true
+  },
+
+  email: {
     type: String,
     required: true,
     default: 'NA',
+  },
+
+  emailVerified : {
+    type : Boolean,
+    required : true,
+    default : false
+  },
+
+  image : {
+    type : String
+    //To add default placeholder
   },
 
   gender: {
@@ -131,9 +174,8 @@ let adminSchema = new mongoose.Schema({
     default: 'Others',
   },
 
-  dateofBirth: {
-    type: Date,
-    default: new Date().getDate,
+  dob: {
+    type: Date
   },
   // to confirm wether the person is in college or already working
 
@@ -157,7 +199,5 @@ let adminSchema = new mongoose.Schema({
 const user = mongoose.model('users', userSchema);
 const admin = mongoose.model('admins', adminSchema);
 
-module.exports = {
-  User: user,
-  Admin: admin,
-};
+export const User = user;
+export const Admin = admin;
