@@ -1,6 +1,6 @@
 import express from 'express';
 const router = express();
-
+import {loggedIn} from '../middleware/auth.js'
 /**
  * @openapi
  * /:
@@ -12,6 +12,20 @@ const router = express();
  */
 router.get('/', (req, res) => {
   return res.send('Hello World');
+});
+
+
+router.get('/loggedInChecker', loggedIn, (req, res) => {
+  return res.send('Hello World');
+});
+
+
+router.get('/login/:token', (req, res) => {
+  return res.send(req.params.token);
+});
+
+router.get('/error/:token', (req, res) => {
+  return res.send(req.params.token);
 });
 
 export default router;
