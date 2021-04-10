@@ -12,7 +12,7 @@ let userSchema = new mongoose.Schema({
   password: {
     type: String,
     required: function(){
-      return this.auth_provider == "LOCAL";
+      return this.authProvider == "LOCAL";
     },
     minLength: 8,
     maxLength: 20,
@@ -21,7 +21,7 @@ let userSchema = new mongoose.Schema({
   authProviderId : {
     type: String,
     required: function(){
-      return this.auth_provider !== "LOCAL";
+      return this.authProvider !== "LOCAL";
     },
   },
   
@@ -133,7 +133,7 @@ let adminSchema = new mongoose.Schema({
   password: {
     type: String,
     required: function(){
-      return this.auth_provider == "LOCAL";
+      return this.authProvider == "LOCAL";
     },
     minLength: 8,
     maxLength: 20,
@@ -142,7 +142,7 @@ let adminSchema = new mongoose.Schema({
   authProviderId : {
     type: String,
     required: function(){
-      return this.auth_provider !== "LOCAL";
+      return this.authProvider !== "LOCAL";
     },
   },
   
