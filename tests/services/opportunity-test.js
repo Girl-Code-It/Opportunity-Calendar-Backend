@@ -1,9 +1,9 @@
 import chai from 'chai';
 import sinon from 'sinon';
-import stubValue from './fakedata.js';
-import opportunityManager from '../managers/opportunity/index.js';
+import stubValue from '../fakedata.js';
+import opportunityManager from '../../managers/opportunity/index.js';
 const expect = chai.expect;
-import OpportunityService from '../services/opportunity/index.js';
+import OpportunityService from '../../services/opportunity/index.js';
 
 describe('OpportunityService', function () {
   describe('create', function () {

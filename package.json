@@ -6,7 +6,7 @@
   "type": "module",
   "scripts": {
     "start": "node index.js",
-    "test": "mocha './test/*'",
+    "test": "mocha './tests/*/*'",
     "start:dev": "nodemon –experimental-modules index.js"
   },
   "repository": {
