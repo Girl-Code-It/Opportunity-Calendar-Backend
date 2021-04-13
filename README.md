@@ -22,7 +22,7 @@ The frontend of the same project can be found [here](https://github.com/Girl-Cod
 # clone the repository to your local machine
 $ git clone https://github.com/<YOUR-GITHUB-USERNAME>/Opportunity-Calendar-Backend.git
 
-# navigate to the project's directory 
+# navigate to the project's directory
 $ cd Opportunity-Calendar-Backend
 
 # install all the relevant (dev) dependencies using npm
@@ -84,17 +84,17 @@ We are glad to have your contributions to the project, Please make sure to read 
 | ----------- | ------------------------------- | ------ |
 | Level 0     | 2                               | 5      |
 | Level 1     | 2                               | 10     |
-| Level 2     | 3                               | 15     |
-| Level 3     | 5                               | 25     |
+| Level 2     | 3                               | 25     |
+| Level 3     | 5                               | 45     |
 
 - If you fail to make a PR within the deadline, then the issue will be assigned to another person in the queue.
 
 <h2 align="center">Documentation</h2>
 
--   [**Models**](https://github.com/Girl-Code-It/Opportunity-Calendar-Backend/tree/develop/documentation/models.md)
--   [**List of APIS**](https://github.com/Girl-Code-It/Opportunity-Calendar-Backend/tree/develop/documentation/APIS.md)
+- [**Models**](https://github.com/Girl-Code-It/Opportunity-Calendar-Backend/tree/develop/documentation/models.md)
+- [**List of APIS**](https://github.com/Girl-Code-It/Opportunity-Calendar-Backend/tree/develop/documentation/APIS.md)
 - [**New Ideas**](https://github.com/Girl-Code-It/Opportunity-Calendar-Backend/tree/develop/documentation/ideas.md)
--   [**Swagger Documentation**]()
+- [**Swagger Documentation**]()
 
 <h2 align="center">Project Structure</h2>
 
