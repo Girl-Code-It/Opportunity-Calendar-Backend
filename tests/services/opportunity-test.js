@@ -1,18 +1,18 @@
 import chai from 'chai';
 import sinon from 'sinon';
 import stubValue from '../fakedata.js';
-import opportunityManager from '../../managers/opportunity/index.js';
+import OpportunityManager from '../../managers/opportunity/index.js';
 const expect = chai.expect;
 import OpportunityService from '../../services/opportunity/index.js';
 
 describe('OpportunityService', function () {
   describe('create', function () {
-    it('should create a new Opprtunity', async function () {
-      const OpportunityManager = new opportunityManager();
+    it('should create a new Opportunity', async function () {
+      const opportunityManager = new OpportunityManager();
       const stub = sinon
-        .stub(OpportunityManager, 'createOpportunity')
+        .stub(opportunityManager, 'createOpportunity')
         .returns(stubValue);
-      const opportunityService = new OpportunityService(OpportunityManager);
+      const opportunityService = new OpportunityService(opportunityManager);
       const opportunity = await opportunityService.createOpportunity(
         stubValue.opportunityId,
         stubValue.opportunityTitle,
@@ -50,11 +50,11 @@ describe('OpportunityService', function () {
 
   describe('getOpportunities', function () {
     it('should retrieve Opportunities with specific opportunityType', async function () {
-      const OpportunityManager = new opportunityManager();
+      const opportunityManager = new OpportunityManager();
       const stub = sinon
-        .stub(OpportunityManager, 'getOpportunities')
+        .stub(opportunityManager, 'getOpportunities')
         .returns(stubValue);
-      const opportunityService = new OpportunityService(OpportunityManager);
+      const opportunityService = new OpportunityService(opportunityManager);
       const opportunity = await opportunityService.getOpportunities({
         type: stubValue.opportunityType,
       });
