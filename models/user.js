@@ -97,7 +97,7 @@ let userSchema = new mongoose.Schema({
   // To search for an opportunity
   lookingForJob: Boolean,
 
-  // To post an opprtunity
+  // To post an Opportunity
 });
 
 // This is for the Admins who will act as a mediator
