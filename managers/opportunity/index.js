@@ -1,4 +1,4 @@
-import  Opportunity from '../../models/opportunity.js';
+import Opportunity from '../../models/opportunity.js';
 class opportunityManager {
   constructor() {
     this.opportunity = Opportunity;
@@ -39,67 +39,139 @@ class opportunityManager {
     }
   }
 
-  
-  // Here I have implemeted 2 paramters , QueryLimit and offset to return the relevant data in the given range 
-  // QueryLimit is used as variable so to avoid confusiong with native limit() function 
-  // The range starts from offset and returns all the data that is under the limit , eg 
-  // if you query for offset 0 and Querylimit 5 then you will get the data back as [0...4]both 0 and 4 inclusive 
+  // http://localhost:3030/opportunity?limit=4&page=2, Example of how to use the Get Method
 
-    
-  // add   ?queryLimit=x&offset=y at the end of ooportunity route where x and y are variables 
+  //  page => Means the Current Page that the User Wants
+  //  limit => The count of pages that should be rendered starting from the given page
 
-  // eg    http://localhost:3030/opportunity?offset=2&queryLimit=3  for  refrence 
+  //  For the above specified example , we Get Pages 2,3,4,5 (having Opprtunity_id as 1,2,3,4 and respectively) .
 
-async getOpportunities(queryObject) {
+  async getOpportunities(queryObject) {
     try {
       // Filter based on opportunityType
       if (queryObject.type) {
         queryObject['opportunityType'] = queryObject.type;
         delete queryObject.type;
       }
-      console.log('Values in QueryString', queryObject);
 
-      const default_page_limit= 20 ;
-      const default_page_offset= 0 ;
+      console.log('Values of QueryString', queryObject);
 
-       let { offset, queryLimit} = queryObject ;
+      // Here page means which page to start from and limit specifies the number of documnents to be
+      // rendered starting from this page
 
+      let { limit, page } = queryObject;
 
-       // Conditionals are used to handle the cases if user enters negative data in offset or ueryLimit , in that
-       // the output will be the default data (offset=0 and queryLimit=20) 
-
-       // else it will work as specified above 
-
-       // This code doesn't handle the case if User enters offset more than the max_data available 
-
-
-       
-
-      if(queryLimit==undefined || queryLimit<0 || offset< 0)
-      {
-        queryLimit= default_page_limit ;
+      // The case when both page and limit are not specified we assign both of them default values
+      if (page == undefined && limit == undefined) {
+        limit = 1;
+        page = 1;
       }
 
-      if(offset==undefined || offset<0 || queryLimit<0)
-      {
-        offset= default_page_offset ;
+      //Only limit is 'undefined or 0' , so it is assigned a default value of 1
+      if (limit == undefined) {
+        limit = 1;
       }
 
-      console.log(offset, queryLimit) ;    // to check the values of offset and Querylimit under different cases 
+      // The case when starting page is not mentioned or it is Put in as 0 , we use default value
+      if (page == undefined) {
+        page = 1;
+      }
 
+      // The query objects are by default "string" , so we convert them to "INT" to work ahead
 
-     // Here the query Parameters are combined accordingly to ender the desired data 
+      limit = parseInt(limit);
+      page = parseInt(page);
 
-     return this.opportunity.find({"opportunityId":{$gte: offset}}).limit(parseInt(queryLimit));
+      // The startIndex and endIndex  get the data from the Database in the specified Range
+      const startIndex = page - 1;
+      const endIndex = limit + startIndex;
+
+      // Object initialised to store the results for various queries
+      const result = {};
+
+      // The case when the queries are invalid , we just return a result with valid error message
+
+      // Number of Total Documents Saved in a variable
+      let numDocs = await this.opportunity.countDocuments().exec();
+
+      // If any of the paramter becomes neagtive or Zero
+
+      if (page <= 0 || limit <= 0) {
+        result.results = 'The Parameters cannot be Negative or Zero';
+        return result;
+      }
+
+      // if( page== numDocs && limit==0)
+      // {
+      //   limit=1 ;
+      // }
+
+      // If user enters a Page number greater than the number of Documents present in the Database
+
+      if (startIndex >= numDocs) {
+        result.results = 'The maximum page value should be ' + numDocs;
+        return result;
+      }
+
+      // If the limit exceeds the Max allowed value
+
+      if (endIndex > numDocs) {
+        let maxAllowedLimit = numDocs - startIndex;
+        result.results = 'The maximum allowed limit is ' + maxAllowedLimit;
+        return result;
+      }
+
+      // StartIndex should be atleast 0 and for the min val of Page should be 1
+      if (startIndex < 0) {
+        result.results = 'The minimum page value should be 1';
+        return result;
+      }
+
+      // Page can't be entered more than the Number of documents present in DataBase
+
+      if (startIndex >= numDocs) {
+        result.results = 'The maximum page value should be ' + numDocs;
+        return result;
+      }
+
+      // If we get valid data we also render the Next and Previous page to the User along with the Results
+      else {
+        // If there is valid next page in the Database , then we let the user know about it
+
+        if (endIndex < numDocs) {
+          result.next = {
+            page: page + 1,
+            limit: limit,
+          };
+        }
+
+        // If there is valid Previous page in the Database , then we let the user know about it
+
+        if (startIndex > 0) {
+          result.previous = {
+            page: page - 1,
+            limit: limit,
+          };
+        }
+      }
+
+      // Once a Valid Query(The one which is inside the Range) is entered, we render the Results
+
+      try {
+        result.results = await this.opportunity
+          .find()
+          .limit(limit)
+          .skip(startIndex);
+
+        return result;
+      } catch (e) {
+        console.log(e);
+      }
     } catch (err) {
       console.log('ERROR IN getOpportunities OpportunityMANAGER');
       throw err;
     }
   }
-  
-
-
-
 }
 
 export default opportunityManager;
