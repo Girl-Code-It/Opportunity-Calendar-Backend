@@ -80,4 +80,46 @@ describe('OpportunityService', function () {
       expect(opportunity.updatedAt).to.equal(stubValue.updatedAt);
     });
   });
+
+  describe('updateOpportunity', function () {
+    it('should update existing Opportunit', async function () {
+      const opportunityManager = new OpportunityManager();
+      const stub = sinon
+        .stub(opportunityManager, 'updateOpportunity')
+        .returns(stubValue);
+      const opportunityService = new OpportunityService(opportunityManager);
+      const queryObject={opportunityId:stubValue.opportunityId};
+      const updatedOpportunity = await opportunityService.updateOpportunity(queryObject,
+        stubValue.opportunityTitle,
+        stubValue.opportunityType,
+        stubValue.opportunityOrganisation,
+        stubValue.opportunityLocation,
+        stubValue.opportunityDescription,
+        stubValue.opportunityEligibility,
+        stubValue.opportunityRegistrationDeadline,
+        stubValue.opportunityDate,
+        stubValue.opportunityURL
+        );
+      expect(stub.calledOnce).to.be.true;
+      expect(updatedOpportunity.opportunityId).to.equal(stubValue.opportunityId);
+      expect(updatedOpportunity.opportunityTitle).to.equal(stubValue.opportunityTitle);
+      expect(updatedOpportunity.opportunityType).to.equal(stubValue.opportunityType);
+      expect(updatedOpportunity.opportunityOrganisation).to.equal(
+        stubValue.opportunityOrganisation
+      );
+      expect(updatedOpportunity.opportunityLocation).to.equal(
+        stubValue.opportunityLocation
+      );
+      expect(updatedOpportunity.opportunityDescription).to.equal(
+        stubValue.opportunityDescription
+      );
+      expect(updatedOpportunity.opportunityRegistrationDeadline).to.equal(
+        stubValue.opportunityRegistrationDeadline
+      );
+      expect(updatedOpportunity.opportunityDate).to.equal(stubValue.opportunityDate);
+      expect(updatedOpportunity.opportunityURL).to.equal(stubValue.opportunityURL);
+      expect(updatedOpportunity.createdAt).to.equal(stubValue.createdAt);
+      expect(updatedOpportunity.updatedAt).to.equal(stubValue.updatedAt);
+    });
+  });
 });

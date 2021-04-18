@@ -58,6 +58,44 @@ class opportunityManager {
       throw err;
     }
   }
+
+
+  async updateOpportunity(
+    queryObject,
+    opportunityTitle,
+    opportunityType,
+    opportunityOrganisation,
+    opportunityLocation,
+    opportunityDescription,
+    opportunityEligibility,
+    opportunityRegistrationDeadline,
+    opportunityDate,
+    opportunityURL
+  ){
+
+    let updateopportunity = {
+      opportunityTitle: opportunityTitle,
+      opportunityType: opportunityType,
+      opportunityOrganisation: opportunityOrganisation,
+      opportunityLocation: opportunityLocation,
+      opportunityDescription: opportunityDescription,
+      opportunityEligibility: opportunityEligibility,
+      opportunityRegistrationDeadline: opportunityRegistrationDeadline,
+      opportunityDate: opportunityDate,
+      opportunityURL: opportunityURL,
+    };
+
+    try {
+      let updatedOpportunity = await this.opportunity.updateOne(queryObject,{
+        $set:updateopportunity
+      });
+      return updatedOpportunity;
+    } catch (err) {
+      console.log('ERROR IN UpdatingOpportunity OpportunityMANAGER');
+      throw err;
+    }
+
+  }
 }
 
 export default opportunityManager;

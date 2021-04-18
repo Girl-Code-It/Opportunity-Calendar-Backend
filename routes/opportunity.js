@@ -154,4 +154,72 @@ router.post('/', (req, res) => {
   opportunityController.createOpportunity(req, res);
 });
 
+
+/**
+ * @swagger
+ * /opportunity:
+ *   patch:
+ *     summary: Updates the existing Opportunity.
+ *     description: Updates the existing Opportunity.
+ *     parameters:
+ *        name: opportunityId
+ *        schema:
+ *          type: stringpdates the particular existing Opportunity of given opportunityId.
+ *     responses:
+ *       200:
+ *         description: updatedOpportunity.
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 status:
+ *                   type: string
+ *                   description: Status of the request.
+ *                   example: success
+ *                 data:
+ *                     type: object
+ *                     properties:
+ *                       opportunityId:
+ *                         type: string
+ *                         description: The opportunity ID.
+ *                         example: 3
+ *                       opportunityType:
+ *                         type: string
+ *                         description: The opportunity type.
+ *                         example: SCHOLARSHIP
+ *                       opportunityLocation:
+ *                         type: string
+ *                         description: The venue of the event.
+ *                         example: Chennai
+ *                       opportunityDescription:
+ *                         type: string
+ *                         description: The description of the opportunity.
+ *                         example: The Novice Coders Scholarship Program
+ *                       opportunityEligibility:
+ *                         type: string
+ *                         description: Eligibility criteria of the opportunity.
+ *                         example: Have no experience in coding
+ *                       opportunityRegistrationDeadline:
+ *                         type: string
+ *                         description: Deadline for the event.
+ *                         example: 2021-03-22T12:04:05.779Z
+ *                       opportunityDate:
+ *                         type: string
+ *                         description: Date of the event.
+ *                         example: 2021-03-22T12:04:05.779Z
+ *                       opportunityTitle:
+ *                         type: string
+ *                         description: Name of the opportunity.
+ *                         example: Rohith M S R Scholarship
+ *                       opportunityURL:
+ *                         type: string
+ *                         description: Link for the opportunity.
+ *                         example: www.rohithmsrscholarship.com
+ *
+ */
+
+router.patch("/:opportunityId",(req,res)=>{
+  opportunityController.updateOpportunity(req,res)
+})
 export default router;

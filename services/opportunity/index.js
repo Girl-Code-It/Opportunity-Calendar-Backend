@@ -49,6 +49,40 @@ class opportunityService {
       throw err;
     }
   }
+
+  async updateOpportunity(
+    queryObject,
+    opportunityTitle,
+    opportunityType,
+    opportunityOrganisation,
+    opportunityLocation,
+    opportunityDescription,
+    opportunityEligibility,
+    opportunityRegistrationDeadline,
+    opportunityDate,
+    opportunityURL
+  ){
+
+    try {
+      let updatedOpportunity = await this.opportunityManager.updateOpportunity(
+        queryObject,
+        opportunityTitle,
+        opportunityType,
+        opportunityOrganisation,
+        opportunityLocation,
+        opportunityDescription,
+        opportunityEligibility,
+        opportunityRegistrationDeadline,
+        opportunityDate,
+        opportunityURL
+      );
+      return updatedOpportunity;
+    } catch (err) {
+      console.log('ERROR IN updatedOpportunity OpportunityServices');
+      throw err;
+    }
+
+  }
 }
 
 export default opportunityService;

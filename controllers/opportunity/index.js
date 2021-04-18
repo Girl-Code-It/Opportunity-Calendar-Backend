@@ -64,6 +64,49 @@ class opportunityController {
       });
     }
   }
+
+  //updateOpportunities
+async updateOpportunity(req,res){
+
+  let opportunityId=req.params.opportunityId;
+  let queryObject={opportunityId:opportunityId}
+  const {
+    opportunityTitle,
+    opportunityType,
+    opportunityOrganisation,
+    opportunityLocation,
+    opportunityDescription,
+    opportunityEligibility,
+    opportunityRegistrationDeadline,
+    opportunityDate,
+    opportunityURL,
+  } = req.body;
+  try {
+    let updatedOpportunity = await this.opportunityService.updateOpportunity(
+      queryObject,
+      opportunityTitle,
+      opportunityType,
+      opportunityOrganisation,
+      opportunityLocation,
+      opportunityDescription,
+      opportunityEligibility,
+      opportunityRegistrationDeadline,
+      opportunityDate,
+      opportunityURL
+    );
+
+    return res.status(201).json({
+      data: updatedOpportunity,
+    });
+  } catch (err) {
+    console.log('ERROR IN updating Opportunity OpportunityController', err);
+    return res.status(400).send(err);
+  }
+
 }
+
+}
+
+
 
 export default opportunityController;
