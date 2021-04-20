@@ -6,7 +6,7 @@
   "type": "module",
   "scripts": {
     "start": "node index.js",
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "mocha './tests/*/*'",
     "start:dev": "nodemon –experimental-modules index.js"
   },
   "repository": {
@@ -31,5 +31,11 @@
     "nodemon": "^2.0.7",
     "swagger-jsdoc": "^6.0.0",
     "swagger-ui-express": "^4.1.6"
+  },
+  "devDependencies": {
+    "chai": "^4.3.4",
+    "faker": "^5.5.2",
+    "sinon": "^10.0.0",
+    "mocha": "^8.3.2"
   }
 }

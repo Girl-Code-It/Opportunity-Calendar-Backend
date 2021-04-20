@@ -49,8 +49,8 @@ class opportunityManager {
       console.log('Values in QueryString', queryObject);
 
       let fetchedOpportunitiesQuery = this.opportunity.find(queryObject);
-      fetchedOpportunitiesQuery.select('-__v');
-      fetchedOpportunitiesQuery.select('-_id');
+      // fetchedOpportunitiesQuery.select('-__v');
+      // fetchedOpportunitiesQuery.select('-_id');
 
       return fetchedOpportunitiesQuery;
     } catch (err) {
