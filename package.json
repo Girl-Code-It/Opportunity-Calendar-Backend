@@ -5,14 +5,10 @@
     "main": "index.js",
     "type": "module",
     "scripts": {
+        "prepare": "husky install",
         "start": "node index.js",
         "test": "mocha './tests/*/*'",
         "start:dev": "nodemon –experimental-modules index.js"
-    },
-    "husky": {
-        "hooks": {
-            "pre-commit": "pretty-quick --staged"
-        }
     },
     "repository": {
         "type": "git",
@@ -42,7 +38,6 @@
         "faker": "^5.5.2",
         "husky": "^6.0.0",
         "mocha": "^8.3.2",
-        "pretty-quick": "^3.1.0",
         "sinon": "^10.0.0"
     }
 }
