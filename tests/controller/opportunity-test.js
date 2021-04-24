@@ -33,6 +33,7 @@ describe('OpportunityController', function () {
             stubValue.opportunityRegistrationDeadline,
           opportunityDate: stubValue.opportunityDate,
           opportunityURL: stubValue.opportunityURL,
+          onlyForFemale: stubValue.onlyForFemale,
         },
       };
 
