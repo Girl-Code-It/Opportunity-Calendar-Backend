@@ -1,41 +1,48 @@
 {
-  "name": "opportunity-calendar-backend",
-  "version": "1.0.0",
-  "description": "Opportunity Calendar is the one-stop place to refer important opportunities available in tech-space like newly posted jobs, internships, hackathons, tech-conferences, scholarships etc.",
-  "main": "index.js",
-  "type": "module",
-  "scripts": {
-    "start": "node index.js",
-    "test": "mocha './tests/*/*'",
-    "start:dev": "nodemon –experimental-modules index.js"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Manvityagi/Opportunity-Calendar-Backend.git"
-  },
-  "author": "ManviTyagi",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/Manvityagi/Opportunity-Calendar-Backend/issues"
-  },
-  "homepage": "https://github.com/Manvityagi/Opportunity-Calendar-Backend#readme",
-  "dependencies": {
-    "body-parser": "^1.19.0",
-    "cluster": "^0.7.7",
-    "cors": "^2.8.5",
-    "dotenv": "^8.2.0",
-    "express": "^4.17.1",
-    "method-override": "^3.0.0",
-    "mongoose": "^5.12.1",
-    "mongoose-type-url": "^2.1.0",
-    "nodemon": "^2.0.7",
-    "swagger-jsdoc": "^6.0.0",
-    "swagger-ui-express": "^4.1.6"
-  },
-  "devDependencies": {
-    "chai": "^4.3.4",
-    "faker": "^5.5.2",
-    "sinon": "^10.0.0",
-    "mocha": "^8.3.2"
-  }
+    "name": "opportunity-calendar-backend",
+    "version": "1.0.0",
+    "description": "Opportunity Calendar is the one-stop place to refer important opportunities available in tech-space like newly posted jobs, internships, hackathons, tech-conferences, scholarships etc.",
+    "main": "index.js",
+    "type": "module",
+    "scripts": {
+        "start": "node index.js",
+        "test": "mocha './tests/*/*'",
+        "start:dev": "nodemon –experimental-modules index.js"
+    },
+    "husky": {
+        "hooks": {
+            "pre-commit": "pretty-quick --staged"
+        }
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/Manvityagi/Opportunity-Calendar-Backend.git"
+    },
+    "author": "ManviTyagi",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/Manvityagi/Opportunity-Calendar-Backend/issues"
+    },
+    "homepage": "https://github.com/Manvityagi/Opportunity-Calendar-Backend#readme",
+    "dependencies": {
+        "body-parser": "^1.19.0",
+        "cluster": "^0.7.7",
+        "cors": "^2.8.5",
+        "dotenv": "^8.2.0",
+        "express": "^4.17.1",
+        "method-override": "^3.0.0",
+        "mongoose": "^5.12.1",
+        "mongoose-type-url": "^2.1.0",
+        "nodemon": "^2.0.7",
+        "swagger-jsdoc": "^6.0.0",
+        "swagger-ui-express": "^4.1.6"
+    },
+    "devDependencies": {
+        "chai": "^4.3.4",
+        "faker": "^5.5.2",
+        "husky": "^6.0.0",
+        "mocha": "^8.3.2",
+        "pretty-quick": "^3.1.0",
+        "sinon": "^10.0.0"
+    }
 }
