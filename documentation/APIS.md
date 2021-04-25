@@ -7,7 +7,6 @@
 - METHOD - POST
 - EndPoint - http://localhost:3030/opportunity
 - Parameters Required -
-  - opportunityId,
   - opportunityTitle,
   - opportunityType,
   - opportunityOrganisation,

@@ -4,7 +4,6 @@ class opportunityManager {
     this.opportunity = Opportunity;
   }
   async createOpportunity(
-    opportunityId,
     opportunityTitle,
     opportunityType,
     opportunityOrganisation,
@@ -16,9 +15,7 @@ class opportunityManager {
     opportunityURL,
     onlyForFemale
   ) {
-    console.log('Inside Manager', opportunityId);
     let opportunity = {
-      opportunityId: opportunityId,
       opportunityTitle: opportunityTitle,
       opportunityType: opportunityType,
       opportunityOrganisation: opportunityOrganisation,
