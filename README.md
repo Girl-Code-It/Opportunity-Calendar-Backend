@@ -31,9 +31,6 @@ $ npm install
 # Copy .env.example to .env
 $ It is recommended to install [MongoDB Compass](https://www.mongodb.com/try/download/compass) to visualize data in mongodb
 
-# To test run pre commit hook 
-$ npm test
-
 # Start application
 $ npm run start:dev
 
