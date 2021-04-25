@@ -13,7 +13,8 @@ class opportunityManager {
     opportunityEligibility,
     opportunityRegistrationDeadline,
     opportunityDate,
-    opportunityURL
+    opportunityURL,
+    onlyForFemale
   ) {
     console.log('Inside Manager', opportunityId);
     let opportunity = {
@@ -27,6 +28,7 @@ class opportunityManager {
       opportunityRegistrationDeadline: opportunityRegistrationDeadline,
       opportunityDate: opportunityDate,
       opportunityURL: opportunityURL,
+      onlyForFemale:onlyForFemale
     };
     console.log('Values received in manager', opportunity);
 
