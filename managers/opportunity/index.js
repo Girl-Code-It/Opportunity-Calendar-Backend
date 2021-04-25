@@ -28,7 +28,7 @@ class opportunityManager {
       opportunityRegistrationDeadline: opportunityRegistrationDeadline,
       opportunityDate: opportunityDate,
       opportunityURL: opportunityURL,
-      onlyForFemale:onlyForFemale
+      onlyForFemale: onlyForFemale,
     };
     console.log('Values received in manager', opportunity);
 

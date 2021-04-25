@@ -18,6 +18,10 @@ The frontend of the same project can be found [here](https://github.com/Girl-Cod
 
 <h2 align="center">Install</h2>
 
+> Please use NPM for installing and managing dependencies. If you use Yarn, make
+> sure to run `prepare` script after installing packages: `yarn prepare`. This
+> will install git hooks using husky.
+
 ```
 # clone the repository to your local machine
 $ git clone https://github.com/<YOUR-GITHUB-USERNAME>/Opportunity-Calendar-Backend.git

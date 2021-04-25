@@ -86,7 +86,7 @@ const opportunityManager = new OpportunityManager(),
  *                         example: www.rohithmsrscholarship.com
  *                       onlyForFemale:
  *                         type: boolean
- *                         description: Represents if the opportunity is only for females   
+ *                         description: Represents if the opportunity is only for females
  *                         example: true
  *
  */
