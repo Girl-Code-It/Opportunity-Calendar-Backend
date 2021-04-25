@@ -24,7 +24,7 @@ describe('OpportunityService', function () {
         stubValue.opportunityRegistrationDeadline,
         stubValue.opportunityDate,
         stubValue.opportunityURL,
-        stubValue.onlyForFemale,
+        stubValue.onlyForFemale
       );
       expect(stub.calledOnce).to.be.true;
       expect(opportunity.opportunityId).to.equal(stubValue.opportunityId);
