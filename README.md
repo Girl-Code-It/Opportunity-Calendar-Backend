@@ -111,7 +111,7 @@ We are glad to have your contributions to the project, Please make sure to read 
 - [**New Ideas**](https://github.com/Girl-Code-It/Opportunity-Calendar-Backend/tree/develop/documentation/ideas.md)
 - [**Swagger Documentation**]()
 
-<h2>Project Structure <a><img src="https://github.com/Samridhi-98/Images/blob/master/Images/reading.svg" width="4%"></a></h2>
+<h2>Project Structure <a><img src="https://github.com/Samridhi-98/Images/blob/master/Images/op-structure.png" width="4%"></a></h2>
 
 We will structure our application using the controller, service, and, manager pattern so our app will be broken into the managers, services, and controllers. The `Manager-Service-Controller` pattern breaks up the business layer of the app into three distinct layers:
 
@@ -125,7 +125,7 @@ We will structure our application using the controller, service, and, manager pa
 
 Have a bug or a feature request? Please first read the [issue guidelines](https://github.com/Girl-Code-It/Opportunity-Calendar-Backend/blob/develop/contributing.md) and search for existing and closed issues. If your problem or idea is not addressed yet, [please open a new issue](https://github.com/Girl-Code-It/Opportunity-Calendar-Backend/issues/new).
 
-## Contribution <img src="https://github.com/Samridhi-98/Images/blob/master/Images/contribution.svg" width="3%">
+## Contribution <img src="https://github.com/Samridhi-98/Images/blob/master/Images/op-check.png" width="3%">
 
 We want contributing to Opportunity Calendar to be enjoyable and educational for everyone. We would love to have your contributions.
 To get started have a look at our [documentation on contributing](https://github.com/Girl-Code-It/Opportunity-Calendar-Backend/blob/develop/contributing.md).
