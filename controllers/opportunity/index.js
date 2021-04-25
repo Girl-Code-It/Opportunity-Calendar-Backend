@@ -16,7 +16,7 @@ class opportunityController {
       opportunityRegistrationDeadline,
       opportunityDate,
       opportunityURL,
-      onlyForFemale
+      onlyForFemale,
     } = req.body;
 
     try {

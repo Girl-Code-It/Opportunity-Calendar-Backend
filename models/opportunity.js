@@ -55,11 +55,11 @@ let opportunitySchema = new mongoose.Schema({
     maxLength: 500,
     required: true,
   },
-  onlyForFemale:{
-    type:Boolean,
-    required:true,
-    default:false
-  }
+  onlyForFemale: {
+    type: Boolean,
+    required: true,
+    default: false,
+  },
 });
 
 export default mongoose.model('opportunity', opportunitySchema);
