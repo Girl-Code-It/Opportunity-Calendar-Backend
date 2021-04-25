@@ -85,6 +85,7 @@ class opportunityManager {
       // The startIndex and endIndex  get the data from the Database in the specified Range
       const startIndex = page - 1;
       const endIndex = limit + startIndex;
+      const skip = (page - 1) * limit;
 
       // Object initialised to store the results for various queries
       const result = {};
@@ -93,6 +94,16 @@ class opportunityManager {
 
       // Number of Total Documents Saved in a variable
       let numDocs = await this.opportunity.countDocuments().exec();
+
+      // TotalPages denote the total number of pages that are possible with the given limit and Documents available
+      let totalPages = Math.floor(numDocs / limit) + (numDocs % limit);
+
+      // Begin here shows the first index of next Page and helps in determining wether or not it is possible to go on the next page
+      let begin = page * limit;
+
+      // let docs= await this.opportunity.find();
+
+      // console.log(docs) ;
 
       // If any of the paramter becomes neagtive or Zero
 
@@ -113,11 +124,11 @@ class opportunityManager {
         return result;
       }
 
-      // If the limit exceeds the Max allowed value
+      // If the page entered exceeds the Max allowed value(totalPages)
 
-      if (endIndex > numDocs) {
-        let maxAllowedLimit = numDocs - startIndex;
-        result.results = 'The maximum allowed limit is ' + maxAllowedLimit;
+      if (page > totalPages) {
+        let maxAllowedPages = totalPages;
+        result.results = 'The maximum allowed pages are ' + maxAllowedPages;
         return result;
       }
 
@@ -138,7 +149,7 @@ class opportunityManager {
       else {
         // If there is valid next page in the Database , then we let the user know about it
 
-        if (endIndex < numDocs) {
+        if (begin < numDocs) {
           result.next = {
             page: page + 1,
             limit: limit,
@@ -158,10 +169,7 @@ class opportunityManager {
       // Once a Valid Query(The one which is inside the Range) is entered, we render the Results
 
       try {
-        result.results = await this.opportunity
-          .find()
-          .limit(limit)
-          .skip(startIndex);
+        result.results = await this.opportunity.find().skip(skip).limit(limit);
 
         return result;
       } catch (e) {
