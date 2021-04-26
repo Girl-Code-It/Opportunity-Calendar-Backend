@@ -7,7 +7,6 @@ class opportunityController {
   async createOpportunity(req, res) {
     console.log('Inside controller');
     const {
-      opportunityId,
       opportunityTitle,
       opportunityType,
       opportunityOrganisation,
@@ -22,7 +21,6 @@ class opportunityController {
 
     try {
       let newOpportunity = await this.opportunityService.createOpportunity(
-        opportunityId,
         opportunityTitle,
         opportunityType,
         opportunityOrganisation,
