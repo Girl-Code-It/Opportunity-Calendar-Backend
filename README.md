@@ -1,8 +1,7 @@
-## Opportunity Calendar <img src="https://github.com/Samridhi-98/Images/blob/master/Images/op-logo.png" width="3%">
+## Opportunity Calendar <img src="./assets/op-logo.png" width="3%">
 
 <p>
 
-[![GitHub contributors](https://img.shields.io/github/contributors/adityabisoi/REST-fetch)](https://github.com/Girl-Code-It/Opportunity-Calendar-Backend/graphs/contributors/)
 [![Issues](https://img.shields.io/github/issues/Girl-Code-It/Opportunity-Calendar-Backend)](https://github.com/Girl-Code-It/Opportunity-Calendar-Backend/issues)
 [![PRs](https://img.shields.io/github/issues-pr/Girl-Code-It/Opportunity-Calendar-Backend)](https://github.com/Girl-Code-It/Opportunity-Calendar-Backend/pulls)
 [![Forks](https://img.shields.io/github/forks/Girl-Code-It/Opportunity-Calendar-Backend)](https://github.com/Girl-Code-It/Opportunity-Calendar-Backend)
@@ -16,7 +15,7 @@ Opportunity Calendar is the one-stop place to refer important opportunities avai
 
 The frontend of the same project can be found [here](https://github.com/Girl-Code-It/Opportunity-Calendar-Frontend)
 
-## Table of Contents <img src="https://github.com/Samridhi-98/Images/blob/master/Images/rocket.svg" width="3%">
+## Table of Contents <img src="./assets/rocket.svg" width="3%">
 
 1. [Install](#install)
 2. [Introduction](#introduction)
@@ -26,7 +25,7 @@ The frontend of the same project can be found [here](https://github.com/Girl-Cod
 6. [Contributing](#contributing)
 7. [Copyright and license](#copyright-and-license)
 
-## Install <img src="https://github.com/Samridhi-98/Images/blob/master/Images/test.svg" width="3%">
+## Install <img src="./assets/test.svg" width="3%">
 
 > Please use NPM for installing and managing dependencies. If you use Yarn, make
 > sure to run `prepare` script after installing packages: `yarn prepare`. This
@@ -51,7 +50,7 @@ $ npm run start:dev
 # Visit http://localhost:3030/ in your browser
 ```
 
-## Introduction <img src="https://github.com/Samridhi-98/Images/blob/master/Images/op-about.png" width="3%">
+## Introduction <img src="./assets/op-about.png" width="3%">
 
 Opportunity Calendar provides instant information on newly posted opportunuties for techies. There are times when applicants miss deadlines or get to know about available opportunties only after the deadline of their application passes.
 Updates about following opportunities are available:
@@ -63,14 +62,14 @@ Updates about following opportunities are available:
 - Coding Competitions
 - Hackathons
 
-## Technology Stack <img src="https://github.com/Samridhi-98/Images/blob/master/Images/atom.svg" width="3%">
+## Technology Stack <img src="./assets/atom.svg" width="3%">
 
 - **Server Enviornment** - NodeJS
 - **Framework** - ExpressJS
 - **Database** - MongoDB
 - **Cloud database service** - MongoDB Atlas
 
-## Guidelines for GSSOC Participants <img src="https://github.com/Samridhi-98/Images/blob/master/Images/op-guideline.png" width="3%">
+## Guidelines for GSSOC Participants <img src="./assets/op-guideline.png" width="3%">
 
 We are glad to have your contributions to the project, Please make sure to read the following guidelines for the contributors.
 
@@ -104,14 +103,14 @@ We are glad to have your contributions to the project, Please make sure to read 
 
 - If you fail to make a PR within the deadline, then the issue will be assigned to another person in the queue.
 
-## Documentation <img src="https://github.com/Samridhi-98/Images/blob/master/Images/doc.svg" width="3%">
+## Documentation <img src="./assets/doc.svg" width="3%">
 
 - [**Models**](https://github.com/Girl-Code-It/Opportunity-Calendar-Backend/tree/develop/documentation/models.md)
 - [**List of APIS**](https://github.com/Girl-Code-It/Opportunity-Calendar-Backend/tree/develop/documentation/APIS.md)
 - [**New Ideas**](https://github.com/Girl-Code-It/Opportunity-Calendar-Backend/tree/develop/documentation/ideas.md)
 - [**Swagger Documentation**]()
 
-<h2>Project Structure <a><img src="https://github.com/Samridhi-98/Images/blob/master/Images/op-structure.png" width="4%"></a></h2>
+<h2>Project Structure <a><img src="./assets/op-structure.png" width="4%"></a></h2>
 
 We will structure our application using the controller, service, and, manager pattern so our app will be broken into the managers, services, and controllers. The `Manager-Service-Controller` pattern breaks up the business layer of the app into three distinct layers:
 
@@ -121,21 +120,21 @@ We will structure our application using the controller, service, and, manager pa
 
 [Documenting API using JSDoc and Swagger](https://dev.to/kabartolo/how-to-document-an-express-api-with-swagger-ui-and-jsdoc-50do)
 
-## Bugs and Feature Request <img src="https://github.com/Samridhi-98/Images/blob/master/Images/op-bug.png" width="3%">
+## Bugs and Feature Request <img src="./assets/op-bug.png" width="3%">
 
 Have a bug or a feature request? Please first read the [issue guidelines](https://github.com/Girl-Code-It/Opportunity-Calendar-Backend/blob/develop/contributing.md) and search for existing and closed issues. If your problem or idea is not addressed yet, [please open a new issue](https://github.com/Girl-Code-It/Opportunity-Calendar-Backend/issues/new).
 
-## Contribution <img src="https://github.com/Samridhi-98/Images/blob/master/Images/op-check.png" width="3%">
+## Contribution <img src="./assets/op-check.png" width="3%">
 
 We want contributing to Opportunity Calendar to be enjoyable and educational for everyone. We would love to have your contributions.
 To get started have a look at our [documentation on contributing](https://github.com/Girl-Code-It/Opportunity-Calendar-Backend/blob/develop/contributing.md).
 
-## Contributors <img src="https://github.com/Samridhi-98/Images/blob/master/Images/contributors.svg" width="3%">
+## Contributors <img src="./assets/contributors.svg" width="3%">
 
 <a href="https://github.com/Girl-Code-It/Opportunity-Calendar-Backend">
   <img src="https://contrib.rocks/image?repo=Girl-Code-It/Opportunity-Calendar-Backend" />
 </a>
 
-## License <img src="https://github.com/Samridhi-98/Images/blob/master/Images/license.svg" width="3%">
+## License <img src="./assets/license.svg" width="3%">
 
 Code released under the [MIT License](https://github.com/Girl-Code-It/Opportunity-Calendar-Backend/blob/develop/LICENSE).
