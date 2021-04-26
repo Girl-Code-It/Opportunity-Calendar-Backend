@@ -9,7 +9,6 @@ describe('OpportunityManager', function () {
       const stub = sinon.stub(Opportunity, 'create').returns(stubValue);
       const opportunityManager = new OpportunityManager();
       const opportunity = await opportunityManager.createOpportunity(
-        stubValue.opportunityId,
         stubValue.opportunityTitle,
         stubValue.opportunityType,
         stubValue.opportunityOrganisation,
@@ -19,10 +18,9 @@ describe('OpportunityManager', function () {
         stubValue.opportunityRegistrationDeadline,
         stubValue.opportunityDate,
         stubValue.opportunityURL,
-        stubValue.onlyForFemale,
+        stubValue.onlyForFemale
       );
       expect(stub.calledOnce).to.be.true;
-      expect(opportunity.opportunityId).to.equal(stubValue.opportunityId);
       expect(opportunity.opportunityTitle).to.equal(stubValue.opportunityTitle);
       expect(opportunity.opportunityType).to.equal(stubValue.opportunityType);
       expect(opportunity.opportunityOrganisation).to.equal(
@@ -52,7 +50,6 @@ describe('OpportunityManager', function () {
         type: stubValue.opportunityType,
       });
       expect(stub.calledOnce).to.be.true;
-      expect(opportunity.opportunityId).to.equal(stubValue.opportunityId);
       expect(opportunity.opportunityTitle).to.equal(stubValue.opportunityTitle);
       expect(opportunity.opportunityType).to.equal(stubValue.opportunityType);
       expect(opportunity.opportunityOrganisation).to.equal(

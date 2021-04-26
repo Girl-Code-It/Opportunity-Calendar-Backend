@@ -48,10 +48,6 @@ const opportunityManager = new OpportunityManager(),
  *                   items:
  *                     type: object
  *                     properties:
- *                       opportunityId:
- *                         type: string
- *                         description: The opportunity ID.
- *                         example: 3
  *                       opportunityType:
  *                         type: string
  *                         description: The opportunity type.
@@ -86,7 +82,7 @@ const opportunityManager = new OpportunityManager(),
  *                         example: www.rohithmsrscholarship.com
  *                       onlyForFemale:
  *                         type: boolean
- *                         description: Represents if the opportunity is only for females   
+ *                         description: Represents if the opportunity is only for females
  *                         example: true
  *
  */
@@ -115,9 +111,6 @@ router.get('/', (req, res) => {
  *              - opportunityURL
  *              - onlyForFemale
  *            properties:
- *              opportunityId:
- *                type: string
- *                description: The ID of the opportunity
  *              opportunityTitle:
  *                type: string
  *                description: Title of the opportunity
