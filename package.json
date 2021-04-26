@@ -5,6 +5,7 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
+    "preinstall": "npx husky-init",
     "prepare": "husky install",
     "start": "node index.js",
     "test": "mocha './tests/*/*'",
