@@ -83,11 +83,10 @@ describe('OpportunityController', function () {
     });
   });
 
-  describe('updateOppportunity',function(){
+  describe('updateOppportunity', function () {
     let status, json, req, res, opportunityController, opportunityService;
 
     beforeEach(() => {
-
       status = sinon.stub();
       json = sinon.spy();
       res = {
@@ -99,14 +98,13 @@ describe('OpportunityController', function () {
       opportunityService = new OpportunityService(opportunityManager);
     });
 
-
     it('should update the existing Opportunity', async function () {
-
       const req = {
         params: {
-          opportunityId: stubValue.opportunityId,
+          _id: stubValue._id,
         },
         body: {
+          opportunityId: stubValue.opportunityId,
           opportunityTitle: stubValue.opportunityTitle,
           opportunityType: stubValue.opportunityType,
           opportunityOrganisation: stubValue.opportunityOrganisation,
@@ -120,7 +118,6 @@ describe('OpportunityController', function () {
         },
       };
 
-
       const stub = sinon
         .stub(opportunityService, 'updateOpportunity')
         .returns(stubValue);
@@ -132,6 +129,5 @@ describe('OpportunityController', function () {
       expect(json.calledOnce).to.be.true;
       expect(json.firstCall.args[0].data).to.equal(stubValue);
     });
-    
-  })
+  });
 });

@@ -62,32 +62,13 @@ class opportunityManager {
 
   async updateOpportunity(
     queryObject,
-    opportunityTitle,
-    opportunityType,
-    opportunityOrganisation,
-    opportunityLocation,
-    opportunityDescription,
-    opportunityEligibility,
-    opportunityRegistrationDeadline,
-    opportunityDate,
-    opportunityURL
+    updatingprops
   ){
 
-    let updateopportunity = {
-      opportunityTitle: opportunityTitle,
-      opportunityType: opportunityType,
-      opportunityOrganisation: opportunityOrganisation,
-      opportunityLocation: opportunityLocation,
-      opportunityDescription: opportunityDescription,
-      opportunityEligibility: opportunityEligibility,
-      opportunityRegistrationDeadline: opportunityRegistrationDeadline,
-      opportunityDate: opportunityDate,
-      opportunityURL: opportunityURL,
-    };
 
     try {
       let updatedOpportunity = await this.opportunity.updateOne(queryObject,{
-        $set:updateopportunity
+        $set:updatingprops
       });
       return updatedOpportunity;
     } catch (err) {

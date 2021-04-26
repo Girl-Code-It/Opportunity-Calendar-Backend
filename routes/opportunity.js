@@ -154,7 +154,6 @@ router.post('/', (req, res) => {
   opportunityController.createOpportunity(req, res);
 });
 
-
 /**
  * @swagger
  * /opportunity:
@@ -164,7 +163,53 @@ router.post('/', (req, res) => {
  *     parameters:
  *        name: opportunityId
  *        schema:
- *          type: stringpdates the particular existing Opportunity of given opportunityId.
+ *          type: stringp updates the particular existing Opportunity of given opportunity _id.
+ *     requestBody:
+ *      required: true
+ *      content:
+ *        (Any of the property which user wants to update)
+ *        application/json:
+ *          schema:
+ *            type: object
+ *            required:
+ *              - opportunityType
+ *              - opportunityTitle
+ *              - opportunityOrganisation
+ *              - opportunityDescription
+ *              - opportunityURL
+ *            properties:
+ *              opportunityId:
+ *                type: string
+ *                description: The ID of the opportunity
+ *              opportunityTitle:
+ *                type: string
+ *                description: Title of the opportunity
+ *              opportunityType:
+ *                type: string
+ *                description: Type of the opportunity
+ *              opportunityOrganisation:
+ *                type: string
+ *                description: Name of organisation providing the opportunity
+ *              opportunityLocation:
+ *                type: string
+ *                description: Location of the opportunity
+ *              opportunityDescription:
+ *                type: string
+ *                description: Description of the opportunity
+ *              opportunityEligibility:
+ *                type: string
+ *                description: Eligibility for the opportunity
+ *              opportunityRegistrationDeadline:
+ *                type: string
+ *                format: date
+ *                description: Registration Deadline for the opportunity
+ *              opportunityDate:
+ *                type: string
+ *                format: date
+ *                description: Date of the opportunity
+ *              opportunityURL:
+ *                type: string
+ *                description: URL of the opportunity
  *     responses:
  *       200:
  *         description: updatedOpportunity.
@@ -219,7 +264,7 @@ router.post('/', (req, res) => {
  *
  */
 
-router.patch("/:opportunityId",(req,res)=>{
-  opportunityController.updateOpportunity(req,res)
-})
+router.patch('/:opportunityId', (req, res) => {
+  opportunityController.updateOpportunity(req, res);
+});
 export default router;

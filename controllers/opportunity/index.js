@@ -6,6 +6,7 @@ class opportunityController {
   }
   async createOpportunity(req, res) {
     console.log('Inside controller');
+    console.log(req.body)
     const {
       opportunityId,
       opportunityTitle,
@@ -69,30 +70,12 @@ class opportunityController {
 async updateOpportunity(req,res){
 
   let opportunityId=req.params.opportunityId;
-  let queryObject={opportunityId:opportunityId}
-  const {
-    opportunityTitle,
-    opportunityType,
-    opportunityOrganisation,
-    opportunityLocation,
-    opportunityDescription,
-    opportunityEligibility,
-    opportunityRegistrationDeadline,
-    opportunityDate,
-    opportunityURL,
-  } = req.body;
+  let queryObject={_id:opportunityId}
+  let updatingprops=req.body;
   try {
     let updatedOpportunity = await this.opportunityService.updateOpportunity(
       queryObject,
-      opportunityTitle,
-      opportunityType,
-      opportunityOrganisation,
-      opportunityLocation,
-      opportunityDescription,
-      opportunityEligibility,
-      opportunityRegistrationDeadline,
-      opportunityDate,
-      opportunityURL
+      updatingprops
     );
 
     return res.status(201).json({

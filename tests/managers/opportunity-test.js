@@ -73,28 +73,38 @@ describe('OpportunityManager', function () {
     });
   });
 
-
   describe('updateOpportunity', function () {
     it('should update existing Opportunity', async function () {
       const stub = sinon.stub(Opportunity, 'updateOne').returns(stubValue);
       const opportunityManager = new OpportunityManager();
-      const queryObject={opportunityId:stubValue.opportunityId};
-      const updatedOpportunity = await opportunityManager.updateOpportunity(queryObject,
-        stubValue.opportunityId,
-        stubValue.opportunityTitle,
-        stubValue.opportunityType,
-        stubValue.opportunityOrganisation,
-        stubValue.opportunityLocation,
-        stubValue.opportunityDescription,
-        stubValue.opportunityEligibility,
-        stubValue.opportunityRegistrationDeadline,
-        stubValue.opportunityDate,
-        stubValue.opportunityURL
+      const queryObject = { _id: stubValue._id };
+      const updatingobject = {
+        opportunityId: stubValue.opportunityId,
+        opportunityTitle: stubValue.opportunityTitle,
+        opportunityType: stubValue.opportunityType,
+        opportunityOrganisation: stubValue.opportunityOrganisation,
+        opportunityLocation: stubValue.opportunityLocation,
+        opportunityDescription: stubValue.opportunityDescription,
+        opportunityEligibility: stubValue.opportunityEligibility,
+        opportunityRegistrationDeadline:
+          stubValue.opportunityRegistrationDeadline,
+        opportunityDate: stubValue.opportunityDate,
+        opportunityURL: stubValue.opportunityURL,
+      };
+      const updatedOpportunity = await opportunityManager.updateOpportunity(
+        queryObject,
+        updatingobject
       );
       expect(stub.calledOnce).to.be.true;
-      expect(updatedOpportunity.opportunityId).to.equal(stubValue.opportunityId);
-      expect(updatedOpportunity.opportunityTitle).to.equal(stubValue.opportunityTitle);
-      expect(updatedOpportunity.opportunityType).to.equal(stubValue.opportunityType);
+      expect(updatedOpportunity.opportunityId).to.equal(
+        stubValue.opportunityId
+      );
+      expect(updatedOpportunity.opportunityTitle).to.equal(
+        stubValue.opportunityTitle
+      );
+      expect(updatedOpportunity.opportunityType).to.equal(
+        stubValue.opportunityType
+      );
       expect(updatedOpportunity.opportunityOrganisation).to.equal(
         stubValue.opportunityOrganisation
       );
@@ -107,11 +117,14 @@ describe('OpportunityManager', function () {
       expect(updatedOpportunity.opportunityRegistrationDeadline).to.equal(
         stubValue.opportunityRegistrationDeadline
       );
-      expect(updatedOpportunity.opportunityDate).to.equal(stubValue.opportunityDate);
-      expect(updatedOpportunity.opportunityURL).to.equal(stubValue.opportunityURL);
+      expect(updatedOpportunity.opportunityDate).to.equal(
+        stubValue.opportunityDate
+      );
+      expect(updatedOpportunity.opportunityURL).to.equal(
+        stubValue.opportunityURL
+      );
       expect(updatedOpportunity.createdAt).to.equal(stubValue.createdAt);
       expect(updatedOpportunity.updatedAt).to.equal(stubValue.updatedAt);
     });
   });
-
 });

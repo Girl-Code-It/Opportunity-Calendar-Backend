@@ -88,22 +88,34 @@ describe('OpportunityService', function () {
         .stub(opportunityManager, 'updateOpportunity')
         .returns(stubValue);
       const opportunityService = new OpportunityService(opportunityManager);
-      const queryObject={opportunityId:stubValue.opportunityId};
-      const updatedOpportunity = await opportunityService.updateOpportunity(queryObject,
-        stubValue.opportunityTitle,
-        stubValue.opportunityType,
-        stubValue.opportunityOrganisation,
-        stubValue.opportunityLocation,
-        stubValue.opportunityDescription,
-        stubValue.opportunityEligibility,
-        stubValue.opportunityRegistrationDeadline,
-        stubValue.opportunityDate,
-        stubValue.opportunityURL
-        );
+      const queryObject = { _id: stubValue._id };
+      const updatingobject = {
+        opportunityId: stubValue.opportunityId,
+        opportunityTitle: stubValue.opportunityTitle,
+        opportunityType: stubValue.opportunityType,
+        opportunityOrganisation: stubValue.opportunityOrganisation,
+        opportunityLocation: stubValue.opportunityLocation,
+        opportunityDescription: stubValue.opportunityDescription,
+        opportunityEligibility: stubValue.opportunityEligibility,
+        opportunityRegistrationDeadline:
+          stubValue.opportunityRegistrationDeadline,
+        opportunityDate: stubValue.opportunityDate,
+        opportunityURL: stubValue.opportunityURL,
+      };
+      const updatedOpportunity = await opportunityService.updateOpportunity(
+        queryObject,
+        updatingobject
+      );
       expect(stub.calledOnce).to.be.true;
-      expect(updatedOpportunity.opportunityId).to.equal(stubValue.opportunityId);
-      expect(updatedOpportunity.opportunityTitle).to.equal(stubValue.opportunityTitle);
-      expect(updatedOpportunity.opportunityType).to.equal(stubValue.opportunityType);
+      expect(updatedOpportunity.opportunityId).to.equal(
+        stubValue.opportunityId
+      );
+      expect(updatedOpportunity.opportunityTitle).to.equal(
+        stubValue.opportunityTitle
+      );
+      expect(updatedOpportunity.opportunityType).to.equal(
+        stubValue.opportunityType
+      );
       expect(updatedOpportunity.opportunityOrganisation).to.equal(
         stubValue.opportunityOrganisation
       );
@@ -116,8 +128,12 @@ describe('OpportunityService', function () {
       expect(updatedOpportunity.opportunityRegistrationDeadline).to.equal(
         stubValue.opportunityRegistrationDeadline
       );
-      expect(updatedOpportunity.opportunityDate).to.equal(stubValue.opportunityDate);
-      expect(updatedOpportunity.opportunityURL).to.equal(stubValue.opportunityURL);
+      expect(updatedOpportunity.opportunityDate).to.equal(
+        stubValue.opportunityDate
+      );
+      expect(updatedOpportunity.opportunityURL).to.equal(
+        stubValue.opportunityURL
+      );
       expect(updatedOpportunity.createdAt).to.equal(stubValue.createdAt);
       expect(updatedOpportunity.updatedAt).to.equal(stubValue.updatedAt);
     });
