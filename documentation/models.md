@@ -4,7 +4,7 @@ All changes to models shall be documented here
 
 | Field                           | Datatype | Default | Required | Comments                                                                                               |     |
 | ------------------------------- | -------- | ------- | -------- | ------------------------------------------------------------------------------------------------------ | --- |
-| opportunityId                   | String   | -       | False    | for jobs, internships it will exist for others it will not                                             |     |
+it will not                                             |     |
 | opportunityType                 | String   | -       | True     | enum - only 6 values allowed                                                                           |     |
 | opportunityTitle                | String   | -       | True     |                                                                                                        |     |
 | opportunityOrganisation         | String   | -       | True     | company in case of Job/Interns, organising Commitee in case of Scholarship/CodingCompettion/Conference |     |
