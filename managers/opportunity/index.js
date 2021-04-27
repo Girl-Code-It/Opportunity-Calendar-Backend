@@ -45,12 +45,16 @@ class opportunityManager {
         queryObject['opportunityType'] = queryObject.type;
         delete queryObject.type;
       }
+      if (queryObject.female) {
+        queryObject['onlyForFemale'] = queryObject.female == 'true';
+        delete queryObject.female;
+      }
       console.log('Values in QueryString', queryObject);
 
       let fetchedOpportunitiesQuery = this.opportunity.find(queryObject);
       // fetchedOpportunitiesQuery.select('-__v');
       // fetchedOpportunitiesQuery.select('-_id');
-
+      console.log(fetchedOpportunitiesQuery.data);
       return fetchedOpportunitiesQuery;
     } catch (err) {
       console.log('ERROR IN getOpportunities OpportunityMANAGER');

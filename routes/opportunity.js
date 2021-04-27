@@ -30,7 +30,7 @@ const opportunityManager = new OpportunityManager(),
  *             - SCHOLARSHIP
  *             - CONFERENCE
  *             - CODINGCOMPETITION
- *        description: Retrieve a list of opportunities based on particular type.
+ *        description: Retrieve a list of opportunities based on particular type or only for female.
  *     responses:
  *       200:
  *         description: A list of opportunities.
