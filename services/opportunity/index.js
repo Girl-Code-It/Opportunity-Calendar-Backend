@@ -3,6 +3,7 @@ class opportunityService {
     this.opportunityManager = opportunityManager;
   }
   async createOpportunity(
+    opportunityId,
     opportunityTitle,
     opportunityType,
     opportunityOrganisation,
@@ -18,6 +19,7 @@ class opportunityService {
 
     try {
       let newOpportunity = await this.opportunityManager.createOpportunity(
+        opportunityId,
         opportunityTitle,
         opportunityType,
         opportunityOrganisation,
@@ -28,6 +30,7 @@ class opportunityService {
         opportunityDate,
         opportunityURL,
         onlyForFemale
+
       );
       return newOpportunity;
     } catch (err) {
