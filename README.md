@@ -105,10 +105,10 @@ We are glad to have your contributions to the project, Please make sure to read 
 
 ## Documentation <img src="./assets/doc.svg" width="3%">
 
+- [**Swagger Documentation**](https://opportunity-calendar.herokuapp.com/playground/)
 - [**Models**](https://github.com/Girl-Code-It/Opportunity-Calendar-Backend/tree/develop/documentation/models.md)
 - [**List of APIS**](https://github.com/Girl-Code-It/Opportunity-Calendar-Backend/tree/develop/documentation/APIS.md)
 - [**New Ideas**](https://github.com/Girl-Code-It/Opportunity-Calendar-Backend/tree/develop/documentation/ideas.md)
-- [**Swagger Documentation**]()
 
 <h2>Project Structure <a><img src="./assets/op-structure.png" width="4%"></a></h2>
 
