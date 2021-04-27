@@ -1,12 +1,21 @@
-## Opportunity Calendar
+## Opportunity Calendar <img src="./assets/op-logo.png" width="3%">
 
+<p>
+
+[![Issues](https://img.shields.io/github/issues/Girl-Code-It/Opportunity-Calendar-Backend)](https://github.com/Girl-Code-It/Opportunity-Calendar-Backend/issues)
+[![PRs](https://img.shields.io/github/issues-pr/Girl-Code-It/Opportunity-Calendar-Backend)](https://github.com/Girl-Code-It/Opportunity-Calendar-Backend/pulls)
+[![Forks](https://img.shields.io/github/forks/Girl-Code-It/Opportunity-Calendar-Backend)](https://github.com/Girl-Code-It/Opportunity-Calendar-Backend)
+[![Stars](https://img.shields.io/github/stars/Girl-Code-It/Opportunity-Calendar-Backend)](https://github.com/Girl-Code-It/Opportunity-Calendar-Backend)
+[![Visits Badge](https://badges.pufler.dev/visits/Girl-Code-It/Opportunity-Calendar-Backend)](https://badges.pufler.dev)
 [![Build Status](https://www.travis-ci.com/Girl-Code-It/Opportunity-Calendar-Backend.svg?branch=develop)](https://www.travis-ci.com/Girl-Code-It/Opportunity-Calendar-Backend)
+
+</p>
 
 Opportunity Calendar is the one-stop place to refer important opportunities available in tech-space like newly posted jobs, internships, hackathons, tech-conferences, scholarships etc.
 
 The frontend of the same project can be found [here](https://github.com/Girl-Code-It/Opportunity-Calendar-Frontend)
 
-## Table of Contents
+## Table of Contents <img src="./assets/rocket.svg" width="3%">
 
 1. [Install](#install)
 2. [Introduction](#introduction)
@@ -16,7 +25,11 @@ The frontend of the same project can be found [here](https://github.com/Girl-Cod
 6. [Contributing](#contributing)
 7. [Copyright and license](#copyright-and-license)
 
-<h2 align="center">Install</h2>
+## Install <img src="./assets/test.svg" width="3%">
+
+> Please use NPM for installing and managing dependencies. If you use Yarn, make
+> sure to run `prepare` script after installing packages: `yarn prepare`. This
+> will install git hooks using husky.
 
 ```
 # clone the repository to your local machine
@@ -37,8 +50,9 @@ $ npm run start:dev
 # Visit http://localhost:3030/ in your browser
 ```
 
-<h2 align="center">Introduction</h2>
-Opportunity Calendar provides instant information on newly posted opportunuties for techies. There are times when applicants miss deadlines or get to know about available opportunties only after the deadline of their application passes. 
+## Introduction <img src="./assets/op-about.png" width="3%">
+
+Opportunity Calendar provides instant information on newly posted opportunuties for techies. There are times when applicants miss deadlines or get to know about available opportunties only after the deadline of their application passes.
 Updates about following opportunities are available:
 
 - Full Time Job Opportunties
@@ -48,14 +62,14 @@ Updates about following opportunities are available:
 - Coding Competitions
 - Hackathons
 
-<h2 align="center">Technology Stack</h2>
+## Technology Stack <img src="./assets/atom.svg" width="3%">
 
 - **Server Enviornment** - NodeJS
 - **Framework** - ExpressJS
 - **Database** - MongoDB
 - **Cloud database service** - MongoDB Atlas
 
-<h2 align="center">Guidelines for GSSOC Participants</h2></p>
+## Guidelines for GSSOC Participants <img src="./assets/op-guideline.png" width="3%">
 
 We are glad to have your contributions to the project, Please make sure to read the following guidelines for the contributors.
 
@@ -89,14 +103,14 @@ We are glad to have your contributions to the project, Please make sure to read 
 
 - If you fail to make a PR within the deadline, then the issue will be assigned to another person in the queue.
 
-<h2 align="center">Documentation</h2>
+## Documentation <img src="./assets/doc.svg" width="3%">
 
 - [**Models**](https://github.com/Girl-Code-It/Opportunity-Calendar-Backend/tree/develop/documentation/models.md)
 - [**List of APIS**](https://github.com/Girl-Code-It/Opportunity-Calendar-Backend/tree/develop/documentation/APIS.md)
 - [**New Ideas**](https://github.com/Girl-Code-It/Opportunity-Calendar-Backend/tree/develop/documentation/ideas.md)
 - [**Swagger Documentation**]()
 
-<h2 align="center">Project Structure</h2>
+<h2>Project Structure <a><img src="./assets/op-structure.png" width="4%"></a></h2>
 
 We will structure our application using the controller, service, and, manager pattern so our app will be broken into the managers, services, and controllers. The `Manager-Service-Controller` pattern breaks up the business layer of the app into three distinct layers:
 
@@ -106,21 +120,21 @@ We will structure our application using the controller, service, and, manager pa
 
 [Documenting API using JSDoc and Swagger](https://dev.to/kabartolo/how-to-document-an-express-api-with-swagger-ui-and-jsdoc-50do)
 
-<h2 align="center">Bugs and Feature Requests</h2>
+## Bugs and Feature Request <img src="./assets/op-bug.png" width="3%">
 
 Have a bug or a feature request? Please first read the [issue guidelines](https://github.com/Girl-Code-It/Opportunity-Calendar-Backend/blob/develop/contributing.md) and search for existing and closed issues. If your problem or idea is not addressed yet, [please open a new issue](https://github.com/Girl-Code-It/Opportunity-Calendar-Backend/issues/new).
 
-<h2 align="center">Contributing</h2>
+## Contribution <img src="./assets/op-check.png" width="3%">
 
 We want contributing to Opportunity Calendar to be enjoyable and educational for everyone. We would love to have your contributions.
 To get started have a look at our [documentation on contributing](https://github.com/Girl-Code-It/Opportunity-Calendar-Backend/blob/develop/contributing.md).
 
-<h2 align="center">✨ Our Contributors ✨</h2>
+## Contributors <img src="./assets/contributors.svg" width="3%">
 
 <a href="https://github.com/Girl-Code-It/Opportunity-Calendar-Backend">
   <img src="https://contrib.rocks/image?repo=Girl-Code-It/Opportunity-Calendar-Backend" />
 </a>
 
-<h2 align="center">Copyright and license</h2>
+## License <img src="./assets/license.svg" width="3%">
 
 Code released under the [MIT License](https://github.com/Girl-Code-It/Opportunity-Calendar-Backend/blob/develop/LICENSE).

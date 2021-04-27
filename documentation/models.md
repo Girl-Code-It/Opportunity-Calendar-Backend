@@ -3,8 +3,9 @@ All changes to models shall be documented here
 ### Opportunity
 
 | Field                           | Datatype | Default | Required | Comments                                                                                               |     |
-| ------------------------------- | -------- | ------- | -------- | ------------------------------------------------------------------------------------------------------ | --- |
-it will not                                             |     |
+
+| ------------------------------- | -------- | ------- | -------- | ------------------------------------------------------------------------------------------------------ | --- |                               |     |
+
 | opportunityType                 | String   | -       | True     | enum - only 6 values allowed                                                                           |     |
 | opportunityTitle                | String   | -       | True     |                                                                                                        |     |
 | opportunityOrganisation         | String   | -       | True     | company in case of Job/Interns, organising Commitee in case of Scholarship/CodingCompettion/Conference |     |

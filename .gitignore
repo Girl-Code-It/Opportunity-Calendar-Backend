@@ -38,5 +38,5 @@ Thumbs.db
 # Ignore build files
 dist/*
 
-# use yarn
-package-lock.json
+yarn.lock # use npm
+.vim-session.vim

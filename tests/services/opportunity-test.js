@@ -22,7 +22,8 @@ describe('OpportunityService', function () {
         stubValue.opportunityEligibility,
         stubValue.opportunityRegistrationDeadline,
         stubValue.opportunityDate,
-        stubValue.opportunityURL
+        stubValue.opportunityURL,
+        stubValue.onlyForFemale
       );
       expect(stub.calledOnce).to.be.true;
       expect(opportunity.opportunityTitle).to.equal(stubValue.opportunityTitle);
@@ -77,6 +78,7 @@ describe('OpportunityService', function () {
       expect(opportunity.updatedAt).to.equal(stubValue.updatedAt);
     });
   });
+
 
   describe('updateOpportunity', function () {
     it('should update existing Opportunit', async function () {

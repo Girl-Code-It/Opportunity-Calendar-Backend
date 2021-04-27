@@ -11,7 +11,8 @@ class opportunityService {
     opportunityEligibility,
     opportunityRegistrationDeadline,
     opportunityDate,
-    opportunityURL
+    opportunityURL,
+    onlyForFemale
   ) {
     console.log('Inside Service');
 
@@ -25,7 +26,8 @@ class opportunityService {
         opportunityEligibility,
         opportunityRegistrationDeadline,
         opportunityDate,
-        opportunityURL
+        opportunityURL,
+        onlyForFemale
       );
       return newOpportunity;
     } catch (err) {

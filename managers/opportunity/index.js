@@ -4,7 +4,6 @@ class opportunityManager {
     this.opportunity = Opportunity;
   }
   async createOpportunity(
-    opportunityId,
     opportunityTitle,
     opportunityType,
     opportunityOrganisation,
@@ -13,11 +12,10 @@ class opportunityManager {
     opportunityEligibility,
     opportunityRegistrationDeadline,
     opportunityDate,
-    opportunityURL
+    opportunityURL,
+    onlyForFemale
   ) {
-    console.log('Inside Manager', opportunityId);
     let opportunity = {
-      opportunityId: opportunityId,
       opportunityTitle: opportunityTitle,
       opportunityType: opportunityType,
       opportunityOrganisation: opportunityOrganisation,
@@ -27,6 +25,7 @@ class opportunityManager {
       opportunityRegistrationDeadline: opportunityRegistrationDeadline,
       opportunityDate: opportunityDate,
       opportunityURL: opportunityURL,
+      onlyForFemale: onlyForFemale,
     };
     console.log('Values received in manager', opportunity);
 
