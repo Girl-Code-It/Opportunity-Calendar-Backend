@@ -57,6 +57,16 @@ class opportunityManager {
       throw err;
     }
   }
+
+  async deleteOpportunity(id) {
+    try {
+      let deletedDocument = await this.opportunity.findByIdAndRemove(id);
+      return deletedDocument;
+    } catch(err) {
+      console.log("ERROR IN deleteOpportunity MANAGER");  
+      throw err;
+    }
+  }
 }
 
 export default opportunityManager;

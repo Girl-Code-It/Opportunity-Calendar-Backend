@@ -64,6 +64,25 @@ class opportunityController {
       });
     }
   }
+
+  // delete oppertunity
+  async deleteOpportunity(req, res) {
+    console.log("Inside controller");
+    const id = req.params.id;
+    try {
+      let deletedOpportunity = await this.opportunityService.deleteOpportunity(id);
+      return res.status(200).json({
+        status : "success",
+        data: deletedOpportunity
+      });
+    } catch(err) {
+      console.log('ERROR IN deleteOpportunity OpportunityController', err);
+      return res.status(400).json({
+        status: 'fail',
+        error: err.message,
+      });
+    }
+  }
 }
 
 export default opportunityController;

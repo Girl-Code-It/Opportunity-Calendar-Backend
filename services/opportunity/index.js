@@ -49,6 +49,16 @@ class opportunityService {
       throw err;
     }
   }
+
+  async deleteOpportunity(id) {
+    try {
+      let deletedDocument = await this.opportunityManager.deleteOpportunity(id);
+      return deletedDocument;
+    } catch (err) {
+      console.log('ERROR IN deleteOpportunity Service');
+      throw err;
+    }
+  }
 }
 
 export default opportunityService;
