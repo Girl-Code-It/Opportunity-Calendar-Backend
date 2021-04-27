@@ -19,8 +19,8 @@ const opportunityManager = new OpportunityManager(),
  *     summary: Retrieve a list of opportunities.
  *     description: Retrieve a list of opportunities.
  *     parameters:
- *      - page: query (specifies the Page Number )
- *        limit: query (number of results per page )
+ *        in: query
+ *        name: page(specifies the Page Number ) and limit (number of results per page )      
  *        schema:
  *          type: string
  *          enum:
