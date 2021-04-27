@@ -19,8 +19,8 @@ const opportunityManager = new OpportunityManager(),
  *     summary: Retrieve a list of opportunities.
  *     description: Retrieve a list of opportunities.
  *     parameters:
- *        in: query
- *        name: page(specifies the Page Number ) and limit (number of results per page )      
+ *      - in: query
+ *        name: type
  *        schema:
  *          type: string
  *          enum:
@@ -31,6 +31,18 @@ const opportunityManager = new OpportunityManager(),
  *             - CONFERENCE
  *             - CODINGCOMPETITION
  *        description: Retrieve a list of opportunities based on particular type.
+ *      - in: query
+ *        name: page
+ *        schema:
+ *          type: Integer
+ *          default: 1
+ *        description: The Current Page for which the data User Wants
+ *      - in: query
+ *        name: limit
+ *        schema:
+ *          type: Integer
+ *          default: 10
+ *        description: The count of items/documents that should be returned on each page
  *     responses:
  *       200:
  *         description: A list of opportunities.
