@@ -8,7 +8,6 @@ class opportunityController {
     console.log('Inside controller');
     console.log(req.body)
     const {
-      opportunityId,
       opportunityTitle,
       opportunityType,
       opportunityOrganisation,
@@ -22,7 +21,6 @@ class opportunityController {
 
     try {
       let newOpportunity = await this.opportunityService.createOpportunity(
-        opportunityId,
         opportunityTitle,
         opportunityType,
         opportunityOrganisation,
@@ -69,8 +67,9 @@ class opportunityController {
   //updateOpportunities
 async updateOpportunity(req,res){
 
-  let opportunityId=req.params.opportunityId;
-  let queryObject={_id:opportunityId}
+
+  let opId=req.params.opId;
+  let queryObject={_id:opId}
   let updatingprops=req.body;
   try {
     let updatedOpportunity = await this.opportunityService.updateOpportunity(

@@ -9,7 +9,6 @@ describe('OpportunityManager', function () {
       const stub = sinon.stub(Opportunity, 'create').returns(stubValue);
       const opportunityManager = new OpportunityManager();
       const opportunity = await opportunityManager.createOpportunity(
-        stubValue.opportunityId,
         stubValue.opportunityTitle,
         stubValue.opportunityType,
         stubValue.opportunityOrganisation,
@@ -21,7 +20,6 @@ describe('OpportunityManager', function () {
         stubValue.opportunityURL
       );
       expect(stub.calledOnce).to.be.true;
-      expect(opportunity.opportunityId).to.equal(stubValue.opportunityId);
       expect(opportunity.opportunityTitle).to.equal(stubValue.opportunityTitle);
       expect(opportunity.opportunityType).to.equal(stubValue.opportunityType);
       expect(opportunity.opportunityOrganisation).to.equal(
@@ -51,7 +49,6 @@ describe('OpportunityManager', function () {
         type: stubValue.opportunityType,
       });
       expect(stub.calledOnce).to.be.true;
-      expect(opportunity.opportunityId).to.equal(stubValue.opportunityId);
       expect(opportunity.opportunityTitle).to.equal(stubValue.opportunityTitle);
       expect(opportunity.opportunityType).to.equal(stubValue.opportunityType);
       expect(opportunity.opportunityOrganisation).to.equal(
@@ -79,7 +76,6 @@ describe('OpportunityManager', function () {
       const opportunityManager = new OpportunityManager();
       const queryObject = { _id: stubValue._id };
       const updatingobject = {
-        opportunityId: stubValue.opportunityId,
         opportunityTitle: stubValue.opportunityTitle,
         opportunityType: stubValue.opportunityType,
         opportunityOrganisation: stubValue.opportunityOrganisation,
@@ -96,9 +92,7 @@ describe('OpportunityManager', function () {
         updatingobject
       );
       expect(stub.calledOnce).to.be.true;
-      expect(updatedOpportunity.opportunityId).to.equal(
-        stubValue.opportunityId
-      );
+
       expect(updatedOpportunity.opportunityTitle).to.equal(
         stubValue.opportunityTitle
       );

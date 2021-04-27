@@ -7,7 +7,6 @@
 - METHOD - POST
 - EndPoint - http://localhost:3030/opportunity
 - Parameters Required -
-  - opportunityId,
   - opportunityTitle,
   - opportunityType,
   - opportunityOrganisation,
@@ -49,10 +48,11 @@
 3. **Update Opportunity**
 
 - Method - PATCH
-- EndPoint - http://localhost:3030/opportunity/opportunityId
+
+- EndPoint - http://localhost:3030/opportunity/:opId
 - Functionality -
   - Updates the existing Opportunity
-- parameter - opportunityId
+- parameter - opId
 - Parameters Required -
   (Any of the following field which users wants to update)
   - opportunityTitle,
@@ -64,9 +64,6 @@
   - opportunityRegistrationDeadline,
   - opportunityDate,
   - opportunityURL,
-- Response -
-  - UpdatedOpportunity
-  - Error
 - Status Code -
   - 201 - If opportunity successfully created
   - 400 - If opportunity could not be created

@@ -22,7 +22,6 @@ describe('OpportunityController', function () {
     it('should add a new Opportunity to the Opportunity database', async function () {
       const req = {
         body: {
-          opportunityId: stubValue.opportunityId,
           opportunityTitle: stubValue.opportunityTitle,
           opportunityType: stubValue.opportunityType,
           opportunityOrganisation: stubValue.opportunityOrganisation,
@@ -101,10 +100,9 @@ describe('OpportunityController', function () {
     it('should update the existing Opportunity', async function () {
       const req = {
         params: {
-          _id: stubValue._id,
+          opId: stubValue._id,
         },
         body: {
-          opportunityId: stubValue.opportunityId,
           opportunityTitle: stubValue.opportunityTitle,
           opportunityType: stubValue.opportunityType,
           opportunityOrganisation: stubValue.opportunityOrganisation,

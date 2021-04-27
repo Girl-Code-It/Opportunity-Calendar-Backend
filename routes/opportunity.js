@@ -48,10 +48,6 @@ const opportunityManager = new OpportunityManager(),
  *                   items:
  *                     type: object
  *                     properties:
- *                       opportunityId:
- *                         type: string
- *                         description: The opportunity ID.
- *                         example: 3
  *                       opportunityType:
  *                         type: string
  *                         description: The opportunity type.
@@ -110,9 +106,6 @@ router.get('/', (req, res) => {
  *              - opportunityDescription
  *              - opportunityURL
  *            properties:
- *              opportunityId:
- *                type: string
- *                description: The ID of the opportunity
  *              opportunityTitle:
  *                type: string
  *                description: Title of the opportunity
@@ -161,7 +154,7 @@ router.post('/', (req, res) => {
  *     summary: Updates the existing Opportunity.
  *     description: Updates the existing Opportunity.
  *     parameters:
- *        name: opportunityId
+ *        name: opId
  *        schema:
  *          type: stringp updates the particular existing Opportunity of given opportunity _id.
  *     requestBody:
@@ -178,9 +171,6 @@ router.post('/', (req, res) => {
  *              - opportunityDescription
  *              - opportunityURL
  *            properties:
- *              opportunityId:
- *                type: string
- *                description: The ID of the opportunity
  *              opportunityTitle:
  *                type: string
  *                description: Title of the opportunity
@@ -210,61 +200,16 @@ router.post('/', (req, res) => {
  *              opportunityURL:
  *                type: string
  *                description: URL of the opportunity
- *     responses:
- *       200:
- *         description: updatedOpportunity.
- *         content:
- *           application/json:
- *             schema:
- *               type: object
- *               properties:
- *                 status:
- *                   type: string
- *                   description: Status of the request.
- *                   example: success
- *                 data:
- *                     type: object
- *                     properties:
- *                       opportunityId:
- *                         type: string
- *                         description: The opportunity ID.
- *                         example: 3
- *                       opportunityType:
- *                         type: string
- *                         description: The opportunity type.
- *                         example: SCHOLARSHIP
- *                       opportunityLocation:
- *                         type: string
- *                         description: The venue of the event.
- *                         example: Chennai
- *                       opportunityDescription:
- *                         type: string
- *                         description: The description of the opportunity.
- *                         example: The Novice Coders Scholarship Program
- *                       opportunityEligibility:
- *                         type: string
- *                         description: Eligibility criteria of the opportunity.
- *                         example: Have no experience in coding
- *                       opportunityRegistrationDeadline:
- *                         type: string
- *                         description: Deadline for the event.
- *                         example: 2021-03-22T12:04:05.779Z
- *                       opportunityDate:
- *                         type: string
- *                         description: Date of the event.
- *                         example: 2021-03-22T12:04:05.779Z
- *                       opportunityTitle:
- *                         type: string
- *                         description: Name of the opportunity.
- *                         example: Rohith M S R Scholarship
- *                       opportunityURL:
- *                         type: string
- *                         description: Link for the opportunity.
- *                         example: www.rohithmsrscholarship.com
- *
+
+ *    
+          responses:
+ *      201:
+ *        description: Opportunity is successfully updated!
+ *      400:
+ *        description: Sorry, opportunity could not be updated!
  */
 
-router.patch('/:opportunityId', (req, res) => {
+router.patch('/:opId', (req, res) => {
   opportunityController.updateOpportunity(req, res);
 });
 export default router;

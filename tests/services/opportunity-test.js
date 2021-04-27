@@ -14,7 +14,6 @@ describe('OpportunityService', function () {
         .returns(stubValue);
       const opportunityService = new OpportunityService(opportunityManager);
       const opportunity = await opportunityService.createOpportunity(
-        stubValue.opportunityId,
         stubValue.opportunityTitle,
         stubValue.opportunityType,
         stubValue.opportunityOrganisation,
@@ -26,7 +25,6 @@ describe('OpportunityService', function () {
         stubValue.opportunityURL
       );
       expect(stub.calledOnce).to.be.true;
-      expect(opportunity.opportunityId).to.equal(stubValue.opportunityId);
       expect(opportunity.opportunityTitle).to.equal(stubValue.opportunityTitle);
       expect(opportunity.opportunityType).to.equal(stubValue.opportunityType);
       expect(opportunity.opportunityOrganisation).to.equal(
@@ -59,7 +57,6 @@ describe('OpportunityService', function () {
         type: stubValue.opportunityType,
       });
       expect(stub.calledOnce).to.be.true;
-      expect(opportunity.opportunityId).to.equal(stubValue.opportunityId);
       expect(opportunity.opportunityTitle).to.equal(stubValue.opportunityTitle);
       expect(opportunity.opportunityType).to.equal(stubValue.opportunityType);
       expect(opportunity.opportunityOrganisation).to.equal(
@@ -90,7 +87,6 @@ describe('OpportunityService', function () {
       const opportunityService = new OpportunityService(opportunityManager);
       const queryObject = { _id: stubValue._id };
       const updatingobject = {
-        opportunityId: stubValue.opportunityId,
         opportunityTitle: stubValue.opportunityTitle,
         opportunityType: stubValue.opportunityType,
         opportunityOrganisation: stubValue.opportunityOrganisation,
@@ -107,9 +103,6 @@ describe('OpportunityService', function () {
         updatingobject
       );
       expect(stub.calledOnce).to.be.true;
-      expect(updatedOpportunity.opportunityId).to.equal(
-        stubValue.opportunityId
-      );
       expect(updatedOpportunity.opportunityTitle).to.equal(
         stubValue.opportunityTitle
       );

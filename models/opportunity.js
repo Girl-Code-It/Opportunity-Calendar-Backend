@@ -1,11 +1,6 @@
 import mongoose from 'mongoose';
 //SCHEMA SETUP
 let opportunitySchema = new mongoose.Schema({
-  opportunityId: {
-    type: String,
-    unique: true,
-    default: 0,
-  },
   opportunityTitle: {
     type: String,
     required: true,
