@@ -48,10 +48,12 @@ describe('OpportunityManager', function () {
       const opportunityManager = new OpportunityManager();
       const opportunity = await opportunityManager.getOpportunities({
         type: stubValue.opportunityType,
+        female: stubValue.onlyForFemale,
       });
       expect(stub.calledOnce).to.be.true;
       expect(opportunity.opportunityTitle).to.equal(stubValue.opportunityTitle);
       expect(opportunity.opportunityType).to.equal(stubValue.opportunityType);
+      expect(opportunity.onlyForFemale).to.equal(stubValue.onlyForFemale);
       expect(opportunity.opportunityOrganisation).to.equal(
         stubValue.opportunityOrganisation
       );

@@ -30,7 +30,6 @@ class opportunityService {
         opportunityDate,
         opportunityURL,
         onlyForFemale
-
       );
       return newOpportunity;
     } catch (err) {
