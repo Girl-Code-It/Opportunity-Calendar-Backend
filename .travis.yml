@@ -1,7 +1,9 @@
 language: node_js
 node_js:
   - '15'
+services: mongodb
 script:
   - echo 'Build starts!!'
   - echo 'Installing Deps!'
-  - npm install
+  - mocha './tests/*/*'
+  - npm ci
