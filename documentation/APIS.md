@@ -52,7 +52,7 @@
 - EndPoint - http://localhost:3030/opportunity/:opId
 - Functionality -
   - Updates the existing Opportunity
-- parameter - opId
+- parameter - opportunity_id
 - Parameters Required -
   (Any of the following field which users wants to update)
   - opportunityTitle,

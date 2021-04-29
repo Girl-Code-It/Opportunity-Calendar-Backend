@@ -101,7 +101,7 @@ describe('OpportunityController', function () {
     it('should update the existing Opportunity', async function () {
       const req = {
         params: {
-          opId: stubValue._id,
+          opportunity_id: stubValue._id,
         },
         body: {
           opportunityTitle: stubValue.opportunityTitle,

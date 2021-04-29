@@ -67,27 +67,27 @@ class opportunityController {
   }
 
   //updateOpportunities
-async updateOpportunity(req,res){
+  async updateOpportunity(req, res) {
 
 
-  let opId=req.params.opId;
-  let queryObject={_id:opId}
-  let updatingprops=req.body;
-  try {
-    let updatedOpportunity = await this.opportunityService.updateOpportunity(
-      queryObject,
-      updatingprops
-    );
+    let opportunity_id = req.params.opportunity_id;
+    let queryObject = { _id: opportunity_id }
+    let updatingprops = req.body;
+    try {
+      let updatedOpportunity = await this.opportunityService.updateOpportunity(
+        queryObject,
+        updatingprops
+      );
 
-    return res.status(201).json({
-      data: updatedOpportunity,
-    });
-  } catch (err) {
-    console.log('ERROR IN updating Opportunity OpportunityController', err);
-    return res.status(400).send(err);
+      return res.status(201).json({
+        data: updatedOpportunity,
+      });
+    } catch (err) {
+      console.log('ERROR IN updating Opportunity OpportunityController', err);
+      return res.status(400).send(err);
+    }
+
   }
-
-}
 
 }
 

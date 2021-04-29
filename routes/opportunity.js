@@ -169,27 +169,22 @@ router.post('/', (req, res) => {
 
 /**
  * @swagger
- * /opportunity:
+ * /opportunity/{opportunity_id}:
  *   patch:
  *     summary: Updates the existing Opportunity.
  *     description: Updates the existing Opportunity.
  *     parameters:
- *        name: opId
+ *      - name: opportunity_id
+ *        in: path
  *        schema:
- *          type: stringp updates the particular existing Opportunity of given opportunity _id.
+ *          type: string
+ *        description: mongo_id of a Particular opportunity
  *     requestBody:
  *      required: true
  *      content:
- *        (Any of the property which user wants to update)
  *        application/json:
  *          schema:
  *            type: object
- *            required:
- *              - opportunityType
- *              - opportunityTitle
- *              - opportunityOrganisation
- *              - opportunityDescription
- *              - opportunityURL
  *            properties:
  *              opportunityTitle:
  *                type: string
@@ -220,16 +215,14 @@ router.post('/', (req, res) => {
  *              opportunityURL:
  *                type: string
  *                description: URL of the opportunity
-
- *    
-          responses:
+ *     responses:
  *      201:
  *        description: Opportunity is successfully updated!
  *      400:
  *        description: Sorry, opportunity could not be updated!
  */
 
-router.patch('/:opId', (req, res) => {
+router.patch('/:opportunity_id', (req, res) => {
   opportunityController.updateOpportunity(req, res);
 });
 
