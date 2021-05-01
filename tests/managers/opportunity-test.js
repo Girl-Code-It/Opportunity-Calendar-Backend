@@ -69,6 +69,7 @@ describe('OpportunityManager', function () {
       expect(opportunity.opportunityURL).to.equal(stubValue.opportunityURL);
       expect(opportunity.createdAt).to.equal(stubValue.createdAt);
       expect(opportunity.updatedAt).to.equal(stubValue.updatedAt);
+      expect(opportunity.onlyForFemale).to.equal(stubValue.onlyForFemale);
     });
   });
 });
