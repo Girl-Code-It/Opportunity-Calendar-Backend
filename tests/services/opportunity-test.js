@@ -132,4 +132,45 @@ describe('OpportunityService', function () {
       expect(updatedOpportunity.updatedAt).to.equal(stubValue.updatedAt);
     });
   });
+
+  describe('deleteOpportunity', function () {
+    it('should delete existing Opportunit', async function () {
+      const opportunityManager = new OpportunityManager();
+      const stub = sinon
+        .stub(opportunityManager, 'deleteOpportunity')
+        .returns(stubValue);
+      const opportunityService = new OpportunityService(opportunityManager);
+      const queryObject = { _id: stubValue._id };
+      const deletedOpportunity = await opportunityService.deleteOpportunity(
+        queryObject
+      );
+      expect(stub.calledOnce).to.be.true;
+      expect(deletedOpportunity.opportunityTitle).to.equal(
+        stubValue.opportunityTitle
+      );
+      expect(deletedOpportunity.opportunityType).to.equal(
+        stubValue.opportunityType
+      );
+      expect(deletedOpportunity.opportunityOrganisation).to.equal(
+        stubValue.opportunityOrganisation
+      );
+      expect(deletedOpportunity.opportunityLocation).to.equal(
+        stubValue.opportunityLocation
+      );
+      expect(deletedOpportunity.opportunityDescription).to.equal(
+        stubValue.opportunityDescription
+      );
+      expect(deletedOpportunity.opportunityRegistrationDeadline).to.equal(
+        stubValue.opportunityRegistrationDeadline
+      );
+      expect(deletedOpportunity.opportunityDate).to.equal(
+        stubValue.opportunityDate
+      );
+      expect(deletedOpportunity.opportunityURL).to.equal(
+        stubValue.opportunityURL
+      );
+      expect(deletedOpportunity.createdAt).to.equal(stubValue.createdAt);
+      expect(deletedOpportunity.updatedAt).to.equal(stubValue.updatedAt);
+    });
+  });
 });

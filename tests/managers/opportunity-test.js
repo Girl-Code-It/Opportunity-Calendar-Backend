@@ -146,4 +146,38 @@ describe('OpportunityManager', function () {
       expect(updatedOpportunity.updatedAt).to.equal(stubValue.updatedAt);
     });
   });
+
+  describe('deleteOpportunity', function () {
+    it('should delete existing Opportunity', async function () {
+      const stub = sinon
+        .stub(Opportunity, 'findByIdAndRemove')
+        .returns(stubValue);
+      const opportunityManager = new OpportunityManager();
+      const queryObject = { _id: stubValue._id };
+
+      const deletedOpportunity = await opportunityManager.deleteOpportunity(
+        queryObject
+      );
+      expect(stub.calledOnce).to.be.true;
+
+      expect(deletedOpportunity.opportunityTitle).to.equal(
+        stubValue.opportunityTitle
+      );
+      expect(deletedOpportunity.opportunityType).to.equal(
+        stubValue.opportunityType
+      );
+      expect(deletedOpportunity.opportunityOrganisation).to.equal(
+        stubValue.opportunityOrganisation
+      );
+      expect(deletedOpportunity.opportunityLocation).to.equal(
+        stubValue.opportunityLocation
+      );
+      expect(deletedOpportunity.opportunityDescription).to.equal(
+        stubValue.opportunityDescription
+      );
+      expect(deletedOpportunity.opportunityRegistrationDeadline).to.equal(
+        stubValue.opportunityRegistrationDeadline
+      );
+    });
+  });
 });
