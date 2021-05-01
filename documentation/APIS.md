@@ -45,19 +45,42 @@
   - 200 - If opportunity successfully fetched
   - 400 - If opportunity could not be fetched
 
-  3. **Delete Opportunity**
+3. **Delete Opportunity**
 
-  - METHOD - DELETE
-  - EndPoint - http://localhost:3030/opportunity/:id
-  - Functionality -
-    - Deleted the opportunity from the database having id as passed in params
-    - Returns the deleted opportunity
-  - Route Param = _id
-  - Response -
-    - deletedOpportunity
-    - Error
-  - Status Code -
-    - 200 - If opportunity successfully deleted
+- METHOD - DELETE
+- EndPoint - http://localhost:3030/opportunity/:id
+- Functionality -
+  - Deleted the opportunity from the database having id as passed in params
+  - Returns the deleted opportunity
+- Route Param = \_id
+- Response -
+  - deletedOpportunity
+  - Error
+- Status Code -
+  - 200 - If opportunity successfully deleted
+
+4. **Update Opportunity**
+
+- Method - PATCH
+
+- EndPoint - http://localhost:3030/opportunity/:opId
+- Functionality -
+  - Updates the existing Opportunity
+- parameter - opportunity_id
+- Parameters Required -
+  (Any of the following field which users wants to update)
+  - opportunityTitle,
+  - opportunityType,
+  - opportunityOrganisation,
+  - opportunityLocation,
+  - opportunityDescription,
+  - opportunityEligibility,
+  - opportunityRegistrationDeadline,
+  - opportunityDate,
+  - opportunityURL,
+- Status Code -
+  - 201 - If opportunity successfully created
+  - 400 - If opportunity could not be created
 
 ### TODO
 

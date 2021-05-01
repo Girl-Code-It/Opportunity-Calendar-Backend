@@ -6,6 +6,7 @@ class opportunityController {
   }
   async createOpportunity(req, res) {
     console.log('Inside controller');
+    console.log(req.body);
     const {
       opportunityTitle,
       opportunityType,
@@ -67,20 +68,42 @@ class opportunityController {
 
   // delete oppertunity
   async deleteOpportunity(req, res) {
-    console.log("Inside controller");
+    console.log('Inside controller');
     const id = req.params.id;
     try {
-      let deletedOpportunity = await this.opportunityService.deleteOpportunity(id);
+      let deletedOpportunity = await this.opportunityService.deleteOpportunity(
+        id
+      );
       return res.status(200).json({
-        status : "success",
-        data: deletedOpportunity
+        status: 'success',
+        data: deletedOpportunity,
       });
-    } catch(err) {
+    } catch (err) {
       console.log('ERROR IN deleteOpportunity OpportunityController', err);
       return res.status(400).json({
         status: 'fail',
         error: err.message,
       });
+    }
+  }
+
+  //updateOpportunities
+  async updateOpportunity(req, res) {
+    let opportunity_id = req.params.opportunity_id;
+    let queryObject = { _id: opportunity_id };
+    let updatingprops = req.body;
+    try {
+      let updatedOpportunity = await this.opportunityService.updateOpportunity(
+        queryObject,
+        updatingprops
+      );
+
+      return res.status(201).json({
+        data: updatedOpportunity,
+      });
+    } catch (err) {
+      console.log('ERROR IN updating Opportunity OpportunityController', err);
+      return res.status(400).send(err);
     }
   }
 }
