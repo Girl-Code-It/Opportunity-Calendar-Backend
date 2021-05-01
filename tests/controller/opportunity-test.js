@@ -11,7 +11,7 @@ describe('OpportunityController', function () {
       status = sinon.stub();
       json = sinon.spy();
       res = {
-        json,
+        json, 
         status,
       };
       status.returns(res);
@@ -33,6 +33,7 @@ describe('OpportunityController', function () {
           opportunityDate: stubValue.opportunityDate,
           opportunityURL: stubValue.opportunityURL,
           onlyForFemale: stubValue.onlyForFemale,
+          organisationURL:stubValue.organisationURL
         },
       };
 
@@ -79,6 +80,54 @@ describe('OpportunityController', function () {
       expect(stub.calledOnce).to.be.true;
       expect(status.calledOnce).to.be.true;
       expect(status.firstCall.args[0]).to.equal(200);
+      expect(json.calledOnce).to.be.true;
+      expect(json.firstCall.args[0].data).to.equal(stubValue);
+    });
+  });
+
+  describe('updateOppportunity', function () {
+    let status, json, req, res, opportunityController, opportunityService;
+
+    beforeEach(() => {
+      status = sinon.stub();
+      json = sinon.spy();
+      res = {
+        json,
+        status,
+      };
+      status.returns(res);
+      const opportunityManager = sinon.spy();
+      opportunityService = new OpportunityService(opportunityManager);
+    });
+
+    it('should update the existing Opportunity', async function () {
+      const req = {
+        params: {
+          opportunity_id: stubValue._id,
+        },
+        body: {
+          opportunityTitle: stubValue.opportunityTitle,
+          opportunityType: stubValue.opportunityType,
+          opportunityOrganisation: stubValue.opportunityOrganisation,
+          opportunityLocation: stubValue.opportunityLocation,
+          opportunityDescription: stubValue.opportunityDescription,
+          opportunityEligibility: stubValue.opportunityEligibility,
+          opportunityRegistrationDeadline:
+            stubValue.opportunityRegistrationDeadline,
+          opportunityDate: stubValue.opportunityDate,
+          opportunityURL: stubValue.opportunityURL,
+          organisationURL:stubValue.organisationURL
+        },
+      };
+
+      const stub = sinon
+        .stub(opportunityService, 'updateOpportunity')
+        .returns(stubValue);
+      opportunityController = new OpportunityController(opportunityService);
+      await opportunityController.updateOpportunity(req, res);
+      expect(stub.calledOnce).to.be.true;
+      expect(status.calledOnce).to.be.true;
+      expect(status.firstCall.args[0]).to.equal(201);
       expect(json.calledOnce).to.be.true;
       expect(json.firstCall.args[0].data).to.equal(stubValue);
     });

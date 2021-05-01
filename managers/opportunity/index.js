@@ -27,13 +27,13 @@ class opportunityManager {
       opportunityURL: opportunityURL,
       onlyForFemale: onlyForFemale,
     };
-    console.log('Values received in manager', opportunity);
+    //console.log('Values received in manager', opportunity);
 
     try {
       let newOpportunity = await this.opportunity.create(opportunity);
       return newOpportunity;
     } catch (err) {
-      console.log('ERROR IN postNewOpportunity OpportunityMANAGER');
+      console.log('ERR postNewOpportunity: ', err.stack);
       throw err;
     }
   }
@@ -66,7 +66,7 @@ class opportunityManager {
       console.log(fetchedOpportunitiesQuery.data);
       return fetchedOpportunitiesQuery;
 
-      console.log('Values of QueryString', queryObject);
+      //console.log('Values of QueryString', queryObject);
 
       // Here page means which page to start from and limit specifies the number of documnents to be
       // rendered starting from this page
@@ -173,14 +173,37 @@ class opportunityManager {
 
       // Once a Valid Query(The one which is inside the Range) is entered, we render the Results
       try {
-        result.results = await this.opportunity.find().skip(skip).limit(limit);
+        result.results = await this.opportunity.find(
+          {
+            /* Everything*/
+          },
+          {
+            /* No constraints */
+          },
+          {
+            skip: skip,
+            limit: limit,
+          }
+        );
 
         return result;
       } catch (e) {
-        console.log(e);
+        console.log(`ERR: `, e.stack);
       }
     } catch (err) {
-      console.log('ERROR IN getOpportunities OpportunityMANAGER');
+      console.log('ERR getOpportunities: ', err.stack);
+      throw err;
+    }
+  }
+
+  async updateOpportunity(queryObject, updatingprops) {
+    try {
+      let updatedOpportunity = await this.opportunity.updateOne(queryObject, {
+        $set: updatingprops,
+      });
+      return updatedOpportunity;
+    } catch (err) {
+      console.log('ERR UpdatingOpportunity: ', err.stack);
       throw err;
     }
   }

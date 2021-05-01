@@ -55,11 +55,20 @@ let opportunitySchema = new mongoose.Schema({
     maxLength: 500,
     required: true,
   },
-  onlyForFemale: {
-    type: Boolean,
-    required: true,
-    default: false,
-  },
+
+  onlyForFemale:{
+    type:Boolean,
+    required:true,
+    default:false
+  } 
+  ,
+  organisationLogoURL:{
+
+    type :String ,
+    required : false ,
+    default : "https://picsum.photos/200"
+  }
+
 });
 
 export default mongoose.model('opportunity', opportunitySchema);

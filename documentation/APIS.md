@@ -45,6 +45,29 @@
   - 200 - If opportunity successfully fetched
   - 400 - If opportunity could not be fetched
 
+3. **Update Opportunity**
+
+- Method - PATCH
+
+- EndPoint - http://localhost:3030/opportunity/:opId
+- Functionality -
+  - Updates the existing Opportunity
+- parameter - opportunity_id
+- Parameters Required -
+  (Any of the following field which users wants to update)
+  - opportunityTitle,
+  - opportunityType,
+  - opportunityOrganisation,
+  - opportunityLocation,
+  - opportunityDescription,
+  - opportunityEligibility,
+  - opportunityRegistrationDeadline,
+  - opportunityDate,
+  - opportunityURL,
+- Status Code -
+  - 201 - If opportunity successfully created
+  - 400 - If opportunity could not be created
+
 ### TODO
 
 2. **Get Opportunities**
