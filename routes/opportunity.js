@@ -31,6 +31,11 @@ const opportunityManager = new OpportunityManager(),
  *             - CONFERENCE
  *             - CODINGCOMPETITION
  *        description: Retrieve a list of opportunities based on particular type or only for female.
+ *        parameters:
+ *      - in: query
+ *        name: female
+ *        schema:
+ *          type: boolean
  *     responses:
  *       200:
  *         description: A list of opportunities.
