@@ -5,8 +5,6 @@ class opportunityController {
     this.opportunityService = opportunityService;
   }
   async createOpportunity(req, res) {
-    console.log('Inside controller');
-    console.log(req.body);
     const {
       opportunityTitle,
       opportunityType,
