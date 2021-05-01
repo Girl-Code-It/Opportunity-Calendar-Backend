@@ -40,6 +40,7 @@ describe('OpportunityManager', function () {
       expect(opportunity.opportunityURL).to.equal(stubValue.opportunityURL);
       expect(opportunity.createdAt).to.equal(stubValue.createdAt);
       expect(opportunity.updatedAt).to.equal(stubValue.updatedAt);
+      expect(opportunity.organisationLogoURL).to.equal(stubValue.organisationLogoURL) ;
     });
   });
 
@@ -69,6 +70,7 @@ describe('OpportunityManager', function () {
       expect(opportunity.opportunityURL).to.equal(stubValue.opportunityURL);
       expect(opportunity.createdAt).to.equal(stubValue.createdAt);
       expect(opportunity.updatedAt).to.equal(stubValue.updatedAt);
+      expect(opportunity.organisationLogoURL).to.equal(stubValue.organisationLogoURL) ;
     });
   });
 
@@ -88,6 +90,7 @@ describe('OpportunityManager', function () {
           stubValue.opportunityRegistrationDeadline,
         opportunityDate: stubValue.opportunityDate,
         opportunityURL: stubValue.opportunityURL,
+        organisationLogoURL: stubValue.organisationLogoURL,
       };
       const updatedOpportunity = await opportunityManager.updateOpportunity(
         queryObject,
@@ -121,6 +124,7 @@ describe('OpportunityManager', function () {
       );
       expect(updatedOpportunity.createdAt).to.equal(stubValue.createdAt);
       expect(updatedOpportunity.updatedAt).to.equal(stubValue.updatedAt);
+      expect(updatedOpportunity.organisationLogoURL).to.equal(stubValue.organisationLogoURL);
     });
-  });
+  }); 
 });

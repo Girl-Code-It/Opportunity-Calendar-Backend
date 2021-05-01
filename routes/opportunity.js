@@ -64,6 +64,10 @@ const opportunityManager = new OpportunityManager(),
  *                   type: boolean
  *                   description: Represents if the opportunity is only for females
  *                   example: true
+ *                 organisationLogoURL:
+ *                   type:string
+ *                   description:URL of the organisation 
+ *                   example:www.amazon.com 
  *       post_schema:
  *         type: object
  *         required:
@@ -106,6 +110,9 @@ const opportunityManager = new OpportunityManager(),
  *           onlyForFemale:
  *             type: boolean
  *             description: Represents if the opportunity is only for females
+ *           organisationLogoURL:
+ *             type: string
+ *             description: URL of the organisation
  */
 
 /**
@@ -225,6 +232,9 @@ router.post('/', (req, res) => {
  *              opportunityURL:
  *                type: string
  *                description: URL of the opportunity
+ *              organisationLogoURL:
+ *                type:string 
+ *                description :URL of the
  *     responses:
  *      201:
  *        description: Opportunity is successfully updated!
