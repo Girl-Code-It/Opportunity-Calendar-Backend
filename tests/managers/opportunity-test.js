@@ -18,7 +18,8 @@ describe('OpportunityManager', function () {
         stubValue.opportunityRegistrationDeadline,
         stubValue.opportunityDate,
         stubValue.opportunityURL,
-        stubValue.onlyForFemale
+        stubValue.onlyForFemale ,
+        stubValue.organisationLogoURL
       );
       expect(stub.calledOnce).to.be.true;
       expect(opportunity.opportunityTitle).to.equal(stubValue.opportunityTitle);
