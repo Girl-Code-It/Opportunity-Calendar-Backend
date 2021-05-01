@@ -19,6 +19,7 @@ let stubValue = {
   opportunityURL: faker.internet.url(),
   createdAt: faker.date.past(),
   updatedAt: faker.date.past(),
+  id: faker.datatype.uuid(),
 };
 
 export default stubValue;
