@@ -234,7 +234,7 @@ router.post('/', (req, res) => {
  *                description: URL of the opportunity
  *              organisationLogoURL:
  *                type:string 
- *                description :URL of the
+ *                description :URL of the organisation
  *     responses:
  *      201:
  *        description: Opportunity is successfully updated!
