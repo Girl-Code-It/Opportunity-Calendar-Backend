@@ -1,22 +1,8 @@
 import { expect } from 'chai';
-import mongoose from 'mongoose';
 import sinon from 'sinon';
 import stubValue from '../fakedata.js';
 import Opportunity from '../../models/opportunity.js';
-import { db_user, db_pwd, db_host, db_name } from '../../config.js';
 import OpportunityManager from '../../managers/opportunity/index.js';
-
-function connectDB() {
-  const mongoSrvString = `mongodb+srv://${db_user}:${db_pwd}@${db_host}/${db_name}?retryWrites=true&w=majority`;
-
-  // connect the database
-  return mongoose.connect(mongoSrvString, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-    useCreateIndex: true,
-    useFindAndModify: true,
-  });
-}
 
 describe('OpportunityManager', function () {
   describe('createOpportunity', function () {
