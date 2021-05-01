@@ -60,6 +60,13 @@ let opportunitySchema = new mongoose.Schema({
     type:Boolean,
     required:true,
     default:false
+  } 
+  ,
+  organisationLogoURL:{
+
+    type :String ,
+    required : false ,
+    default : "https://picsum.photos/200"
   }
 
 });

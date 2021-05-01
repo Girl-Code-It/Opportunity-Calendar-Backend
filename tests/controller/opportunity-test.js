@@ -11,7 +11,7 @@ describe('OpportunityController', function () {
       status = sinon.stub();
       json = sinon.spy();
       res = {
-        json,
+        json, 
         status,
       };
       status.returns(res);
@@ -33,6 +33,7 @@ describe('OpportunityController', function () {
           opportunityDate: stubValue.opportunityDate,
           opportunityURL: stubValue.opportunityURL,
           onlyForFemale: stubValue.onlyForFemale,
+          organisationURL:stubValue.organisationURL
         },
       };
 
@@ -114,6 +115,7 @@ describe('OpportunityController', function () {
             stubValue.opportunityRegistrationDeadline,
           opportunityDate: stubValue.opportunityDate,
           opportunityURL: stubValue.opportunityURL,
+          organisationURL:stubValue.organisationURL
         },
       };
 
