@@ -27,13 +27,13 @@ class opportunityManager {
       opportunityURL: opportunityURL,
       onlyForFemale: onlyForFemale,
     };
-    console.log('Values received in manager', opportunity);
+    //console.log('Values received in manager', opportunity);
 
     try {
       let newOpportunity = await this.opportunity.create(opportunity);
       return newOpportunity;
     } catch (err) {
-      console.log('ERROR IN postNewOpportunity OpportunityMANAGER');
+      console.log('ERR postNewOpportunity: ', err.stack);
       throw err;
     }
   }
@@ -41,10 +41,10 @@ class opportunityManager {
   // http://localhost:3030/opportunity?limit=4&page=2, Example of how to use the Get Method
 
   //  page => Means the Current Page that the User Wants
-  //  limit => The count of items/documents that should be rendered on each page 
+  //  limit => The count of items/documents that should be rendered on each page
 
   // suppose total pages are 10 then,
-  // so in short for limit 4 we get results as page 1 = {0,1,2,3} ,  page 2 = {4,5,6,7} and the remaining ones on 
+  // so in short for limit 4 we get results as page 1 = {0,1,2,3} ,  page 2 = {4,5,6,7} and the remaining ones on
   // page 3 = {8,9}  .
 
   async getOpportunities(queryObject) {
@@ -55,7 +55,7 @@ class opportunityManager {
         delete queryObject.type;
       }
 
-      console.log('Values of QueryString', queryObject);
+      //console.log('Values of QueryString', queryObject);
 
       // Here page means which page to start from and limit specifies the number of documnents to be
       // rendered starting from this page
@@ -94,26 +94,20 @@ class opportunityManager {
       let numDocs = await this.opportunity.countDocuments().exec();
 
       // TotalPages denote the total number of pages that are possible with the given limit and Documents available
-      let totalPages ;
+      let totalPages;
 
-     
-      // When limit is less than or equal to the number of Docs 
-       if (numDocs>=limit)
-       {
-       totalPages = Math.floor(numDocs / limit) + (numDocs % limit);
-       }
+      // When limit is less than or equal to the number of Docs
+      if (numDocs >= limit) {
+        totalPages = Math.floor(numDocs / limit) + (numDocs % limit);
+      }
 
-       // this is the case when limit exceeds the documents , so we only have a single page 
-       else
-       {
-         totalPages=1 ;
-       }
-      
+      // this is the case when limit exceeds the documents , so we only have a single page
+      else {
+        totalPages = 1;
+      }
 
       // Begin here shows the first index of next Page and helps in determining wether or not it is possible to go on the next page
       let begin = page * limit;
-
-      
 
       // If any of the paramter becomes neagtive or Zero
       if (page <= 0 || limit <= 0) {
@@ -168,35 +162,29 @@ class opportunityManager {
 
       // Once a Valid Query(The one which is inside the Range) is entered, we render the Results
       try {
-        result.results = await this.opportunity.find().skip(skip).limit(limit);
+        //result.results = await this.opportunity.find().skip(skip).limit(limit);
+        result.results = await this.opportunity.find(); // TODO: pagination is not working
 
         return result;
       } catch (e) {
-        console.log(e);
+        console.log(`ERR: `, e.stack);
       }
     } catch (err) {
-      console.log('ERROR IN getOpportunities OpportunityMANAGER');
+      console.log('ERR getOpportunities: ', err.stack);
       throw err;
     }
   }
 
-
-  async updateOpportunity(
-    queryObject,
-    updatingprops
-  ){
-
-
+  async updateOpportunity(queryObject, updatingprops) {
     try {
-      let updatedOpportunity = await this.opportunity.updateOne(queryObject,{
-        $set:updatingprops
+      let updatedOpportunity = await this.opportunity.updateOne(queryObject, {
+        $set: updatingprops,
       });
       return updatedOpportunity;
     } catch (err) {
-      console.log('ERROR IN UpdatingOpportunity OpportunityMANAGER');
+      console.log('ERR UpdatingOpportunity: ', err.stack);
       throw err;
     }
-
   }
 }
 

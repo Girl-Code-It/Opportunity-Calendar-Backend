@@ -1,8 +1,23 @@
 import { expect } from 'chai';
+import mongoose from 'mongoose';
 import sinon from 'sinon';
 import stubValue from '../fakedata.js';
 import Opportunity from '../../models/opportunity.js';
+import { db_user, db_pwd, db_host, db_name } from '../../config.js';
 import OpportunityManager from '../../managers/opportunity/index.js';
+
+function connectDB() {
+  const mongoSrvString = `mongodb+srv://${db_user}:${db_pwd}@${db_host}/${db_name}?retryWrites=true&w=majority`;
+
+  // connect the database
+  return mongoose.connect(mongoSrvString, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    useCreateIndex: true,
+    useFindAndModify: true,
+  });
+}
+
 describe('OpportunityManager', function () {
   describe('createOpportunity', function () {
     it('should add a new Opportunity to the Opportunity database', async function () {
@@ -44,11 +59,18 @@ describe('OpportunityManager', function () {
 
   describe('getOpportunities', function () {
     it('should retrieve Opportunities with specific opportunityType', async function () {
+      this.timeout(20 * 1000); // 20s for newtwork req. should be enough for ideal cases
+
+      let dbConn = await connectDB();
+
       const stub = sinon.stub(Opportunity, 'find').returns(stubValue);
       const opportunityManager = new OpportunityManager();
-      const opportunity = await opportunityManager.getOpportunities({
-        type: stubValue.opportunityType,
-      });
+      const opportunity = (
+        await opportunityManager.getOpportunities({
+          type: stubValue.opportunityType,
+        })
+      ).results;
+
       expect(stub.calledOnce).to.be.true;
       expect(opportunity.opportunityTitle).to.equal(stubValue.opportunityTitle);
       expect(opportunity.opportunityType).to.equal(stubValue.opportunityType);
@@ -68,6 +90,8 @@ describe('OpportunityManager', function () {
       expect(opportunity.opportunityURL).to.equal(stubValue.opportunityURL);
       expect(opportunity.createdAt).to.equal(stubValue.createdAt);
       expect(opportunity.updatedAt).to.equal(stubValue.updatedAt);
+
+      await dbConn.connection.close();
     });
   });
 
