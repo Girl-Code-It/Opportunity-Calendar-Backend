@@ -167,4 +167,63 @@ router.post('/', (req, res) => {
   opportunityController.createOpportunity(req, res);
 });
 
+/**
+ * @swagger
+ * /opportunity/{opportunity_id}:
+ *   patch:
+ *     summary: Updates the existing Opportunity.
+ *     description: Updates the existing Opportunity.
+ *     parameters:
+ *      - name: opportunity_id
+ *        in: path
+ *        schema:
+ *          type: string
+ *        description: mongo_id of a Particular opportunity
+ *     requestBody:
+ *      required: true
+ *      content:
+ *        application/json:
+ *          schema:
+ *            type: object
+ *            properties:
+ *              opportunityTitle:
+ *                type: string
+ *                description: Title of the opportunity
+ *              opportunityType:
+ *                type: string
+ *                description: Type of the opportunity
+ *              opportunityOrganisation:
+ *                type: string
+ *                description: Name of organisation providing the opportunity
+ *              opportunityLocation:
+ *                type: string
+ *                description: Location of the opportunity
+ *              opportunityDescription:
+ *                type: string
+ *                description: Description of the opportunity
+ *              opportunityEligibility:
+ *                type: string
+ *                description: Eligibility for the opportunity
+ *              opportunityRegistrationDeadline:
+ *                type: string
+ *                format: date
+ *                description: Registration Deadline for the opportunity
+ *              opportunityDate:
+ *                type: string
+ *                format: date
+ *                description: Date of the opportunity
+ *              opportunityURL:
+ *                type: string
+ *                description: URL of the opportunity
+ *     responses:
+ *      201:
+ *        description: Opportunity is successfully updated!
+ *      400:
+ *        description: Sorry, opportunity could not be updated!
+ */
+
+router.patch('/:opportunity_id', (req, res) => {
+  opportunityController.updateOpportunity(req, res);
+});
+
 export default router;

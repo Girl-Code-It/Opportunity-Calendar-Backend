@@ -1,5 +1,6 @@
 import faker from 'faker';
 let stubValue = {
+  _id: faker.datatype.uuid(),
   opportunityTitle: faker.company.companySuffix(),
   opportunityType: faker.random.arrayElement([
     'OTHERS',

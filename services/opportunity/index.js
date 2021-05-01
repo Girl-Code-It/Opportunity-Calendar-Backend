@@ -49,6 +49,19 @@ class opportunityService {
       throw err;
     }
   }
+
+  async updateOpportunity(queryObject, updatingprops) {
+    try {
+      let updatedOpportunity = await this.opportunityManager.updateOpportunity(
+        queryObject,
+        updatingprops
+      );
+      return updatedOpportunity;
+    } catch (err) {
+      console.log('ERROR IN updatedOpportunity OpportunityServices');
+      throw err;
+    }
+  }
 }
 
 export default opportunityService;
