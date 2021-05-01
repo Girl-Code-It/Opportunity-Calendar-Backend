@@ -55,6 +55,7 @@ let opportunitySchema = new mongoose.Schema({
     maxLength: 500,
     required: true,
   },
+<<<<<<< HEAD
   onlyForFemale: {
     type: Boolean,
     required: true,
@@ -65,6 +66,15 @@ let opportunitySchema = new mongoose.Schema({
     required: false ,
     default:  https://picsum.photos/200
 } 
+=======
+
+  onlyForFemale:{
+    type:Boolean,
+    required:true,
+    default:false
+  }
+
+>>>>>>> upstream/develop
 });
 
 export default mongoose.model('opportunity', opportunitySchema);

@@ -179,6 +179,25 @@ class opportunityManager {
       throw err;
     }
   }
+
+
+  async updateOpportunity(
+    queryObject,
+    updatingprops
+  ){
+
+
+    try {
+      let updatedOpportunity = await this.opportunity.updateOne(queryObject,{
+        $set:updatingprops
+      });
+      return updatedOpportunity;
+    } catch (err) {
+      console.log('ERROR IN UpdatingOpportunity OpportunityMANAGER');
+      throw err;
+    }
+
+  }
 }
 
 export default opportunityManager;
