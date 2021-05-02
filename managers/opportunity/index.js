@@ -162,8 +162,18 @@ class opportunityManager {
 
       // Once a Valid Query(The one which is inside the Range) is entered, we render the Results
       try {
-        //result.results = await this.opportunity.find().skip(skip).limit(limit);
-        result.results = await this.opportunity.find(); // TODO: pagination is not working
+        result.results = await this.opportunity.find(
+          {
+            /* Everything*/
+          },
+          {
+            /* No constraints */
+          },
+          {
+            skip: skip,
+            limit: limit,
+          }
+        );
 
         return result;
       } catch (e) {
@@ -171,6 +181,16 @@ class opportunityManager {
       }
     } catch (err) {
       console.log('ERR getOpportunities: ', err.stack);
+      throw err;
+    }
+  }
+
+  async deleteOpportunity(opportunity_id) {
+    try {
+      let deletedDocument = await this.opportunity.findByIdAndRemove(opportunity_id);
+      return deletedDocument;
+    } catch (err) {
+      console.log('ERROR IN deleteOpportunity MANAGER');
       throw err;
     }
   }

@@ -1,22 +1,8 @@
 import { expect } from 'chai';
-import mongoose from 'mongoose';
 import sinon from 'sinon';
 import stubValue from '../fakedata.js';
 import Opportunity from '../../models/opportunity.js';
-import { db_user, db_pwd, db_host, db_name } from '../../config.js';
 import OpportunityManager from '../../managers/opportunity/index.js';
-
-function connectDB() {
-  const mongoSrvString = `mongodb+srv://${db_user}:${db_pwd}@${db_host}/${db_name}?retryWrites=true&w=majority`;
-
-  // connect the database
-  return mongoose.connect(mongoSrvString, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-    useCreateIndex: true,
-    useFindAndModify: true,
-  });
-}
 
 describe('OpportunityManager', function () {
   describe('createOpportunity', function () {
@@ -33,7 +19,11 @@ describe('OpportunityManager', function () {
         stubValue.opportunityRegistrationDeadline,
         stubValue.opportunityDate,
         stubValue.opportunityURL,
+<<<<<<< HEAD
         stubValue.onlyForFemale ,
+=======
+        stubValue.onlyForFemale,
+>>>>>>> upstream/develop
         stubValue.organisationLogoURL
       );
       expect(stub.calledOnce).to.be.true;
@@ -55,25 +45,32 @@ describe('OpportunityManager', function () {
       expect(opportunity.opportunityURL).to.equal(stubValue.opportunityURL);
       expect(opportunity.createdAt).to.equal(stubValue.createdAt);
       expect(opportunity.updatedAt).to.equal(stubValue.updatedAt);
+<<<<<<< HEAD
       expect(opportunity.organisationLogoURL).to.equal(stubValue.organisationLogoURL) ;
+=======
+      expect(opportunity.organisationLogoURL).to.equal(
+        stubValue.organisationLogoURL
+      );
+>>>>>>> upstream/develop
     });
   });
 
   describe('getOpportunities', function () {
     it('should retrieve Opportunities with specific opportunityType', async function () {
       const stub = sinon.stub(Opportunity, 'find').returns(stubValue);
-      const stubCountDocuments = sinon.stub(Opportunity, 'countDocuments').returns({
-        exec : async () => 10
-      });
-      
+      const stubCountDocuments = sinon
+        .stub(Opportunity, 'countDocuments')
+        .returns({
+          exec: async () => 10,
+        });
+
       const opportunityManager = new OpportunityManager();
       const opportunity = (
         await opportunityManager.getOpportunities({
           type: stubValue.opportunityType,
         })
-        ).results;
-        
-      
+      ).results;
+
       expect(stubCountDocuments.calledOnce).to.be.true;
       expect(stub.calledOnce).to.be.true;
       expect(opportunity.opportunityTitle).to.equal(stubValue.opportunityTitle);
@@ -94,7 +91,13 @@ describe('OpportunityManager', function () {
       expect(opportunity.opportunityURL).to.equal(stubValue.opportunityURL);
       expect(opportunity.createdAt).to.equal(stubValue.createdAt);
       expect(opportunity.updatedAt).to.equal(stubValue.updatedAt);
+<<<<<<< HEAD
       expect(opportunity.organisationLogoURL).to.equal(stubValue.organisationLogoURL) ;
+=======
+      expect(opportunity.organisationLogoURL).to.equal(
+        stubValue.organisationLogoURL
+      );
+>>>>>>> upstream/develop
     });
   });
 
@@ -148,7 +151,47 @@ describe('OpportunityManager', function () {
       );
       expect(updatedOpportunity.createdAt).to.equal(stubValue.createdAt);
       expect(updatedOpportunity.updatedAt).to.equal(stubValue.updatedAt);
+<<<<<<< HEAD
       expect(updatedOpportunity.organisationLogoURL).to.equal(stubValue.organisationLogoURL);
+=======
+      expect(updatedOpportunity.organisationLogoURL).to.equal(
+        stubValue.organisationLogoURL
+      );
+    });
+  });
+
+  describe('deleteOpportunity', function () {
+    it('should delete existing Opportunity', async function () {
+      const stub = sinon
+        .stub(Opportunity, 'findByIdAndRemove')
+        .returns(stubValue);
+      const opportunityManager = new OpportunityManager();
+      const queryObject = { _id: stubValue._id };
+
+      const deletedOpportunity = await opportunityManager.deleteOpportunity(
+        queryObject
+      );
+      expect(stub.calledOnce).to.be.true;
+
+      expect(deletedOpportunity.opportunityTitle).to.equal(
+        stubValue.opportunityTitle
+      );
+      expect(deletedOpportunity.opportunityType).to.equal(
+        stubValue.opportunityType
+      );
+      expect(deletedOpportunity.opportunityOrganisation).to.equal(
+        stubValue.opportunityOrganisation
+      );
+      expect(deletedOpportunity.opportunityLocation).to.equal(
+        stubValue.opportunityLocation
+      );
+      expect(deletedOpportunity.opportunityDescription).to.equal(
+        stubValue.opportunityDescription
+      );
+      expect(deletedOpportunity.opportunityRegistrationDeadline).to.equal(
+        stubValue.opportunityRegistrationDeadline
+      );
+>>>>>>> upstream/develop
     });
   }); 
 });

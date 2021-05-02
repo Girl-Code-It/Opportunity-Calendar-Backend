@@ -13,13 +13,26 @@ import swaggerUiExpress from 'swagger-ui-express';
 import swaggerJSDoc from 'swagger-jsdoc';
 const { json } = express;
 const { serve, setup } = swaggerUiExpress;
+import passport from 'passport';
+import passport_init from './authentication/strategies/google.js';
+passport_init();
+import morgan from 'morgan';
 
 import { db_user, db_pwd, db_host, db_name } from './config.js';
 
 //requiring routes
 import indexRoutes from './routes/index.js';
 import opportunityRoutes from './routes/opportunity.js';
+import authRoutes from './routes/authenticate.js';
 
+
+//Logging Services
+app.use(morgan('common'));
+//Set this string for testing purpost if you want to connect to local non-password protected mongodb
+//DO NOT FORGET TO COMMENT THIS ONE
+// const mongoSrvString = `mongodb://${db_host}/${db_name}?retryWrites=true&w=majority`;
+
+//DO NOT FORGET TO UNCOMMENT THIS ONE
 const mongoSrvString = `mongodb+srv://${db_user}:${db_pwd}@${db_host}/${db_name}?retryWrites=true&w=majority`;
 
 // connect the database
@@ -43,6 +56,7 @@ app.use(cors());
 //app.use(bodyParser.json());
 // express has got its own middleware for bodyparsing, use this as an alternative to bodyparser.json()
 app.use(json());
+app.use(passport.initialize());
 
 app.set('view engine', 'ejs');
 app.use(express.static(__dirname + '/public'));
@@ -50,6 +64,7 @@ app.use(methodOverride('_method')); //to support HTTP Verbs other than GET,POST
 
 app.use('/', indexRoutes);
 app.use('/opportunity', opportunityRoutes);
+app.use('/auth/',authRoutes);
 
 // swagger
 app.use('/playground', serve);
