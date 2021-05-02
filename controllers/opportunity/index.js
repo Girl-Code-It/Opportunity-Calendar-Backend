@@ -5,9 +5,7 @@ class opportunityController {
     this.opportunityService = opportunityService;
   }
   async createOpportunity(req, res) {
-    console.log('Inside controller');
     const {
-      opportunityId,
       opportunityTitle,
       opportunityType,
       opportunityOrganisation,
@@ -17,11 +15,11 @@ class opportunityController {
       opportunityRegistrationDeadline,
       opportunityDate,
       opportunityURL,
+      onlyForFemale,
     } = req.body;
 
     try {
       let newOpportunity = await this.opportunityService.createOpportunity(
-        opportunityId,
         opportunityTitle,
         opportunityType,
         opportunityOrganisation,
@@ -30,7 +28,8 @@ class opportunityController {
         opportunityEligibility,
         opportunityRegistrationDeadline,
         opportunityDate,
-        opportunityURL
+        opportunityURL,
+        onlyForFemale
       );
 
       return res.status(201).json({
@@ -62,6 +61,47 @@ class opportunityController {
         status: 'fail',
         error: err.message,
       });
+    }
+  }
+
+  // delete oppertunity
+  async deleteOpportunity(req, res) {
+    console.log('Inside controller');
+    const opportunity_id = req.params.opportunity_id;
+    try {
+      let deletedOpportunity = await this.opportunityService.deleteOpportunity(
+        opportunity_id
+      );
+      return res.status(200).json({
+        status: 'success',
+        data: deletedOpportunity,
+      });
+    } catch (err) {
+      console.log('ERROR IN deleteOpportunity OpportunityController', err);
+      return res.status(400).json({
+        status: 'fail',
+        error: err.message,
+      });
+    }
+  }
+
+  //updateOpportunities
+  async updateOpportunity(req, res) {
+    let opportunity_id = req.params.opportunity_id;
+    let queryObject = { _id: opportunity_id };
+    let updatingprops = req.body;
+    try {
+      let updatedOpportunity = await this.opportunityService.updateOpportunity(
+        queryObject,
+        updatingprops
+      );
+
+      return res.status(201).json({
+        data: updatedOpportunity,
+      });
+    } catch (err) {
+      console.log('ERROR IN updating Opportunity OpportunityController', err);
+      return res.status(400).send(err);
     }
   }
 }

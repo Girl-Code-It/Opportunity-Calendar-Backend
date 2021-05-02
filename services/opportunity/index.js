@@ -3,7 +3,6 @@ class opportunityService {
     this.opportunityManager = opportunityManager;
   }
   async createOpportunity(
-    opportunityId,
     opportunityTitle,
     opportunityType,
     opportunityOrganisation,
@@ -12,13 +11,13 @@ class opportunityService {
     opportunityEligibility,
     opportunityRegistrationDeadline,
     opportunityDate,
-    opportunityURL
+    opportunityURL,
+    onlyForFemale
   ) {
     console.log('Inside Service');
 
     try {
       let newOpportunity = await this.opportunityManager.createOpportunity(
-        opportunityId,
         opportunityTitle,
         opportunityType,
         opportunityOrganisation,
@@ -27,7 +26,8 @@ class opportunityService {
         opportunityEligibility,
         opportunityRegistrationDeadline,
         opportunityDate,
-        opportunityURL
+        opportunityURL,
+        onlyForFemale
       );
       return newOpportunity;
     } catch (err) {
@@ -46,6 +46,29 @@ class opportunityService {
       return fetchedOpportunities;
     } catch (err) {
       console.log('ERROR IN  getOpportunities OpportunityServices');
+      throw err;
+    }
+  }
+
+  async deleteOpportunity(opportunity_id) {
+    try {
+      let deletedDocument = await this.opportunityManager.deleteOpportunity(opportunity_id);
+      return deletedDocument;
+    } catch (err) {
+      console.log('ERROR IN deleteOpportunity Service');
+      throw err;
+    }
+  }
+
+  async updateOpportunity(queryObject, updatingprops) {
+    try {
+      let updatedOpportunity = await this.opportunityManager.updateOpportunity(
+        queryObject,
+        updatingprops
+      );
+      return updatedOpportunity;
+    } catch (err) {
+      console.log('ERROR IN updatedOpportunity OpportunityServices');
       throw err;
     }
   }
