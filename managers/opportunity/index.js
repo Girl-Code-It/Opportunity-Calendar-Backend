@@ -185,6 +185,16 @@ class opportunityManager {
     }
   }
 
+  async deleteOpportunity(opportunity_id) {
+    try {
+      let deletedDocument = await this.opportunity.findByIdAndRemove(opportunity_id);
+      return deletedDocument;
+    } catch (err) {
+      console.log('ERROR IN deleteOpportunity MANAGER');
+      throw err;
+    }
+  }
+
   async updateOpportunity(queryObject, updatingprops) {
     try {
       let updatedOpportunity = await this.opportunity.updateOne(queryObject, {

@@ -19,7 +19,7 @@ describe('OpportunityManager', function () {
         stubValue.opportunityRegistrationDeadline,
         stubValue.opportunityDate,
         stubValue.opportunityURL,
-        stubValue.onlyForFemale ,
+        stubValue.onlyForFemale,
         stubValue.organisationLogoURL
       );
       expect(stub.calledOnce).to.be.true;
@@ -41,25 +41,28 @@ describe('OpportunityManager', function () {
       expect(opportunity.opportunityURL).to.equal(stubValue.opportunityURL);
       expect(opportunity.createdAt).to.equal(stubValue.createdAt);
       expect(opportunity.updatedAt).to.equal(stubValue.updatedAt);
-      expect(opportunity.organisationLogoURL).to.equal(stubValue.organisationLogoURL) ;
+      expect(opportunity.organisationLogoURL).to.equal(
+        stubValue.organisationLogoURL
+      );
     });
   });
 
   describe('getOpportunities', function () {
     it('should retrieve Opportunities with specific opportunityType', async function () {
       const stub = sinon.stub(Opportunity, 'find').returns(stubValue);
-      const stubCountDocuments = sinon.stub(Opportunity, 'countDocuments').returns({
-        exec : async () => 10
-      });
-      
+      const stubCountDocuments = sinon
+        .stub(Opportunity, 'countDocuments')
+        .returns({
+          exec: async () => 10,
+        });
+
       const opportunityManager = new OpportunityManager();
       const opportunity = (
         await opportunityManager.getOpportunities({
           type: stubValue.opportunityType,
         })
-        ).results;
-        
-      
+      ).results;
+
       expect(stubCountDocuments.calledOnce).to.be.true;
       expect(stub.calledOnce).to.be.true;
       expect(opportunity.opportunityTitle).to.equal(stubValue.opportunityTitle);
@@ -80,7 +83,9 @@ describe('OpportunityManager', function () {
       expect(opportunity.opportunityURL).to.equal(stubValue.opportunityURL);
       expect(opportunity.createdAt).to.equal(stubValue.createdAt);
       expect(opportunity.updatedAt).to.equal(stubValue.updatedAt);
-      expect(opportunity.organisationLogoURL).to.equal(stubValue.organisationLogoURL) ;
+      expect(opportunity.organisationLogoURL).to.equal(
+        stubValue.organisationLogoURL
+      );
     });
   });
 
@@ -134,7 +139,43 @@ describe('OpportunityManager', function () {
       );
       expect(updatedOpportunity.createdAt).to.equal(stubValue.createdAt);
       expect(updatedOpportunity.updatedAt).to.equal(stubValue.updatedAt);
-      expect(updatedOpportunity.organisationLogoURL).to.equal(stubValue.organisationLogoURL);
+      expect(updatedOpportunity.organisationLogoURL).to.equal(
+        stubValue.organisationLogoURL
+      );
     });
-  }); 
+  });
+
+  describe('deleteOpportunity', function () {
+    it('should delete existing Opportunity', async function () {
+      const stub = sinon
+        .stub(Opportunity, 'findByIdAndRemove')
+        .returns(stubValue);
+      const opportunityManager = new OpportunityManager();
+      const queryObject = { _id: stubValue._id };
+
+      const deletedOpportunity = await opportunityManager.deleteOpportunity(
+        queryObject
+      );
+      expect(stub.calledOnce).to.be.true;
+
+      expect(deletedOpportunity.opportunityTitle).to.equal(
+        stubValue.opportunityTitle
+      );
+      expect(deletedOpportunity.opportunityType).to.equal(
+        stubValue.opportunityType
+      );
+      expect(deletedOpportunity.opportunityOrganisation).to.equal(
+        stubValue.opportunityOrganisation
+      );
+      expect(deletedOpportunity.opportunityLocation).to.equal(
+        stubValue.opportunityLocation
+      );
+      expect(deletedOpportunity.opportunityDescription).to.equal(
+        stubValue.opportunityDescription
+      );
+      expect(deletedOpportunity.opportunityRegistrationDeadline).to.equal(
+        stubValue.opportunityRegistrationDeadline
+      );
+    });
+  });
 });
