@@ -50,9 +50,9 @@ class opportunityService {
     }
   }
 
-  async deleteOpportunity(id) {
+  async deleteOpportunity(opportunity_id) {
     try {
-      let deletedDocument = await this.opportunityManager.deleteOpportunity(id);
+      let deletedDocument = await this.opportunityManager.deleteOpportunity(opportunity_id);
       return deletedDocument;
     } catch (err) {
       console.log('ERROR IN deleteOpportunity Service');

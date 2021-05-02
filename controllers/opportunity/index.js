@@ -67,10 +67,10 @@ class opportunityController {
   // delete oppertunity
   async deleteOpportunity(req, res) {
     console.log('Inside controller');
-    const id = req.params.id;
+    const opportunity_id = req.params.opportunity_id;
     try {
       let deletedOpportunity = await this.opportunityService.deleteOpportunity(
-        id
+        opportunity_id
       );
       return res.status(200).json({
         status: 'success',

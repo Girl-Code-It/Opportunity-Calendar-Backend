@@ -64,6 +64,10 @@ const opportunityManager = new OpportunityManager(),
  *                   type: boolean
  *                   description: Represents if the opportunity is only for females
  *                   example: true
+ *                 organisationLogoURL:
+ *                   type:string
+ *                   description:URL of the organisation 
+ *                   example:www.amazon.com 
  *       post_schema:
  *         type: object
  *         required:
@@ -106,6 +110,9 @@ const opportunityManager = new OpportunityManager(),
  *           onlyForFemale:
  *             type: boolean
  *             description: Represents if the opportunity is only for females
+ *           organisationLogoURL:
+ *             type: string
+ *             description: URL of the organisation
  */
 
 /**
@@ -225,6 +232,9 @@ router.post('/', (req, res) => {
  *              opportunityURL:
  *                type: string
  *                description: URL of the opportunity
+ *              organisationLogoURL:
+ *                type:string 
+ *                description :URL of the organisation
  *     responses:
  *      201:
  *        description: Opportunity is successfully updated!
@@ -237,13 +247,17 @@ router.patch('/:opportunity_id', (req, res) => {
 });
 
 /**
- * @openapi1
- * /opportunity:
+ * @swagger
+ * /opportunity/{opportunity_id}:
  *   delete:
  *     summary: Deletes an opportunity
  *     description: Deletes an opportunity from the database based on the id provided!
  *     parameters:
- *      - id: type
+ *      - name: opportunity_id
+ *        in: path
+ *        schema:
+ *          type: string
+ *        description: mongo_id of a Particular opportunity
  *     responses:
  *       200:
  *         description: Deletes the opportunity from the database and returns the deleted oppprtunity!
@@ -298,7 +312,7 @@ router.patch('/:opportunity_id', (req, res) => {
  *
  */
 
-router.delete('/:id', (req, res) => {
+router.delete('/:opportunity_id', (req, res) => {
   console.log('Inside delete route');
   opportunityController.deleteOpportunity(req, res);
 });
