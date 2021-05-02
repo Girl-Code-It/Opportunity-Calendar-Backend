@@ -87,7 +87,6 @@ describe('OpportunityController', function () {
 
   describe('updateOppportunity', function () {
     let status, json, req, res, opportunityController, opportunityService;
-
     beforeEach(() => {
       status = sinon.stub();
       json = sinon.spy();
@@ -128,6 +127,41 @@ describe('OpportunityController', function () {
       expect(stub.calledOnce).to.be.true;
       expect(status.calledOnce).to.be.true;
       expect(status.firstCall.args[0]).to.equal(201);
+      expect(json.calledOnce).to.be.true;
+      expect(json.firstCall.args[0].data).to.equal(stubValue);
+    });
+  });
+
+  describe('deleteOppertunity', function () {
+    let status, json, res, opportunityController, opportunityService;
+
+    beforeEach(() => {
+      status = sinon.stub();
+      json = sinon.spy();
+      res = {
+        json,
+        status,
+      };
+      status.returns(res);
+      const opportunityManager = sinon.spy();
+      opportunityService = new OpportunityService(opportunityManager);
+    });
+
+    it('should delete an Opportunity from the Opportunity database', async function () {
+      const req = {
+        params: {
+          _id: stubValue._id,
+        },
+      };
+
+      const stub = sinon
+        .stub(opportunityService, 'deleteOpportunity')
+        .returns(stubValue);
+      opportunityController = new OpportunityController(opportunityService);
+      await opportunityController.deleteOpportunity(req, res);
+      expect(stub.calledOnce).to.be.true;
+      expect(status.calledOnce).to.be.true;
+      expect(status.firstCall.args[0]).to.equal(200);
       expect(json.calledOnce).to.be.true;
       expect(json.firstCall.args[0].data).to.equal(stubValue);
     });

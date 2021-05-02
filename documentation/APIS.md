@@ -45,7 +45,21 @@
   - 200 - If opportunity successfully fetched
   - 400 - If opportunity could not be fetched
 
-3. **Update Opportunity**
+3. **Delete Opportunity**
+
+- METHOD - DELETE
+- EndPoint - http://localhost:3030/opportunity/:id
+- Functionality -
+  - Deleted the opportunity from the database having id as passed in params
+  - Returns the deleted opportunity
+- Route Param = \_id
+- Response -
+  - deletedOpportunity
+  - Error
+- Status Code -
+  - 200 - If opportunity successfully deleted
+
+4. **Update Opportunity**
 
 - Method - PATCH
 
