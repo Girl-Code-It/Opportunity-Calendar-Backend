@@ -70,6 +70,9 @@ describe('OpportunityManager', function () {
       expect(opportunity.opportunityRegistrationDeadline).to.equal(
         stubValue.opportunityRegistrationDeadline
       );
+      expect(opportunity.organisationLogoURL).to.equal(
+        stubValue.organisationLogoURL
+      );
       expect(opportunity.opportunityDate).to.equal(stubValue.opportunityDate);
       expect(opportunity.opportunityURL).to.equal(stubValue.opportunityURL);
       expect(opportunity.createdAt).to.equal(stubValue.createdAt);
@@ -169,3 +172,4 @@ describe('OpportunityManager', function () {
       );
     });
   });
+
