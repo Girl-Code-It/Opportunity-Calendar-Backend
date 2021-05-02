@@ -3,6 +3,7 @@ import sinon from 'sinon';
 import stubValue from '../fakedata.js';
 import Opportunity from '../../models/opportunity.js';
 import OpportunityManager from '../../managers/opportunity/index.js';
+
 describe('OpportunityManager', function () {
   describe('createOpportunity', function () {
     it('should add a new Opportunity to the Opportunity database', async function () {
@@ -18,7 +19,6 @@ describe('OpportunityManager', function () {
         stubValue.opportunityRegistrationDeadline,
         stubValue.opportunityDate,
         stubValue.opportunityURL,
-        stubValue.onlyForFemale
         stubValue.onlyForFemale,
         stubValue.organisationLogoURL
       );
@@ -55,20 +55,6 @@ describe('OpportunityManager', function () {
         type: stubValue.opportunityType,
         female: stubValue.onlyForFemale
       });
-      const stubCountDocuments = sinon
-        .stub(Opportunity, 'countDocuments')
-        .returns({
-          exec: async () => 10,
-        });
-
-      const opportunityManager = new OpportunityManager();
-      const opportunity = (
-        await opportunityManager.getOpportunities({
-          type: stubValue.opportunityType,
-        })
-      ).results;
-
-      expect(stubCountDocuments.calledOnce).to.be.true;
       expect(stub.calledOnce).to.be.true;
       expect(opportunity.opportunityTitle).to.equal(stubValue.opportunityTitle);
       expect(opportunity.opportunityType).to.equal(stubValue.opportunityType);
@@ -91,11 +77,8 @@ describe('OpportunityManager', function () {
       expect(opportunity.onlyForFemale).to.equal(stubValue.onlyForFemale);
     });
   });
-      expect(opportunity.organisationLogoURL).to.equal(
-        stubValue.organisationLogoURL
-      );
-    });
-  });
+});
+
 
   describe('updateOpportunity', function () {
     it('should update existing Opportunity', async function () {
@@ -186,4 +169,3 @@ describe('OpportunityManager', function () {
       );
     });
   });
-});
