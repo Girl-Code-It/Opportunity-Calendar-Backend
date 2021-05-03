@@ -22,4 +22,6 @@ let stubValue = {
   updatedAt: faker.date.past(),
 };
 
-export default stubValue;
+let fakedataArray = [stubValue, stubValue, stubValue, stubValue];
+
+export { stubValue, fakedataArray };
