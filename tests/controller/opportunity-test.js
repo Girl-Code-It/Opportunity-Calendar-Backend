@@ -1,6 +1,6 @@
 import { expect } from 'chai';
 import sinon from 'sinon';
-import stubValue from '../fakedata.js';
+import { stubValue } from '../fakedata.js';
 import OpportunityService from '../../services/opportunity/index.js';
 import OpportunityController from '../../controllers/opportunity/index.js';
 
@@ -11,7 +11,7 @@ describe('OpportunityController', function () {
       status = sinon.stub();
       json = sinon.spy();
       res = {
-        json, 
+        json,
         status,
       };
       status.returns(res);
@@ -33,7 +33,7 @@ describe('OpportunityController', function () {
           opportunityDate: stubValue.opportunityDate,
           opportunityURL: stubValue.opportunityURL,
           onlyForFemale: stubValue.onlyForFemale,
-          organisationURL:stubValue.organisationURL
+          organisationURL: stubValue.organisationURL,
         },
       };
 
@@ -114,7 +114,7 @@ describe('OpportunityController', function () {
             stubValue.opportunityRegistrationDeadline,
           opportunityDate: stubValue.opportunityDate,
           opportunityURL: stubValue.opportunityURL,
-          organisationURL:stubValue.organisationURL
+          organisationURL: stubValue.organisationURL,
         },
       };
 

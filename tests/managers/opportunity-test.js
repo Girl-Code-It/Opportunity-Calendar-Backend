@@ -1,6 +1,6 @@
 import { expect } from 'chai';
 import sinon from 'sinon';
-import stubValue from '../fakedata.js';
+import { stubValue, fakedataArray } from '../fakedata.js';
 import Opportunity from '../../models/opportunity.js';
 import OpportunityManager from '../../managers/opportunity/index.js';
 
@@ -48,23 +48,25 @@ describe('OpportunityManager', function () {
   });
 
   describe('getOpportunities', function () {
-    it('should retrieve Opportunities with specific opportunityType', async function () {
-      const stub = sinon.stub(Opportunity, 'find').returns(stubValue);
-      const stubCountDocuments = sinon
-        .stub(Opportunity, 'countDocuments')
-        .returns({
-          exec: async () => 10,
-        });
+    const stub = sinon.stub(Opportunity, 'find').returns(fakedataArray);
+    const stubCountDocuments = sinon
+      .stub(Opportunity, 'countDocuments')
+      .returns({
+        exec: async () => 10,
+      });
 
-      const opportunityManager = new OpportunityManager();
-      const opportunity = (
-        await opportunityManager.getOpportunities({
-          type: stubValue.opportunityType,
-        })
-      ).results;
+    const opportunityManager = new OpportunityManager();
+
+    it('should retrieve Opportunities with specific opportunityType', async function () {
+      const result = await opportunityManager.getOpportunities({
+        type: stubValue.opportunityType,
+      });
+
+      const opportunity = result.results[0];
 
       expect(stubCountDocuments.calledOnce).to.be.true;
       expect(stub.calledOnce).to.be.true;
+      expect(result.results.length).to.equal(4);
       expect(opportunity.opportunityTitle).to.equal(stubValue.opportunityTitle);
       expect(opportunity.opportunityType).to.equal(stubValue.opportunityType);
       expect(opportunity.opportunityOrganisation).to.equal(
@@ -85,6 +87,46 @@ describe('OpportunityManager', function () {
       expect(opportunity.updatedAt).to.equal(stubValue.updatedAt);
       expect(opportunity.organisationLogoURL).to.equal(
         stubValue.organisationLogoURL
+      );
+    });
+
+    it('should have a next page', async function () {
+      const result = await opportunityManager.getOpportunities({
+        type: stubValue.opportunityType,
+        limit: 2,
+      });
+
+      expect(result.next).to.be.an('object');
+    });
+
+    it('should warn for exeeding page limit', async function () {
+      const result = await opportunityManager.getOpportunities({
+        type: stubValue.opportunityType,
+        page: 2,
+      });
+
+      expect(result.results).to.equal('The maximum allowed pages are 1');
+    });
+
+    it('should have a previous page', async function () {
+      const result = await opportunityManager.getOpportunities({
+        type: stubValue.opportunityType,
+        limit: 2,
+        page: 2,
+      });
+
+      expect(result.previous).to.be.an('object');
+    });
+
+    it('should not have negative parameters', async function () {
+      const result = await opportunityManager.getOpportunities({
+        type: stubValue.opportunityType,
+        limit: -9,
+        page: -7,
+      });
+
+      expect(result.results).to.equal(
+        'The Parameters cannot be Negative or Zero'
       );
     });
   });
