@@ -68,6 +68,7 @@ Updates about following opportunities are available:
 - **Framework** - ExpressJS
 - **Database** - MongoDB
 - **Cloud database service** - MongoDB Atlas
+- **API Documentation** - [JSDoc and Swagger](https://dev.to/kabartolo/how-to-document-an-express-api-with-swagger-ui-and-jsdoc-50do)
 
 ## Guidelines for GSSOC Participants <img src="./assets/op-guideline.png" width="3%">
 
@@ -117,8 +118,6 @@ We will structure our application using the controller, service, and, manager pa
 1. The `manager class` handles getting data into and out of our data store. A manager is used between the service layer and the model layer. For example, in the opportunityManager you would create methods that write/read a opportunity to and from the database.
 2. The `service class` calls the manager class and can combine their data to form new, more complex business objects. It is an abstraction between the controller and the manager.
 3. A `controller` contains very little logic and is used to make calls to services.
-
-[Documenting API using JSDoc and Swagger](https://dev.to/kabartolo/how-to-document-an-express-api-with-swagger-ui-and-jsdoc-50do)
 
 ## Bugs and Feature Request <img src="./assets/op-bug.png" width="3%">
 

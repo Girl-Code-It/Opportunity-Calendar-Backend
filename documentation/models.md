@@ -1,8 +1,8 @@
-_All changes to models shall be documented here_
+All changes to models shall be documented here\_
 
 ### Opportunity Schema
 
-- **oportunityTitle**
+- **opportunityTitle**
 
   - Datatype: String
   - Required: true

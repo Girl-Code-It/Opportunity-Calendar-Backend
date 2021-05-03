@@ -23,7 +23,8 @@ describe('OpportunityService', function () {
         stubValue.opportunityRegistrationDeadline,
         stubValue.opportunityDate,
         stubValue.opportunityURL,
-        stubValue.onlyForFemale
+        stubValue.onlyForFemale,
+        
       );
       expect(stub.calledOnce).to.be.true;
       expect(opportunity.opportunityTitle).to.equal(stubValue.opportunityTitle);
@@ -76,6 +77,101 @@ describe('OpportunityService', function () {
       expect(opportunity.opportunityURL).to.equal(stubValue.opportunityURL);
       expect(opportunity.createdAt).to.equal(stubValue.createdAt);
       expect(opportunity.updatedAt).to.equal(stubValue.updatedAt);
+    });
+  });
+
+  describe('updateOpportunity', function () {
+    it('should update existing Opportunit', async function () {
+      const opportunityManager = new OpportunityManager();
+      const stub = sinon
+        .stub(opportunityManager, 'updateOpportunity')
+        .returns(stubValue);
+      const opportunityService = new OpportunityService(opportunityManager);
+      const queryObject = { _id: stubValue._id };
+      const updatingobject = {
+        opportunityTitle: stubValue.opportunityTitle,
+        opportunityType: stubValue.opportunityType,
+        opportunityOrganisation: stubValue.opportunityOrganisation,
+        opportunityLocation: stubValue.opportunityLocation,
+        opportunityDescription: stubValue.opportunityDescription,
+        opportunityEligibility: stubValue.opportunityEligibility,
+        opportunityRegistrationDeadline:
+          stubValue.opportunityRegistrationDeadline,
+        opportunityDate: stubValue.opportunityDate,
+        opportunityURL: stubValue.opportunityURL,
+      };
+      const updatedOpportunity = await opportunityService.updateOpportunity(
+        queryObject,
+        updatingobject
+      );
+      expect(stub.calledOnce).to.be.true;
+      expect(updatedOpportunity.opportunityTitle).to.equal(
+        stubValue.opportunityTitle
+      );
+      expect(updatedOpportunity.opportunityType).to.equal(
+        stubValue.opportunityType
+      );
+      expect(updatedOpportunity.opportunityOrganisation).to.equal(
+        stubValue.opportunityOrganisation
+      );
+      expect(updatedOpportunity.opportunityLocation).to.equal(
+        stubValue.opportunityLocation
+      );
+      expect(updatedOpportunity.opportunityDescription).to.equal(
+        stubValue.opportunityDescription
+      );
+      expect(updatedOpportunity.opportunityRegistrationDeadline).to.equal(
+        stubValue.opportunityRegistrationDeadline
+      );
+      expect(updatedOpportunity.opportunityDate).to.equal(
+        stubValue.opportunityDate
+      );
+      expect(updatedOpportunity.opportunityURL).to.equal(
+        stubValue.opportunityURL
+      );
+      expect(updatedOpportunity.createdAt).to.equal(stubValue.createdAt);
+      expect(updatedOpportunity.updatedAt).to.equal(stubValue.updatedAt);
+    });
+  });
+
+  describe('deleteOpportunity', function () {
+    it('should delete existing Opportunit', async function () {
+      const opportunityManager = new OpportunityManager();
+      const stub = sinon
+        .stub(opportunityManager, 'deleteOpportunity')
+        .returns(stubValue);
+      const opportunityService = new OpportunityService(opportunityManager);
+      const queryObject = { _id: stubValue._id };
+      const deletedOpportunity = await opportunityService.deleteOpportunity(
+        queryObject
+      );
+      expect(stub.calledOnce).to.be.true;
+      expect(deletedOpportunity.opportunityTitle).to.equal(
+        stubValue.opportunityTitle
+      );
+      expect(deletedOpportunity.opportunityType).to.equal(
+        stubValue.opportunityType
+      );
+      expect(deletedOpportunity.opportunityOrganisation).to.equal(
+        stubValue.opportunityOrganisation
+      );
+      expect(deletedOpportunity.opportunityLocation).to.equal(
+        stubValue.opportunityLocation
+      );
+      expect(deletedOpportunity.opportunityDescription).to.equal(
+        stubValue.opportunityDescription
+      );
+      expect(deletedOpportunity.opportunityRegistrationDeadline).to.equal(
+        stubValue.opportunityRegistrationDeadline
+      );
+      expect(deletedOpportunity.opportunityDate).to.equal(
+        stubValue.opportunityDate
+      );
+      expect(deletedOpportunity.opportunityURL).to.equal(
+        stubValue.opportunityURL
+      );
+      expect(deletedOpportunity.createdAt).to.equal(stubValue.createdAt);
+      expect(deletedOpportunity.updatedAt).to.equal(stubValue.updatedAt);
     });
   });
 });
