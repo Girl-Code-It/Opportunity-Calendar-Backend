@@ -1,8 +1,9 @@
-import { expect } from 'chai';
+import { assert, expect } from 'chai';
 import sinon from 'sinon';
 import stubValue from '../fakedata.js';
 import Opportunity from '../../models/opportunity.js';
 import OpportunityManager from '../../managers/opportunity/index.js';
+import opportunity from '../../models/opportunity.js';
 
 describe('OpportunityManager', function () {
   describe('createOpportunity', function () {
@@ -19,11 +20,7 @@ describe('OpportunityManager', function () {
         stubValue.opportunityRegistrationDeadline,
         stubValue.opportunityDate,
         stubValue.opportunityURL,
-<<<<<<< HEAD
-        stubValue.onlyForFemale ,
-=======
         stubValue.onlyForFemale,
->>>>>>> upstream/develop
         stubValue.organisationLogoURL
       );
       expect(stub.calledOnce).to.be.true;
@@ -45,13 +42,9 @@ describe('OpportunityManager', function () {
       expect(opportunity.opportunityURL).to.equal(stubValue.opportunityURL);
       expect(opportunity.createdAt).to.equal(stubValue.createdAt);
       expect(opportunity.updatedAt).to.equal(stubValue.updatedAt);
-<<<<<<< HEAD
-      expect(opportunity.organisationLogoURL).to.equal(stubValue.organisationLogoURL) ;
-=======
       expect(opportunity.organisationLogoURL).to.equal(
         stubValue.organisationLogoURL
       );
->>>>>>> upstream/develop
     });
   });
 
@@ -91,13 +84,9 @@ describe('OpportunityManager', function () {
       expect(opportunity.opportunityURL).to.equal(stubValue.opportunityURL);
       expect(opportunity.createdAt).to.equal(stubValue.createdAt);
       expect(opportunity.updatedAt).to.equal(stubValue.updatedAt);
-<<<<<<< HEAD
-      expect(opportunity.organisationLogoURL).to.equal(stubValue.organisationLogoURL) ;
-=======
       expect(opportunity.organisationLogoURL).to.equal(
         stubValue.organisationLogoURL
       );
->>>>>>> upstream/develop
     });
   });
 
@@ -123,6 +112,15 @@ describe('OpportunityManager', function () {
         queryObject,
         updatingobject
       );
+
+      describe('', function () {
+        it.only('The test will fail if id is not present in the DB', function () {
+          // ...
+          expect(stubValue._id.length === 36).to.be.true; // length of id
+          expect(updatedOpportunity._id === stubValue._id).to.be.true;
+        });
+      });
+
       expect(stub.calledOnce).to.be.true;
 
       expect(updatedOpportunity.opportunityTitle).to.equal(
@@ -151,9 +149,6 @@ describe('OpportunityManager', function () {
       );
       expect(updatedOpportunity.createdAt).to.equal(stubValue.createdAt);
       expect(updatedOpportunity.updatedAt).to.equal(stubValue.updatedAt);
-<<<<<<< HEAD
-      expect(updatedOpportunity.organisationLogoURL).to.equal(stubValue.organisationLogoURL);
-=======
       expect(updatedOpportunity.organisationLogoURL).to.equal(
         stubValue.organisationLogoURL
       );
@@ -191,7 +186,6 @@ describe('OpportunityManager', function () {
       expect(deletedOpportunity.opportunityRegistrationDeadline).to.equal(
         stubValue.opportunityRegistrationDeadline
       );
->>>>>>> upstream/develop
     });
-  }); 
+  });
 });

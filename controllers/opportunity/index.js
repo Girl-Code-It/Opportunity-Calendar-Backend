@@ -90,6 +90,7 @@ class opportunityController {
     let opportunity_id = req.params.opportunity_id;
     let queryObject = { _id: opportunity_id };
     let updatingprops = req.body;
+
     try {
       let updatedOpportunity = await this.opportunityService.updateOpportunity(
         queryObject,
