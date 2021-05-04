@@ -115,7 +115,6 @@ describe('OpportunityManager', function () {
 
       describe('', function () {
         it.only('The test will fail if id is not present in the DB', function () {
-          // ...
           expect(stubValue._id.length === 36).to.be.true; // length of id
           expect(updatedOpportunity._id === stubValue._id).to.be.true;
         });
