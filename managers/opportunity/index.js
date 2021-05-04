@@ -55,7 +55,7 @@ class opportunityManager {
         delete queryObject.type;
       }
       if (queryObject.female) {
-        queryObject['onlyForFemale'] = queryObject.female == 'true';
+        queryObject['onlyForFemale'] = queryObject.female === 'true';
         delete queryObject.female;
       }
       console.log('Values in QueryString', queryObject);
@@ -63,7 +63,6 @@ class opportunityManager {
       let fetchedOpportunitiesQuery = this.opportunity.find(queryObject);
       // fetchedOpportunitiesQuery.select('-__v');
       // fetchedOpportunitiesQuery.select('-_id');
-      console.log(fetchedOpportunitiesQuery.data);
       return fetchedOpportunitiesQuery;
 
       //console.log('Values of QueryString', queryObject);
