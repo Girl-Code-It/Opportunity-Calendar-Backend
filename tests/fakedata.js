@@ -20,6 +20,7 @@ let stubValue = {
   opportunityURL: faker.internet.url(),
   createdAt: faker.date.past(),
   updatedAt: faker.date.past(),
+  organisationLogoURL: faker.internet.url(),
 };
 
 export default stubValue;
