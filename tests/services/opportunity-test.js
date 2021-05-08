@@ -29,6 +29,7 @@ describe('OpportunityService', function () {
       expect(stub.calledOnce).to.be.true;
       expect(opportunity.opportunityTitle).to.equal(stubValue.opportunityTitle);
       expect(opportunity.opportunityType).to.equal(stubValue.opportunityType);
+      expect(opportunity.onlyForFemale).to.equal(stubValue.onlyForFemale);
       expect(opportunity.opportunityOrganisation).to.equal(
         stubValue.opportunityOrganisation
       );
@@ -57,10 +58,12 @@ describe('OpportunityService', function () {
       const opportunityService = new OpportunityService(opportunityManager);
       const opportunity = await opportunityService.getOpportunities({
         type: stubValue.opportunityType,
+        female: stubValue.onlyForFemale,
       });
       expect(stub.calledOnce).to.be.true;
       expect(opportunity.opportunityTitle).to.equal(stubValue.opportunityTitle);
       expect(opportunity.opportunityType).to.equal(stubValue.opportunityType);
+      expect(opportunity.onlyForFemale).to.equal(stubValue.onlyForFemale);
       expect(opportunity.opportunityOrganisation).to.equal(
         stubValue.opportunityOrganisation
       );

@@ -133,7 +133,19 @@ const opportunityManager = new OpportunityManager(),
  *             - SCHOLARSHIP
  *             - CONFERENCE
  *             - CODINGCOMPETITION
- *        description: Retrieve a list of opportunities based on particular type.
+ *        description: Retrieve a list of opportunities based on particular type or only for female.
+ *        parameters:
+ *      - in: query
+ *        name: female
+ *        schema:
+ *          type: boolean
+ *     responses:
+ *       200:
+ *         description: A list of opportunities.
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/get_schema'
  *      - in: query
  *        name: page
  *        schema:
@@ -153,6 +165,7 @@ const opportunityManager = new OpportunityManager(),
  *           application/json:
  *             schema:
  *               $ref: '#/components/schemas/get_schema'
+ *
  *
  */
 router.get('/', (req, res) => {

@@ -50,20 +50,11 @@ describe('OpportunityManager', function () {
   describe('getOpportunities', function () {
     it('should retrieve Opportunities with specific opportunityType', async function () {
       const stub = sinon.stub(Opportunity, 'find').returns(stubValue);
-      const stubCountDocuments = sinon
-        .stub(Opportunity, 'countDocuments')
-        .returns({
-          exec: async () => 10,
-        });
-
       const opportunityManager = new OpportunityManager();
-      const opportunity = (
-        await opportunityManager.getOpportunities({
-          type: stubValue.opportunityType,
-        })
-      ).results;
-
-      expect(stubCountDocuments.calledOnce).to.be.true;
+      const opportunity = await opportunityManager.getOpportunities({
+        type: stubValue.opportunityType,
+        female: stubValue.onlyForFemale
+      });
       expect(stub.calledOnce).to.be.true;
       expect(opportunity.opportunityTitle).to.equal(stubValue.opportunityTitle);
       expect(opportunity.opportunityType).to.equal(stubValue.opportunityType);
@@ -79,15 +70,18 @@ describe('OpportunityManager', function () {
       expect(opportunity.opportunityRegistrationDeadline).to.equal(
         stubValue.opportunityRegistrationDeadline
       );
+      expect(opportunity.organisationLogoURL).to.equal(
+        stubValue.organisationLogoURL
+      );
       expect(opportunity.opportunityDate).to.equal(stubValue.opportunityDate);
       expect(opportunity.opportunityURL).to.equal(stubValue.opportunityURL);
       expect(opportunity.createdAt).to.equal(stubValue.createdAt);
       expect(opportunity.updatedAt).to.equal(stubValue.updatedAt);
-      expect(opportunity.organisationLogoURL).to.equal(
-        stubValue.organisationLogoURL
-      );
+      expect(opportunity.onlyForFemale).to.equal(stubValue.onlyForFemale);
     });
   });
+});
+
 
   describe('updateOpportunity', function () {
     it('should update existing Opportunity', async function () {
@@ -178,4 +172,4 @@ describe('OpportunityManager', function () {
       );
     });
   });
-});
+

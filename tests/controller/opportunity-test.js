@@ -57,6 +57,7 @@ describe('OpportunityController', function () {
       req = {
         query: {
           type: stubValue.opportunityType,
+          female: stubValue.onlyForFemale,
         },
       };
       status = sinon.stub();
