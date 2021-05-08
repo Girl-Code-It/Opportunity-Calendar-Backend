@@ -1,8 +1,9 @@
-import { expect } from 'chai';
+import { assert, expect } from 'chai';
 import sinon from 'sinon';
 import stubValue from '../fakedata.js';
 import Opportunity from '../../models/opportunity.js';
 import OpportunityManager from '../../managers/opportunity/index.js';
+import opportunity from '../../models/opportunity.js';
 
 describe('OpportunityManager', function () {
   describe('createOpportunity', function () {
@@ -111,6 +112,14 @@ describe('OpportunityManager', function () {
         queryObject,
         updatingobject
       );
+
+      describe('', function () {
+        it.only('The test will fail if id is not present in the DB', function () {
+          expect(stubValue._id.length === 36).to.be.true; // length of id
+          expect(updatedOpportunity._id === stubValue._id).to.be.true;
+        });
+      });
+
       expect(stub.calledOnce).to.be.true;
 
       expect(updatedOpportunity.opportunityTitle).to.equal(
