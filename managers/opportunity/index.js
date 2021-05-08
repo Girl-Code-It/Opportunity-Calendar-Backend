@@ -47,7 +47,7 @@ class opportunityManager {
         delete queryObject.type;
       }
       if (queryObject.female) {
-        queryObject['onlyForFemale'] = queryObject.female === 'true';
+        queryObject['onlyForFemale'] = queryObject.female === true;
         delete queryObject.female;
       }
       console.log('Values in QueryString', queryObject);
