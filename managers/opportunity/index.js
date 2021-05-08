@@ -1,3 +1,4 @@
+import pagination from '../../helpers/pagination.js';
 import Opportunity from '../../models/opportunity.js';
 class opportunityManager {
   constructor() {
@@ -37,15 +38,6 @@ class opportunityManager {
       throw err;
     }
   }
-
-  // http://localhost:3030/opportunity?limit=4&page=2, Example of how to use the Get Method
-
-  //  page => Means the Current Page that the User Wants
-  //  limit => The count of items/documents that should be rendered on each page
-
-  // suppose total pages are 10 then,
-  // so in short for limit 4 we get results as page 1 = {0,1,2,3} ,  page 2 = {4,5,6,7} and the remaining ones on
-  // page 3 = {8,9}  .
 
   async getOpportunities(queryObject) {
     try {
@@ -189,6 +181,7 @@ class opportunityManager {
       } catch (e) {
         console.log(`ERR: `, e.stack);
       }
+      return pagination(queryObject, this.opportunity);
     } catch (err) {
       console.log('ERR getOpportunities: ', err.stack);
       throw err;
@@ -197,7 +190,9 @@ class opportunityManager {
 
   async deleteOpportunity(opportunity_id) {
     try {
-      let deletedDocument = await this.opportunity.findByIdAndRemove(opportunity_id);
+      let deletedDocument = await this.opportunity.findByIdAndRemove(
+        opportunity_id
+      );
       return deletedDocument;
     } catch (err) {
       console.log('ERROR IN deleteOpportunity MANAGER');
