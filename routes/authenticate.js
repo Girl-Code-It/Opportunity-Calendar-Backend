@@ -42,7 +42,7 @@ router.get('/login', (req, res) => {
 
 router.get(
     '/google-authenticate',
-    passport.authenticate('google',{scope: ['email','profile']}),
+    passport.authenticate('google',{scope : ['email','profile']}),
     (req, res) => {
     });
 
