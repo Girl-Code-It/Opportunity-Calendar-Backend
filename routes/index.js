@@ -1,6 +1,6 @@
 import express from 'express';
 const router = express();
-import { loggedIn } from '../middleware/auth.js'
+import {loggedIn} from '../middleware/auth.js'
 /**
  * @openapi
  * /:
