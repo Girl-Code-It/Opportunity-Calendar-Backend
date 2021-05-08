@@ -156,6 +156,17 @@ describe('OpportunityManager', function () {
       const deletedOpportunity = await opportunityManager.deleteOpportunity(
         queryObject
       );
+      
+      it('should not delete if Opportunity does not exist', function() {
+
+        expect(deletedOpportunity).to.be.true; // checks if deletedOpportunity is present
+        
+        expect(deletedOpportunity._id).to.equal( // checks if deletedOpporutnityId is equal to stubValueId
+          stubValue._id
+        );
+
+      })
+
       expect(stub.calledOnce).to.be.true;
 
       expect(deletedOpportunity.opportunityTitle).to.equal(
