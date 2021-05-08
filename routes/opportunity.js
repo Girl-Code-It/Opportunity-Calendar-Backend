@@ -146,6 +146,26 @@ const opportunityManager = new OpportunityManager(),
  *           application/json:
  *             schema:
  *               $ref: '#/components/schemas/get_schema'
+ *      - in: query
+ *        name: page
+ *        schema:
+ *          type: Integer
+ *          default: 1
+ *        description: The Current Page for which the data User Wants
+ *      - in: query
+ *        name: limit
+ *        schema:
+ *          type: Integer
+ *          default: 10
+ *        description: The count of items/documents that should be returned on each page
+ *     responses:
+ *       200:
+ *         description: A list of opportunities.
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/get_schema'
+ *
  *
  */
 router.get('/', (req, res) => {
