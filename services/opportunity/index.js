@@ -37,8 +37,6 @@ class opportunityService {
   }
 
   async getOpportunities(queryObject) {
-    console.log('Inside Service');
-
     try {
       let fetchedOpportunities = await this.opportunityManager.getOpportunities(
         queryObject
