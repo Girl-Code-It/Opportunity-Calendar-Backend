@@ -43,7 +43,6 @@ class opportunityController {
 
   //getOpportunities
   async getOpportunities(req, res) {
-    console.log('Inside controller');
     const queryObject = { ...req.query };
 
     try {
