@@ -12,10 +12,9 @@ class opportunityService {
     opportunityRegistrationDeadline,
     opportunityDate,
     opportunityURL,
-    onlyForFemale
+    onlyForFemale,
+    organisationLogoURL
   ) {
-    console.log('Inside Service');
-
     try {
       let newOpportunity = await this.opportunityManager.createOpportunity(
         opportunityTitle,
@@ -27,7 +26,8 @@ class opportunityService {
         opportunityRegistrationDeadline,
         opportunityDate,
         opportunityURL,
-        onlyForFemale
+        onlyForFemale,
+        organisationLogoURL
       );
       return newOpportunity;
     } catch (err) {
@@ -50,7 +50,9 @@ class opportunityService {
 
   async deleteOpportunity(opportunity_id) {
     try {
-      let deletedDocument = await this.opportunityManager.deleteOpportunity(opportunity_id);
+      let deletedDocument = await this.opportunityManager.deleteOpportunity(
+        opportunity_id
+      );
       return deletedDocument;
     } catch (err) {
       console.log('ERROR IN deleteOpportunity Service');

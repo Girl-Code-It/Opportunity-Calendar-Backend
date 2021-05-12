@@ -176,6 +176,10 @@ describe('OpportunityManager', function () {
       expect(deletedOpportunity.opportunityRegistrationDeadline).to.equal(
         stubValue.opportunityRegistrationDeadline
       );
+
+      expect(deletedOpportunity.organisationLogoURL).to.equal(
+        stubValue.organisationLogoURL
+      );
     });
   });
 });

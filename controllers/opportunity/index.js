@@ -16,6 +16,7 @@ class opportunityController {
       opportunityDate,
       opportunityURL,
       onlyForFemale,
+      organisationLogoURL,
     } = req.body;
 
     try {
@@ -29,7 +30,8 @@ class opportunityController {
         opportunityRegistrationDeadline,
         opportunityDate,
         opportunityURL,
-        onlyForFemale
+        onlyForFemale,
+        organisationLogoURL
       );
 
       return res.status(201).json({

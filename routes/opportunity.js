@@ -66,8 +66,8 @@ const opportunityManager = new OpportunityManager(),
  *                   example: true
  *                 organisationLogoURL:
  *                   type:string
- *                   description:URL of the organisation 
- *                   example:www.amazon.com 
+ *                   description:URL of the organisation
+ *                   example:www.amazon.com
  *       post_schema:
  *         type: object
  *         required:
@@ -180,7 +180,6 @@ router.get('/', (req, res) => {
  *        description: Sorry, opportunity could not be created!
  */
 router.post('/', (req, res) => {
-  console.log('Inside Route');
   opportunityController.createOpportunity(req, res);
 });
 
@@ -233,7 +232,7 @@ router.post('/', (req, res) => {
  *                type: string
  *                description: URL of the opportunity
  *              organisationLogoURL:
- *                type:string 
+ *                type:string
  *                description :URL of the organisation
  *     responses:
  *      201:
