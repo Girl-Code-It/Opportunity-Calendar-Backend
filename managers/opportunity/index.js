@@ -14,7 +14,8 @@ class opportunityManager {
     opportunityRegistrationDeadline,
     opportunityDate,
     opportunityURL,
-    onlyForFemale
+    onlyForFemale,
+    organisationLogoURL
   ) {
     let opportunity = {
       opportunityTitle: opportunityTitle,
@@ -27,8 +28,8 @@ class opportunityManager {
       opportunityDate: opportunityDate,
       opportunityURL: opportunityURL,
       onlyForFemale: onlyForFemale,
+      organisationLogoURL: organisationLogoURL,
     };
-    //console.log('Values received in manager', opportunity);
 
     try {
       let newOpportunity = await this.opportunity.create(opportunity);
