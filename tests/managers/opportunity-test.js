@@ -49,6 +49,7 @@ describe('OpportunityManager', function () {
 
   describe('getOpportunities', function () {
     const stub = sinon.stub(Opportunity, 'find').returns(fakedataArray);
+
     const stubCountDocuments = sinon
       .stub(Opportunity, 'countDocuments')
       .returns({
@@ -217,6 +218,10 @@ describe('OpportunityManager', function () {
       );
       expect(deletedOpportunity.opportunityRegistrationDeadline).to.equal(
         stubValue.opportunityRegistrationDeadline
+      );
+
+      expect(deletedOpportunity.organisationLogoURL).to.equal(
+        stubValue.organisationLogoURL
       );
     });
   });

@@ -16,6 +16,7 @@ class opportunityController {
       opportunityDate,
       opportunityURL,
       onlyForFemale,
+      organisationLogoURL,
     } = req.body;
 
     try {
@@ -29,7 +30,8 @@ class opportunityController {
         opportunityRegistrationDeadline,
         opportunityDate,
         opportunityURL,
-        onlyForFemale
+        onlyForFemale,
+        organisationLogoURL
       );
 
       return res.status(201).json({
@@ -43,7 +45,6 @@ class opportunityController {
 
   //getOpportunities
   async getOpportunities(req, res) {
-    console.log('Inside controller');
     const queryObject = { ...req.query };
 
     try {

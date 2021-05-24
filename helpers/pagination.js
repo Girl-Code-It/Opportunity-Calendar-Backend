@@ -8,109 +8,99 @@
 // page 3 = {8,9}  .
 
 export default async function pagination(queryObject, opportunity) {
-    // Filter based on opportunityType
-      // Filter based on opportunityType
-      if (queryObject.type) {
-        queryObject['opportunityType'] = queryObject.type;
-        delete queryObject.type;
-      }
+  // Here page means which page to start from and limit specifies the number of documnents to be
+  // rendered starting from this page
+  let { limit, page } = queryObject;
 
-      //console.log('Values of QueryString', queryObject);
-
-      // Here page means which page to start from and limit specifies the number of documnents to be
-      // rendered starting from this page
-      let { limit, page } = queryObject;
-
-      // The case when both page and limit are not specified we assign both of them default values
-      if (page == undefined && limit == undefined) {
-        limit = 10;
-        page = 1;
-      }
-
-      //Only limit is 'undefined or 0' , so it is assigned a default value of 1
-      if (limit == undefined) {
-        limit = 10;
-      }
-
-      // The case when starting page is not mentioned or it is Put in as 0 , we use default value
-      if (page == undefined) {
-        page = 1;
-      }
-
-      // The query objects are by default "string" , so we convert them to "INT" to work ahead
-      limit = parseInt(limit);
-      page = parseInt(page);
-
-      // Object initialised to store the results for various queries
-      const result = {};
-
-      // The case when the queries are invalid , we just return a result with valid error message
-      // Number of Total Documents Saved in a variable
-      let numDocs = await opportunity.countDocuments().exec();
-
-      // TotalPages denote the total number of pages that are possible with the given limit and Documents available
-      let totalPages;
-
-      // When limit is less than or equal to the number of Docs
-      if (numDocs >= limit) {
-        totalPages =
-          Math.floor(numDocs / limit) + (numDocs % limit === 0 ? 0 : 1);
-      }
-
-      // this is the case when limit exceeds the documents , so we only have a single page
-      else {
-        totalPages = 1;
-      }
-
-      if (page <= 0 || limit <= 0) {
-        result.results = 'The Parameters cannot be Negative or Zero';
-        return result;
-      }
-
-      // If the page entered exceeds the Max allowed value(totalPages)
-      if (page > totalPages) {
-        let maxAllowedPages = totalPages;
-        result.results = 'The maximum allowed pages are ' + maxAllowedPages;
-        return result;
-      }
-
-      // If we get valid data we also render the Next and Previous page to the User along with the Results
-      else {
-        // If there is valid next page in the Database , then we let the user know about it
-
-        if (page * limit < numDocs) {
-          result.next = {
-            page: page + 1,
-            limit: limit,
-          };
-        }
-
-        // If there is valid Previous page in the Database , then we let the user know about it
-        if (page > 1) {
-          result.previous = {
-            page: page - 1,
-            limit: limit,
-          };
-        }
-      }
-
-      // Once a Valid Query(The one which is inside the Range) is entered, we render the Results
-      try {
-        result.results = await opportunity
-          .find({
-            opportunityType: queryObject.opportunityType,
-          },
-          {
-
-          },
-          {
-            skip:limit*(page-1),
-            limit:limit
-          })
-          
-        return result;
-      } catch (e) {
-        console.log(`ERR: `, e.stack);
-      }
+  // The case when both page and limit are not specified we assign both of them default values
+  if (page == undefined && limit == undefined) {
+    limit = 10;
+    page = 1;
   }
-  
+
+  //Only limit is 'undefined or 0' , so it is assigned a default value of 1
+  if (limit == undefined) {
+    limit = 10;
+  }
+
+  // The case when starting page is not mentioned or it is Put in as 0 , we use default value
+  if (page == undefined) {
+    page = 1;
+  }
+
+  // The query objects are by default "string" , so we convert them to "INT" to work ahead
+  limit = parseInt(limit);
+  page = parseInt(page);
+
+  // Object initialised to store the results for various queries
+  const result = {};
+
+  // The case when the queries are invalid , we just return a result with valid error message
+  // Number of Total Documents Saved in a variable
+  let numDocs = await opportunity.countDocuments().exec();
+
+  // TotalPages denote the total number of pages that are possible with the given limit and Documents available
+  let totalPages;
+
+  // When limit is less than or equal to the number of Docs
+  if (numDocs >= limit) {
+    totalPages =
+      Math.floor(numDocs / limit) + (numDocs % limit === 0 ? 0 : 1);
+  }
+
+  // this is the case when limit exceeds the documents , so we only have a single page
+  else {
+    totalPages = 1;
+  }
+
+  if (page <= 0 || limit <= 0) {
+    result.results = 'The Parameters cannot be Negative or Zero';
+    return result;
+  }
+
+  // If the page entered exceeds the Max allowed value(totalPages)
+  if (page > totalPages) {
+    let maxAllowedPages = totalPages;
+    result.results = 'The maximum allowed pages are ' + maxAllowedPages;
+    return result;
+  }
+
+  // If we get valid data we also render the Next and Previous page to the User along with the Results
+  else {
+    // If there is valid next page in the Database , then we let the user know about it
+
+    if (page * limit < numDocs) {
+      result.next = {
+        page: page + 1,
+        limit: limit,
+      };
+    }
+
+    // If there is valid Previous page in the Database , then we let the user know about it
+    if (page > 1) {
+      result.previous = {
+        page: page - 1,
+        limit: limit,
+      };
+    }
+  }
+
+  // Once a Valid Query(The one which is inside the Range) is entered, we render the Results
+  try {
+    result.results = await opportunity
+      .find({
+        opportunityType: queryObject.opportunityType,
+      },
+      {
+
+      },
+      {
+        skip:limit*(page-1),
+        limit:limit
+      })
+      
+    return result;
+  } catch (e) {
+    console.log(`ERR: `, e.stack);
+  }
+}

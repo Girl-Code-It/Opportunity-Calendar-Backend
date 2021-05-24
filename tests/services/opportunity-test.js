@@ -57,7 +57,7 @@ describe('OpportunityService', function () {
       const opportunityService = new OpportunityService(opportunityManager);
       const opportunity = (await opportunityService.getOpportunities({
         type: stubValue.opportunityType,
-      })).results[0]
+      })).results[0];
       expect(stub.calledOnce).to.be.true;
       expect(opportunity.opportunityTitle).to.equal(stubValue.opportunityTitle);
       expect(opportunity.opportunityType).to.equal(stubValue.opportunityType);
