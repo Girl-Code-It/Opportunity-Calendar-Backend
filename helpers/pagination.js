@@ -46,7 +46,9 @@ export default async function pagination(queryObject, opportunity) {
 
   // When limit is less than or equal to the number of Docs
   if (numDocs >= limit) {
+
     totalPages = Math.floor(numDocs / limit) + (numDocs % limit === 0 ? 0 : 1);
+
   }
 
   // this is the case when limit exceeds the documents , so we only have a single page
@@ -63,19 +65,22 @@ export default async function pagination(queryObject, opportunity) {
   }
 
   // If user enters a Page number greater than the number of Documents present in the Database
+
   if (page > totalPages) {
     let maxAllowedPages = totalPages;
     result.results = 'The maximum allowed pages are ' + maxAllowedPages;
     return result;
   }
 
- 
+
 
   // StartIndex should be atleast 0 and for the min val of Page should be 1
   if (page <=0) {
+
     result.results = 'The minimum page value should be 1';
     return result;
   }
+
 
 
 
@@ -91,6 +96,7 @@ export default async function pagination(queryObject, opportunity) {
     }
 
     // If there is valid Previous page in the Database , then we let the user know about it
+
     if (page>1) {
       result.previous = {
         page: page - 1,
@@ -101,6 +107,7 @@ export default async function pagination(queryObject, opportunity) {
 
   let query = {};
   if (queryObject.type) query['opportunityType'] = queryObject.type;
+
 
   if(queryObject.opportunityType!=null)
   {
@@ -115,6 +122,7 @@ export default async function pagination(queryObject, opportunity) {
       },
       {
         skip: limit*(page-1),
+
         limit: limit,
       }
     );
