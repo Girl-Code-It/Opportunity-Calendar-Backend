@@ -1,6 +1,6 @@
 import chai from 'chai';
 import sinon from 'sinon';
-import stubValue from '../fakedata.js';
+import {stubValue} from '../fakedata.js';
 import OpportunityManager from '../../managers/opportunity/index.js';
 const expect = chai.expect;
 import OpportunityService from '../../services/opportunity/index.js';
@@ -53,11 +53,11 @@ describe('OpportunityService', function () {
       const opportunityManager = new OpportunityManager();
       const stub = sinon
         .stub(opportunityManager, 'getOpportunities')
-        .returns(stubValue);
+        .returns({results:[stubValue]});
       const opportunityService = new OpportunityService(opportunityManager);
-      const opportunity = await opportunityService.getOpportunities({
+      const opportunity = (await opportunityService.getOpportunities({
         type: stubValue.opportunityType,
-      });
+      })).results[0];
       expect(stub.calledOnce).to.be.true;
       expect(opportunity.opportunityTitle).to.equal(stubValue.opportunityTitle);
       expect(opportunity.opportunityType).to.equal(stubValue.opportunityType);

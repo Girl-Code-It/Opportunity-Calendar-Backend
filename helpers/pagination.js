@@ -32,10 +32,7 @@ export default async function pagination(queryObject, opportunity) {
   limit = parseInt(limit);
   page = parseInt(page);
 
-  // The startIndex is the first index to be rendered from the database
-  // skip is the total no of documents/items on each page as per the user
-  const startIndex = page - 1;
-  const skip = (page - 1) * limit;
+
 
   // Object initialised to store the results for various queries
   const result = {};
@@ -49,7 +46,9 @@ export default async function pagination(queryObject, opportunity) {
 
   // When limit is less than or equal to the number of Docs
   if (numDocs >= limit) {
-    totalPages = Math.floor(numDocs / limit) + (numDocs % limit);
+
+    totalPages = Math.floor(numDocs / limit) + (numDocs % limit === 0 ? 0 : 1);
+
   }
 
   // this is the case when limit exceeds the documents , so we only have a single page
@@ -57,8 +56,7 @@ export default async function pagination(queryObject, opportunity) {
     totalPages = 1;
   }
 
-  // Begin here shows the first index of next Page and helps in determining wether or not it is possible to go on the next page
-  let begin = page * limit;
+
 
   // If any of the paramter becomes neagtive or Zero
   if (page <= 0 || limit <= 0) {
@@ -67,35 +65,30 @@ export default async function pagination(queryObject, opportunity) {
   }
 
   // If user enters a Page number greater than the number of Documents present in the Database
-  if (startIndex >= numDocs) {
-    result.results = 'The maximum page value should be ' + numDocs;
-    return result;
-  }
 
-  // If the page entered exceeds the Max allowed value(totalPages)
   if (page > totalPages) {
     let maxAllowedPages = totalPages;
     result.results = 'The maximum allowed pages are ' + maxAllowedPages;
     return result;
   }
 
+
+
   // StartIndex should be atleast 0 and for the min val of Page should be 1
-  if (startIndex < 0) {
+  if (page <=0) {
+
     result.results = 'The minimum page value should be 1';
     return result;
   }
 
-  // Page can't be entered more than the Number of documents present in DataBase
-  if (startIndex >= numDocs) {
-    result.results = 'The maximum page value should be ' + numDocs;
-    return result;
-  }
+
+
 
   // If we get valid data we also render the Next and Previous page to the User along with the Results
   else {
     // If there is valid next page in the Database , then we let the user know about it
 
-    if (begin < numDocs) {
+    if (page * limit < numDocs) {
       result.next = {
         page: page + 1,
         limit: limit,
@@ -103,7 +96,8 @@ export default async function pagination(queryObject, opportunity) {
     }
 
     // If there is valid Previous page in the Database , then we let the user know about it
-    if (startIndex > 0) {
+
+    if (page>1) {
       result.previous = {
         page: page - 1,
         limit: limit,
@@ -114,6 +108,11 @@ export default async function pagination(queryObject, opportunity) {
   let query = {};
   if (queryObject.type) query['opportunityType'] = queryObject.type;
 
+
+  if(queryObject.opportunityType!=null)
+  {
+    query={  opportunityType: queryObject.opportunityType,}
+  }
   // Once a Valid Query(The one which is inside the Range) is entered, we render the Results
   try {
     result.results = await opportunity.find(
@@ -122,7 +121,8 @@ export default async function pagination(queryObject, opportunity) {
         /* No constraints */
       },
       {
-        skip: skip,
+        skip: limit*(page-1),
+
         limit: limit,
       }
     );
